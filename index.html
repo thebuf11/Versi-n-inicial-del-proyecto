@@ -98,14 +98,6 @@
             trabajar con un grupo que en ningún trabajo de equipo académico.</p>
         </article>
 
-        <article class="glass card reveal">
-          <p class="card-year">Colaboración</p>
-          <h3>Proyecto final en pareja</h3>
-          <p>Repartí con un compañero la parte de diseño y frontend. Entregamos a
-            tiempo, con el repositorio limpio y los dos de acuerdo en los colores:
-            eso último fue lo difícil.</p>
-        </article>
-
       </div>
     </section>
 
@@ -225,6 +217,52 @@
       </svg>
       <p class="send-text">Mensaje enviado</p>
     </div>
+  </div>
+
+  <!-- Asistente virtual · esquina inferior derecha -->
+  <div class="assistant" id="assistant">
+    <div class="chat glass" id="chat" role="dialog" aria-labelledby="chat-title" hidden>
+      <header class="chat-head">
+        <span class="chat-avatar" aria-hidden="true">Iv<span>.</span></span>
+        <div class="chat-id">
+          <strong id="chat-title">Iván · versión IA</strong>
+          <span class="chat-presence"><i aria-hidden="true"></i> Contesto al instante</span>
+        </div>
+        <button type="button" class="chat-close" id="chat-close" aria-label="Cerrar el chat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </header>
+
+      <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+      <div class="chat-chips" id="chat-chips" aria-label="Preguntas sugeridas">
+        <button type="button" class="chip">¿Qué formación tienes?</button>
+        <button type="button" class="chip">¿Experiencia en marketing?</button>
+        <button type="button" class="chip">¿Qué proyectos has hecho?</button>
+        <button type="button" class="chip">Herramientas que manejas</button>
+        <button type="button" class="chip">¿Disponibilidad?</button>
+        <button type="button" class="chip">¿Cómo te contacto?</button>
+      </div>
+
+      <form class="chat-form" id="chat-form" autocomplete="off">
+        <input class="chat-input" id="chat-input" type="text"
+               placeholder="Pregúntame por el CV…" aria-label="Escribe tu pregunta">
+        <button class="chat-send" type="submit" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <p class="chat-hint" aria-hidden="true">Pregúntale a mi versión IA</p>
+
+    <button type="button" class="chat-fab" id="chat-fab"
+            aria-expanded="false" aria-controls="chat"
+            aria-label="Abrir el asistente virtual de Iván">
+      <span class="chat-fab-logo">Iv<span>.</span></span>
+      <span class="chat-fab-ai" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.9 5.6L19.5 9l-5.6 1.9L12 16.5l-1.9-5.6L4.5 9l5.6-1.4L12 2z"/><path d="M18.5 14.5l.9 2.6 2.6.9-2.6.9-.9 2.6-.9-2.6-2.6-.9 2.6-.9.9-2.6z"/></svg>
+      </span>
+    </button>
   </div>
 
   <script src="script.js"></script>
