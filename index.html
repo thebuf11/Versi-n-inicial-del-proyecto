@@ -3,27 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iván Sáez · Portfolio personal</title>
-  <meta name="description" content="Página personal de Iván: quién soy, qué he hecho y cómo contactarme.">
+  <title>Iván Sáez · Marketing digital, logística y soporte informático (Valencia)</title>
+  <meta name="description" content="Iván Sáez (Valencia): marketing digital, logística y soporte informático. Grado en Ventas y Espacios Comerciales y Técnico en Sistemas Microinformáticos y Redes.">
+  <meta name="author" content="Iván Sáez">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ff7a1a">
+  <meta name="color-scheme" content="light">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Iván Sáez">
+  <meta property="og:title" content="Iván Sáez · Marketing digital, logística y soporte informático">
+  <meta property="og:description" content="Iván Sáez (Valencia): marketing digital, logística y soporte informático. Grado en Ventas y Espacios Comerciales y Técnico en Sistemas Microinformáticos y Redes.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Iván Sáez · Marketing digital, logística y soporte informático">
+  <meta name="twitter:description" content="Iván Sáez (Valencia): marketing digital, logística y soporte informático. Grado en Ventas y Espacios Comerciales y Técnico en Sistemas Microinformáticos y Redes.">
+
+  <!-- Favicon con el logo "Iv." -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='18'%20fill='%230f172a'/%3E%3Ctext%20x='29'%20y='43'%20font-family='Arial,Helvetica,sans-serif'%20font-size='30'%20font-weight='700'%20text-anchor='middle'%20fill='%23ffffff'%3EIv%3C/text%3E%3Ccircle%20cx='47'%20cy='41'%20r='4.5'%20fill='%23ea580c'/%3E%3C/svg%3E">
+
+  <!-- Datos estructurados: persona (basados en el CV) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Iván Sáez",
+    "alternateName": "Iván Saez Santa Rosalia",
+    "jobTitle": "Marketing digital, logística y soporte informático",
+    "email": "mailto:ivasaesan@alu.edu.gva.es",
+    "telephone": "+34 635 152 586",
+    "sameAs": ["https://github.com/thebuf11"],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Valencia",
+      "addressCountry": "ES"
+    },
+    "knowsLanguage": ["Español", "Valenciano", "Inglés"],
+    "knowsAbout": [
+      "Marketing digital",
+      "Facebook Ads",
+      "Google Ads",
+      "Gestión de redes sociales",
+      "Edición de vídeo y diseño gráfico",
+      "Logística y control de stock",
+      "SAP",
+      "Soporte informático",
+      "Hardware y redes",
+      "Atención al cliente"
+    ],
+    "alumniOf": [
+      {
+        "@type": "EducationalOrganization",
+        "name": "Colegio Artesanos de Valencia",
+        "description": "Grado Superior en Gestión de Ventas y Espacios Comerciales"
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Colegio Esclaves de María de Valencia",
+        "description": "Grado Medio en Sistemas Microinformáticos y Redes"
+      }
+    ],
+    "hasCredential": [
+      "Permiso de conducir B",
+      "Permiso y experiencia con carretilla elevadora",
+      "Formación en primeros auxilios"
+    ]
+  }
+  </script>
+
   <script>document.documentElement.classList.add("js");</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Fondo aurora (detrás del cristal) -->
-  <div class="aurora" aria-hidden="true">
-    <span class="blob blob-1"></span>
-    <span class="blob blob-2"></span>
-    <span class="blob blob-3"></span>
-    <span class="blob blob-4"></span>
-  </div>
+  <!-- Barra de progreso de lectura -->
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- Navegación -->
   <div class="nav-wrap">
-    <nav class="nav glass" aria-label="Navegación principal">
+    <nav class="nav" aria-label="Navegación principal">
       <a class="brand" href="#inicio">Iv<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -31,16 +95,22 @@
         <li><a href="#me-gusta">Me gusta</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
+      <a class="nav-github" href="https://github.com/thebuf11?tab=repositories"
+         target="_blank" rel="noopener noreferrer"
+         title="Mis proyectos en GitHub"
+         aria-label="GitHub de thebuf11 (se abre en una pestaña nueva)">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
     </nav>
   </div>
 
-  <main>
+  <main id="contenido">
 
     <!-- 1 · HERO -->
     <section id="inicio" class="hero">
-      <div class="glass hero-card reveal" data-tilt>
-        <p class="eyebrow">Hola, soy</p>
-        <h1 class="hero-name">Iván Sáez</h1>
+      <div class="hero-card">
+        <p class="eyebrow">Valencia · Marketing, logística y soporte IT</p>
+        <h1 class="hero-name">Hola, soy <em>Iván <span class="accent">Sáez</span></em></h1>
         <p class="tagline">Estoy estudiando programación y construyo cosas en serio
           para demostrarlo. Código por curiosidad, no por obligación.</p>
         <div class="cta">
@@ -48,26 +118,125 @@
           <a class="btn btn-ghost" href="#contacto">Contáctame</a>
         </div>
       </div>
-      <div class="scroll-hint" aria-hidden="true">
-        <span></span>
+    </section>
+
+    <!-- Cintillo de habilidades (dato del CV) -->
+    <section class="ticker-section" aria-label="Habilidades y herramientas">
+      <button type="button" class="ticker-toggle" id="ticker-toggle" aria-pressed="false">Pausar</button>
+      <div class="ticker">
+        <div class="ticker-track">
+          <ul class="ticker-row">
+            <li>Marketing digital</li>
+            <li>Facebook Ads</li>
+            <li>Google Ads</li>
+            <li>Redes sociales</li>
+            <li>Canva</li>
+            <li>CapCut</li>
+            <li>Premiere Pro</li>
+            <li>Logística</li>
+            <li>Control de stock</li>
+            <li>SAP</li>
+            <li>Carretilla elevadora</li>
+            <li>Soporte informático</li>
+            <li>Hardware y redes</li>
+            <li>Atención al cliente</li>
+            <li>Valenciano y español nativos</li>
+            <li>Inglés A2</li>
+          </ul>
+          <ul class="ticker-row" aria-hidden="true">
+            <li>Marketing digital</li>
+            <li>Facebook Ads</li>
+            <li>Google Ads</li>
+            <li>Redes sociales</li>
+            <li>Canva</li>
+            <li>CapCut</li>
+            <li>Premiere Pro</li>
+            <li>Logística</li>
+            <li>Control de stock</li>
+            <li>SAP</li>
+            <li>Carretilla elevadora</li>
+            <li>Soporte informático</li>
+            <li>Hardware y redes</li>
+            <li>Atención al cliente</li>
+            <li>Valenciano y español nativos</li>
+            <li>Inglés A2</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- 2 · SOBRE MÍ -->
     <section id="sobre-mi" class="section">
-      <div class="glass panel reveal">
+      <div class="panel reveal">
         <h2 class="section-title">Sobre mí</h2>
         <p class="lead">
           Vengo de un instituto donde descubrí que me gustaba más arreglar la cosa
-          que aprobarla. Llevo un par de años estudiando desarrollo por mi cuenta y
-          en clase, y ahora mismo estoy en ello: prácticas, proyectos y algún que
-          otro lío con un framework a las dos de la mañana.
+          que aprobarla. Desde entonces mi camino va por tres frentes que se
+          complementan: <strong>marketing digital</strong>, <strong>logística</strong>
+          y <strong>soporte informático</strong>. Sigo formándome por mi cuenta y en
+          clase, con algún que otro lío técnico a las dos de la mañana.
         </p>
         <p class="lead">
           Me motiva ver una idea convertirse en algo que otra persona pueda usar sin
           que se le caiga en cuanto toca un botón. Soy de preguntar «¿y por qué
           funciona esto?» hasta que alguien se rinde.
         </p>
+        <p class="lead">
+          Me apetece seguir creciendo en un proyecto donde pueda dar soporte,
+          organizar procesos y crear contenido a la vez. Me gustan los retos que se
+          aprenden haciendo.
+        </p>
+
+        <ul class="stats">
+          <li class="stat">
+            <strong>+30K</strong>
+            <span>visualizaciones al mes en campañas de Facebook e Instagram Ads</span>
+          </li>
+          <li class="stat">
+            <strong>5</strong>
+            <span>empresas entre marketing, logística y administración desde 2019</span>
+          </li>
+          <li class="stat">
+            <strong>380 h</strong>
+            <span>de prácticas en Sistemas Informáticos y Redes</span>
+          </li>
+          <li class="stat">
+            <strong>2</strong>
+            <span>grados: Ventas y Espacios Comerciales + Sistemas Microinformáticos y Redes</span>
+          </li>
+        </ul>
+
+        <div class="about-more">
+          <div class="about-block">
+            <h3>Formación</h3>
+            <ul>
+              <li><strong>Grado Superior</strong> en Gestión de Ventas y Espacios Comerciales — Colegio Artesanos de Valencia</li>
+              <li><strong>Grado Medio</strong> en Sistemas Microinformáticos y Redes — Colegio Esclaves de María de Valencia</li>
+              <li><strong>380 h de prácticas</strong> como Técnico en Sistemas Informáticos y Redes — Ajuntament de l'Alcúdia de Crespins (2018)</li>
+              <li><strong>ESO</strong> — Colegio Salesianos de Valencia</li>
+            </ul>
+          </div>
+
+          <div class="about-block">
+            <h3>Lo que aporto</h3>
+            <ul>
+              <li><strong>Iniciativa y aprendizaje autodidacta:</strong> aprendo haciendo y preguntando hasta entenderlo.</li>
+              <li><strong>Responsabilidad:</strong> trabajando de forma continuada desde 2019, entre almacén, campañas y atención al cliente.</li>
+              <li><strong>Técnico y creativo a la vez:</strong> combino soporte informático con contenido visual y campañas.</li>
+              <li><strong>Trabajo en equipo:</strong> de la preparación de pedidos a la coordinación interdepartamental.</li>
+            </ul>
+          </div>
+
+          <div class="about-block">
+            <h3>Idiomas y permisos</h3>
+            <ul>
+              <li><strong>Español:</strong> nativo</li>
+              <li><strong>Valenciano:</strong> nativo</li>
+              <li><strong>Inglés:</strong> nivel básico (A2), en proceso de mejora</li>
+              <li><strong>Permiso de conducir B</strong>, experiencia con carretilla elevadora y formación en primeros auxilios</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -76,14 +245,16 @@
       <h2 class="section-title center reveal">Lo que he hecho</h2>
       <div class="grid">
 
-        <article class="glass card reveal">
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">01</span>
           <p class="card-year">2025 – 2026</p>
           <h3>Primero de DAM</h3>
           <p>De copiar y pegar a entender qué estoy haciendo. Tres prácticas
             entregadas con HTML, CSS y JavaScript, incluida esta misma página.</p>
         </article>
 
-        <article class="glass card reveal">
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">02</span>
           <p class="card-year">Proyecto real</p>
           <h3>Web para un negocio local</h3>
           <p>Monté la página de una tienda de barrio: cinco secciones, formulario
@@ -91,7 +262,8 @@
             el dueño pudiera enseñarla desde el móvil.</p>
         </article>
 
-        <article class="glass card reveal">
+        <article class="card reveal">
+          <span class="card-num" aria-hidden="true">03</span>
           <p class="card-year">5 temporadas</p>
           <h3>Baloncesto</h3>
           <p>Equipo del instituto, tres entrenamientos por semana. Aprendí más sobre
@@ -103,7 +275,7 @@
 
     <!-- 4 · ME GUSTA -->
     <section id="me-gusta" class="section">
-      <div class="glass panel reveal">
+      <div class="panel reveal">
         <h2 class="section-title">Me gusta</h2>
         <ul class="likes">
           <li class="like">
@@ -157,9 +329,29 @@
 
     <!-- 5 · CONTACTO -->
     <section id="contacto" class="section">
-      <div class="glass panel center reveal">
+      <div class="panel center reveal">
         <h2 class="section-title">Contacto</h2>
         <p class="lead">Escríbeme y te contesto. Sin fricción: un mensaje y ya.</p>
+
+        <a class="mail-card" href="mailto:ivasaesan@alu.edu.gva.es">
+          <span class="mail-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="3"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg>
+          </span>
+          <span class="mail-text">
+            <span class="mail-label">Escríbeme directamente</span>
+            <span class="mail-address">ivasaesan@alu.edu.gva.es</span>
+          </span>
+          <span class="mail-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+          </span>
+        </a>
+
+        <button type="button" class="mail-copy" id="mail-copy" data-mail="ivasaesan@alu.edu.gva.es">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>
+          <span id="mail-copy-label" aria-live="polite">Copiar correo</span>
+        </button>
+
+        <p class="contact-divider"><span>o escríbeme desde aquí</span></p>
 
         <form class="contact-form" id="contact-form">
           <div class="field-row">
@@ -182,14 +374,21 @@
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
 
-        <p class="contact-alt">
-          O escríbeme directamente a
-          <a href="mailto:ivasaesan@alu.edu.gva.es">ivasaesan@alu.edu.gva.es</a>
-        </p>
-
         <div class="contact-row">
-          <a class="btn btn-ghost" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="social-btn" href="https://github.com/thebuf11?tab=repositories"
+             target="_blank" rel="noopener noreferrer"
+             aria-label="GitHub de thebuf11, ver mis proyectos (se abre en una pestaña nueva)">
+            <span class="social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </span>
+            <span class="social-text">
+              <strong>GitHub · thebuf11</strong>
+              <small>Ver mis proyectos</small>
+            </span>
+            <span class="social-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -197,9 +396,9 @@
   </main>
 
   <!-- 6 · PIE -->
-  <footer class="footer glass reveal">
+  <footer class="footer reveal">
     <p class="footer-name">Iván Sáez · <span id="year">2026</span></p>
-    <p class="footer-note">Hecho a mano, con más café que presupuesto.</p>
+    <p class="footer-note">Hecho a mano en Valencia.</p>
   </footer>
 
   <!-- Animación: carta enviándose -->
@@ -221,13 +420,16 @@
 
   <!-- Asistente virtual · esquina inferior derecha -->
   <div class="assistant" id="assistant">
-    <div class="chat glass" id="chat" role="dialog" aria-labelledby="chat-title" hidden>
+    <div class="chat" id="chat" role="dialog" aria-labelledby="chat-title" hidden>
       <header class="chat-head">
         <span class="chat-avatar" aria-hidden="true">Iv<span>.</span></span>
         <div class="chat-id">
-          <strong id="chat-title">Iván · versión IA</strong>
-          <span class="chat-presence"><i aria-hidden="true"></i> Contesto al instante</span>
+          <strong id="chat-title">Asistente de Iván</strong>
+          <span class="chat-presence"><i aria-hidden="true"></i> Solo responde con su CV</span>
         </div>
+        <button type="button" class="chat-reset" id="chat-reset" aria-label="Empezar una conversación nueva" title="Nueva conversación">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+        </button>
         <button type="button" class="chat-close" id="chat-close" aria-label="Cerrar el chat">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
@@ -235,25 +437,17 @@
 
       <div class="chat-log" id="chat-log" role="log" aria-live="polite" aria-relevant="additions"></div>
 
-      <div class="chat-chips" id="chat-chips" aria-label="Preguntas sugeridas">
-        <button type="button" class="chip">¿Qué formación tienes?</button>
-        <button type="button" class="chip">¿Experiencia en marketing?</button>
-        <button type="button" class="chip">¿Qué proyectos has hecho?</button>
-        <button type="button" class="chip">Herramientas que manejas</button>
-        <button type="button" class="chip">¿Disponibilidad?</button>
-        <button type="button" class="chip">¿Cómo te contacto?</button>
-      </div>
-
       <form class="chat-form" id="chat-form" autocomplete="off">
-        <input class="chat-input" id="chat-input" type="text"
-               placeholder="Pregúntame por el CV…" aria-label="Escribe tu pregunta">
-        <button class="chat-send" type="submit" aria-label="Enviar mensaje">
+        <input class="chat-input" id="chat-input" type="text" maxlength="160"
+               placeholder="Pregunta sobre el CV de Iván…" aria-label="Escribe tu pregunta sobre el CV">
+        <button class="chat-send" id="chat-send" type="submit" aria-label="Enviar mensaje">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </form>
+      <p class="chat-note">Asistente automático: responde solo con los datos del CV de Iván.</p>
     </div>
 
-    <p class="chat-hint" aria-hidden="true">Pregúntale a mi versión IA</p>
+    <p class="chat-hint" aria-hidden="true">Pregunta por mi CV</p>
 
     <button type="button" class="chat-fab" id="chat-fab"
             aria-expanded="false" aria-controls="chat"
@@ -266,5 +460,6 @@
   </div>
 
   <script src="script.js"></script>
+  <script src="chat.js"></script>
 </body>
 </html>
