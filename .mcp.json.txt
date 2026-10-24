@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "omniroute": {
+      "command": "npx",
+      "args": ["-y", "@omniroute/mcp-server"],
+      "env": {
+        "OMNIROUTE_API_URL": "http://localhost:20128/api/mcp/stream"
+      }
+    },
+    "claude-mem": {
+      "command": "npx",
+      "args": ["-y", "claude-mem-mcp"]
+    },
+    "headroom": {
+      "command": "npx",
+      "args": ["-y", "@headroom-ai/mcp-server"]
+    },
+    "claude-code-setup": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/claude-code-mcp"]
+    },
+    "task-observer": {
+      "command": "npx",
+      "args": ["-y", "task-observer-mcp"]
+    }
+  }
+}
