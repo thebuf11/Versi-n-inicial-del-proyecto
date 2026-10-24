@@ -238,6 +238,9 @@ main {
 }
 
 main section[id] { scroll-margin-top: 110px; }
+/* El botón «Contáctame» aterriza en la tarjeta de correo, no en el título */
+#escribeme { scroll-margin-top: 130px; }
+@media (min-width: 760px) { #escribeme { scroll-margin-top: 90px; } }
 
 .section {
   padding-top: var(--section-y);
@@ -1045,16 +1048,6 @@ main section[id] { scroll-margin-top: 110px; }
   gap: 12px;
 }
 
-.chat-hint {
-  padding: 7px 12px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-sm);
-  font-size: 0.8rem;
-  color: var(--ink-soft);
-  box-shadow: 0 8px 20px -10px rgba(70, 35, 10, 0.3);
-}
-.assistant.is-open .chat-hint { display: none; }
 
 .chat-fab {
   position: relative;
@@ -1420,7 +1413,6 @@ main section[id] { scroll-margin-top: 110px; }
   .mail-arrow { display: none; }
   .mail-icon { width: 46px; }
   .mail-address { font-size: clamp(0.92rem, 4.2vw, 1.2rem); letter-spacing: -0.02em; }
-  .chat-hint { display: none; }
   .stats { grid-template-columns: 1fr; }
   .cta .btn { flex: 1 1 100%; }
   .assistant { right: 12px; bottom: 12px; }
@@ -1459,3 +1451,51 @@ main section[id] { scroll-margin-top: 110px; }
   font-size: 0.85rem;
   color: var(--accent-strong);
 }.field input[aria-invalid="true"],.field textarea[aria-invalid="true"] { border-color: var(--accent-strong); }
+
+/* ------------------------------------------------------------
+   Esqueleto de carga e indicador de porcentaje
+   ------------------------------------------------------------ */
+.skeleton { display: none; }
+.js .skeleton {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-progress) + 2);
+  background: var(--bg);
+  padding: 1rem clamp(1rem, 5vw, 3rem);
+  transition: opacity 0.4s var(--ease), visibility 0.4s;
+}
+.skeleton.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.sk {
+  border-radius: 12px;
+  background: linear-gradient(100deg, var(--line) 30%, #ece7dc 50%, var(--line) 70%);
+  background-size: 200% 100%;
+  animation: shimmer 1.3s linear infinite;
+}
+.sk-nav { height: 56px; border-radius: 999px; margin-bottom: 4rem; }
+.sk-hero { max-width: 720px; margin: 0 auto; display: grid; gap: 1rem; }
+.sk-line { height: 18px; }
+.sk-sm { width: 40%; height: 12px; }
+.sk-xl { height: clamp(40px, 8vw, 72px); }
+.sk-short { width: 60%; }
+.sk-row { display: flex; gap: 1rem; margin-top: 1rem; }
+.sk-btn { width: 150px; height: 48px; border-radius: 999px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.nav-tools { display: flex; align-items: center; gap: 2px; }
+.nav-pct {
+  min-width: 3.4ch;
+  margin-right: 6px;
+  text-align: right;
+  font: 500 0.78rem/1 "Geist Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-faint);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease), color 0.3s;
+}
+.nav-pct.show { opacity: 1; }
+.nav-pct.is-end { color: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sk { animation: none; }
+}

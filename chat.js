@@ -12,7 +12,7 @@
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  var MAIL = "ivasaesan@alu.edu.gva.es";
+  var MAIL = "isasan@eeartesanos.com";
 
   /* ----------------------------------------------------------
      1 · Temas del CV

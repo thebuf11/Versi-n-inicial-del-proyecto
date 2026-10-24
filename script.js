@@ -68,7 +68,7 @@
   var form = document.getElementById("contact-form");
   var overlay = document.getElementById("send-overlay");
   var statusEl = document.getElementById("form-status");
-  var MAIL = "ivasaesan@alu.edu.gva.es";
+  var MAIL = "isasan@eeartesanos.com";
 
   if (form && overlay) {
     form.addEventListener("submit", function (event) {
@@ -146,14 +146,21 @@
      7 · Barra de progreso de lectura
      ---------------------------------------------------------- */
   var progressEl = document.getElementById("progress-bar");
+  var pillEl = document.getElementById("progress-pill");
 
   if (progressEl) {
     var updateProgress = function () {
       var doc = document.documentElement;
       var max = doc.scrollHeight - window.innerHeight;
       var pct = max > 0 ? window.scrollY / max : 0;
-      progressEl.style.transform =
-        "scaleX(" + Math.min(1, Math.max(0, pct)).toFixed(4) + ")";
+      var clamped = Math.min(1, Math.max(0, pct));
+      progressEl.style.transform = "scaleX(" + clamped.toFixed(4) + ")";
+      if (pillEl) {
+        var n = Math.round(clamped * 100);
+        pillEl.textContent = n >= 98 ? "¡Fin!" : n + "%";
+        pillEl.classList.toggle("show", n > 3);
+        pillEl.classList.toggle("is-end", n >= 98);
+      }
     };
 
     window.addEventListener("scroll", updateProgress, { passive: true });
@@ -483,6 +490,25 @@
     document.documentElement.addEventListener("mouseleave", function () {
       glow.style.opacity = "0";
     });
+  }
+
+  /* ----------------------------------------------------------
+     9 · Esqueleto de carga: se retira cuando la página está lista
+     ---------------------------------------------------------- */
+  var skeleton = document.getElementById("skeleton");
+  if (skeleton) {
+    var hideSkeleton = function () {
+      skeleton.classList.add("is-done");
+      window.setTimeout(function () { skeleton.remove(); }, 500);
+    };
+    if (document.readyState === "complete") {
+      window.setTimeout(hideSkeleton, 250);
+    } else {
+      window.addEventListener("load", function () {
+        window.setTimeout(hideSkeleton, 250);
+      });
+      window.setTimeout(hideSkeleton, 3000); // red lenta: no bloquear la página
+    }
   }
 
   /* ----------------------------------------------------------
