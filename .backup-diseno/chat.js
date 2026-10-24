@@ -13,7 +13,6 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var MAIL = "ivasaesan@alu.edu.gva.es";
-  var PHONE = "+34 635 152 586";
 
   /* ----------------------------------------------------------
      1 · Temas del CV
@@ -111,14 +110,14 @@
       id: "contacto", pri: 2,
       q: "¿Cómo contacto con Iván?",
       kw: ["contacto", "contactar", "contactarle", "telefono", "correo", "email", "mail", "escribir", "escribirle", "llamar", "llamarle", "whatsapp", "movil", "numero"],
-      a: "Para contactar con Iván:\n\n• Teléfono: " + PHONE + "\n• Correo: " + MAIL + "\n\nTambién puedes usar el formulario de la sección Contacto de esta web.",
+      a: "Para contactar con Iván:\n\n• Correo: " + MAIL + "\n\nEl teléfono no se publica: todas las consultas van por correo. También puedes usar el formulario de la sección Contacto de esta web.",
       next: ["disponibilidad", "experiencia", "formacion"]
     },
     {
       id: "disponibilidad", pri: 2,
       q: "¿Cuál es su disponibilidad?",
       kw: ["disponibilidad", "disponible", "jornada", "horario", "incorporacion", "incorporarse", "contratar", "contratarle", "contratacion", "vacante", "oferta", "entrevista", "fecha"],
-      a: "El CV no indica disponibilidad, jornada ni fecha de incorporación, así que lo mejor es concretarlo directamente con Iván:\n\n• Teléfono: " + PHONE + "\n• Correo: " + MAIL,
+      a: "El CV no indica disponibilidad, jornada ni fecha de incorporación, así que lo mejor es concretarlo directamente con Iván por correo:\n\n• " + MAIL,
       next: ["contacto", "permisos", "experiencia"]
     },
 
@@ -150,7 +149,7 @@
       id: "salario", pri: 3, nodata: true,
       q: "¿Qué pretensiones salariales tiene?",
       kw: ["salario", "sueldo", "cobrar", "cobra", "pretensiones", "euros", "tarifa", "remuneracion"],
-      a: "El CV no incluye pretensiones salariales. Para hablar de condiciones, lo mejor es contactar con Iván:\n\n• Teléfono: " + PHONE + "\n• Correo: " + MAIL,
+      a: "El CV no incluye pretensiones salariales. Para hablar de condiciones, lo mejor es escribir a Iván:\n\n• " + MAIL,
       next: ["contacto", "disponibilidad", "experiencia"]
     },
     {
@@ -164,7 +163,7 @@
       id: "otros", pri: 3, nodata: true,
       q: "¿Tiene referencias o LinkedIn?",
       kw: ["referencias", "recomendacion", "recomendaciones", "linkedin", "portfolio", "portafolio", "foto", "aficiones", "afición", "hobbies", "gustos", "musica", "deportes"],
-      a: "El CV no incluye referencias, perfiles de redes profesionales, fotografía ni aficiones, así que no puedo hablar de eso. Puedes pedirlo directamente a Iván:\n\n• Teléfono: " + PHONE + "\n• Correo: " + MAIL,
+      a: "El CV no incluye referencias, perfiles de redes profesionales, fotografía ni aficiones, así que no puedo hablar de eso. Puedes pedirlo directamente a Iván por correo:\n\n• " + MAIL,
       next: ["contacto", "experiencia", "formacion"]
     },
     {
