@@ -289,7 +289,7 @@
      ---------------------------------------------------------- */
   if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
     var FX_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .chip, .nav-github, " +
-      ".chat-send, .card, .stat, .like, .about-block";
+      ".chat-send";
     var MAG_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .nav-github, .chat-fab, .chat-send";
     var HOT_SEL = "a, button, input, textarea, .fx";
 
