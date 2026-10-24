@@ -27,15 +27,15 @@
       id: "perfil", pri: 1, general: true,
       q: "¿Quién es Iván?",
       kw: ["perfil", "quien es", "quien eres", "sobre ivan", "sobre ti", "presentate", "presentacion", "resumen", "describe", "describeme", "cualidades", "fortalezas", "puntos fuertes", "personalidad", "iniciativa", "autodidacta", "responsabilidad", "acerca de"],
-      a: "Iván Saez Santa Rosalia es un profesional versátil con experiencia en marketing digital, logística y soporte técnico.\n\nDestaca por su iniciativa, aprendizaje autodidacta, responsabilidad y capacidad de trabajo en equipo. Con formación en ventas e informática, combina competencias técnicas y creativas para adaptarse a distintos entornos laborales.",
+      a: "Iván Saez Santa Rosalia es un profesional versátil con experiencia en marketing digital, administración e informática.\n\nDestaca por su iniciativa, aprendizaje autodidacta, responsabilidad y capacidad de trabajo en equipo. Con formación en ventas e informática, combina competencias técnicas y creativas para adaptarse a distintos entornos laborales.",
       next: ["experiencia", "formacion", "contacto"]
     },
     {
       id: "experiencia", pri: 1, general: true,
       q: "¿Qué experiencia laboral tiene?",
       kw: ["experiencia", "trayectoria", "historial", "empleos", "empleo", "trabajos", "puestos", "trabajado", "laboral", "curriculum", "cv", "empresas", "profesional", "ha hecho"],
-      a: "Su trayectoria, de más reciente a más antigua:\n\n• **AN GRUP SL** (Andorra, 2024): administrativo y mantenimiento de centro deportivo\n• **CUIDAMA SL** (Valencia, 2022–2024): marketing digital y comunicación visual\n• **FLORES EL CALE SL** (Valencia, 2021–2022): auxiliar de producción y logística\n• **FAMILYCASH SL** (Valencia, 2020–2021): logística y preparación de pedidos\n• **BENESOL SL** (Valencia, 2019–2020): operario de almacén y logística interna",
-      next: ["marketing", "logistica", "logros"]
+      a: "Su trayectoria, de más reciente a más antigua:\n\n• **AN GRUP SL** (Andorra, 2024): administrativo y mantenimiento de centro deportivo\n• **CUIDAMA SL** (Valencia, 2022–2024): marketing digital y comunicación visual\n• **Prácticas en informática** (2018): 380 horas como Técnico en Sistemas Informáticos y Redes en el Ajuntament de l'Alcúdia de Crespins",
+      next: ["marketing", "administracion", "logros"]
     },
     {
       id: "formacion", pri: 1, general: true,
@@ -49,14 +49,14 @@
       q: "¿Qué experiencia tiene en marketing?",
       kw: ["marketing", "campana", "campanas", "publicidad", "publicitarias", "facebook", "instagram", "google ads", "ads", "redes sociales", "contenido", "contenidos", "video", "videos", "reels", "diseno grafico", "metricas", "comunicacion visual", "community", "visualizaciones"],
       a: "Dos años de experiencia directa: especialista en marketing digital y comunicación visual en CUIDAMA SL (2022–2024).\n\n• Gestión de campañas en Facebook e Instagram Ads: más de 30K visualizaciones al mes\n• Contenido visual: fotos, vídeos y reels\n• Estrategias en redes sociales y análisis de métricas\n• Edición con Canva, CapCut y Premiere Pro\n\nGoogle Ads figura también entre sus habilidades.",
-      next: ["herramientas", "logros", "logistica"]
+      next: ["herramientas", "logros", "administracion"]
     },
     {
-      id: "logistica", pri: 2,
-      q: "¿Y en logística y almacén?",
-      kw: ["logistica", "logistico", "stock", "almacen", "pedidos", "pedido", "inventario", "sap", "envasado", "comandas", "carga", "descarga", "preparacion de pedidos", "cadena de suministro"],
-      a: "La logística es donde acumula más años (2019–2022, tres empresas):\n\n• **FLORES EL CALE** (2021–2022): envasado, carga/descarga y control de stock; optimización del almacén y reducción de errores\n• **FAMILYCASH** (2020–2021): comandas para más de 15 tiendas, carretilla y sistemas de gestión de inventario\n• **BENESOL** (2019–2020): control de calidad, etiquetado, pedidos y coordinación interdepartamental\n\nAdemás: control de stock y SAP básico.",
-      next: ["permisos", "herramientas", "marketing"]
+      id: "administracion", pri: 2,
+      q: "¿Y en administración?",
+      kw: ["administracion", "administrativo", "administrativa", "gestion administrativa", "oficina", "facturacion", "documentacion", "archivo", "sap", "mantenimiento", "centro deportivo"],
+      a: "Su experiencia administrativa está en **AN GRUP SL** (Andorra, 2024), donde trabajó como administrativo y en el mantenimiento de un centro deportivo.\n\nEl CV no detalla más tareas de ese puesto. Además, la gestión administrativa y el SAP básico figuran entre sus habilidades.",
+      next: ["angrup", "herramientas", "experiencia"]
     },
     {
       id: "informatica", pri: 2,
@@ -69,14 +69,14 @@
       id: "ventas", pri: 2,
       q: "¿Tiene experiencia en ventas?",
       kw: ["ventas", "venta", "vender", "comercio", "comercial", "comerciales", "espacios comerciales", "gestion de ventas", "grado superior", "artesanos", "atencion al cliente", "clientes", "cliente"],
-      a: "Tiene el Grado Superior en Gestión de Ventas y Espacios Comerciales (Colegio Artesanos de Valencia).\n\nEn el CV no aparece un puesto de ventas como tal. Lo más cercano: atención al cliente figura entre sus habilidades y en FAMILYCASH preparaba comandas para más de 15 tiendas.",
+      a: "Tiene el Grado Superior en Gestión de Ventas y Espacios Comerciales (Colegio Artesanos de Valencia).\n\nEn el CV no aparece un puesto de ventas como tal. Lo más cercano: atención al cliente figura entre sus habilidades, y en AN GRUP realizó tareas administrativas y de mantenimiento.",
       next: ["formacion", "marketing", "experiencia"]
     },
     {
       id: "herramientas", pri: 2,
       q: "¿Qué habilidades y herramientas maneja?",
       kw: ["herramientas", "herramienta", "programas", "aplicaciones", "utiliza", "maneja", "manejas", "sabe usar", "canva", "capcut", "premiere", "ofimatica", "habilidades", "habilidad", "skills", "competencias", "sabe hacer", "sabe", "capaz"],
-      a: "Habilidades que recoge el CV:\n\n• Campañas publicitarias (Facebook Ads, Google Ads)\n• Edición de vídeo y diseño gráfico básico (CapCut, Canva, Premiere)\n• Gestión de redes sociales y contenidos\n• Logística, control de stock y SAP básico\n• Soporte informático (hardware, redes, software)\n• Trabajo en equipo y atención al cliente",
+      a: "Habilidades que recoge el CV:\n\n• Campañas publicitarias (Facebook Ads, Google Ads)\n• Edición de vídeo y diseño gráfico básico (CapCut, Canva, Premiere)\n• Gestión de redes sociales y contenidos\n• Administración y gestión administrativa (SAP básico)\n• Soporte informático (hardware, redes, software)\n• Trabajo en equipo y atención al cliente",
       next: ["marketing", "informatica", "idiomas"]
     },
     {
@@ -88,23 +88,23 @@
     },
     {
       id: "permisos", pri: 2,
-      q: "¿Tiene carnet y carretilla?",
-      kw: ["carnet", "conducir", "carretilla", "carretillero", "primeros auxilios", "auxilios", "permiso", "permisos", "coche", "vehiculo", "informacion adicional"],
-      a: "Información adicional del CV:\n\n• Permiso de conducir B\n• Permiso y experiencia con carretilla elevadora\n• Formación en primeros auxilios",
-      next: ["logistica", "idiomas", "contacto"]
+      q: "¿Tiene carnet de conducir?",
+      kw: ["carnet", "conducir", "primeros auxilios", "auxilios", "permiso", "permisos", "coche", "vehiculo", "informacion adicional"],
+      a: "Información adicional del CV:\n\n• Permiso de conducir B\n• Formación en primeros auxilios",
+      next: ["idiomas", "contacto", "experiencia"]
     },
     {
       id: "logros", pri: 2,
       q: "¿Qué logros destaca?",
       kw: ["logros", "logro", "resultados", "destacado", "destaca", "destacar", "metricas", "orgulloso", "mejor"],
-      a: "Los resultados concretos que recoge el CV:\n\n• Campañas de Facebook e Instagram Ads con más de 30K visualizaciones al mes (CUIDAMA)\n• Optimización del almacén con reducción de errores (FLORES EL CALE)\n• Preparación de comandas para más de 15 tiendas (FAMILYCASH)",
-      next: ["marketing", "logistica", "experiencia"]
+      a: "Los resultados concretos que recoge el CV:\n\n• Campañas de Facebook e Instagram Ads con más de 30K visualizaciones al mes (CUIDAMA)\n• Gestión administrativa y mantenimiento de un centro deportivo (AN GRUP)\n• 380 horas de prácticas en Sistemas Informáticos y Redes (Ajuntament de l'Alcúdia de Crespins)",
+      next: ["marketing", "administracion", "experiencia"]
     },
     {
       id: "anos", pri: 3,
       q: "¿Cuántos años de experiencia tiene?",
-      kw: ["anos de experiencia", "cuanto tiempo lleva", "cuanto tiempo", "desde cuando", "antiguedad", "cuantos trabajos", "cuantas empresas", "desde 2019"],
-      a: "Según el CV, trabaja de forma continuada desde 2019: cinco puestos en cinco empresas hasta 2024 (tres de logística, uno de marketing digital y uno administrativo y de mantenimiento).",
+      kw: ["anos de experiencia", "cuanto tiempo lleva", "cuanto tiempo", "desde cuando", "antiguedad", "cuantos trabajos", "cuantas empresas"],
+      a: "Su experiencia en marketing y administración va de 2022 a 2024: marketing digital en CUIDAMA (2022–2024) y administración y mantenimiento en AN GRUP (2024), además de 380 horas de prácticas en informática (2018).",
       next: ["experiencia", "logros", "contacto"]
     },
     {
@@ -128,35 +128,14 @@
       q: "¿Qué hizo en CUIDAMA?",
       kw: ["cuidama", "especialista en marketing digital"],
       a: "En **CUIDAMA SL** (Valencia, 2022–2024) fue especialista en marketing digital y comunicación visual:\n\n• Gestión de campañas en Facebook e Instagram Ads (+30K visualizaciones al mes)\n• Creación de contenido visual: fotos, vídeos y reels\n• Estrategias en redes sociales y análisis de métricas\n• Edición con Canva, CapCut y Premiere Pro",
-      next: ["marketing", "experiencia", "herramientas"]
+      next: ["marketing", "administracion", "herramientas"]
     },
     {
       id: "angrup", pri: 3,
       q: "¿Y en AN GRUP, en Andorra?",
       kw: ["an grup", "angrup", "andorra", "centro deportivo", "deportivo", "administrativo", "mantenimiento"],
       a: "En **AN GRUP SL** (Andorra, 2024) trabajó como administrativo y en el mantenimiento de un centro deportivo. El CV no detalla más tareas de ese puesto.",
-      next: ["experiencia", "cuidama", "contacto"]
-    },
-    {
-      id: "flores", pri: 3,
-      q: "¿Qué hizo en FLORES EL CALE?",
-      kw: ["flores el cale", "flores", "cale", "auxiliar de produccion", "produccion"],
-      a: "En **FLORES EL CALE SL** (Valencia, 2021–2022) fue auxiliar de producción y logística:\n\n• Envasado, carga/descarga y control de stock\n• Optimización del almacén y reducción de errores",
-      next: ["logistica", "familycash", "experiencia"]
-    },
-    {
-      id: "familycash", pri: 3,
-      q: "¿Qué hizo en FAMILYCASH?",
-      kw: ["familycash", "family cash"],
-      a: "En **FAMILYCASH SL** (Valencia, 2020–2021) fue personal de logística y preparación de pedidos:\n\n• Preparación de comandas para más de 15 tiendas\n• Manejo de carretilla y de sistemas de gestión de inventario",
-      next: ["logistica", "benesol", "permisos"]
-    },
-    {
-      id: "benesol", pri: 3,
-      q: "¿Qué hizo en BENESOL?",
-      kw: ["benesol", "etiquetado", "control de calidad", "operario"],
-      a: "En **BENESOL SL** (Valencia, 2019–2020), su primer puesto del CV, fue operario de almacén y logística interna:\n\n• Control de calidad, etiquetado y pedidos\n• Apoyo logístico y coordinación interdepartamental",
-      next: ["logistica", "flores", "experiencia"]
+      next: ["administracion", "experiencia", "contacto"]
     },
 
     /* --- Cosas que el CV NO dice --- */

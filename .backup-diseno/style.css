@@ -1439,3 +1439,9 @@ main section[id] { scroll-margin-top: 110px; }
   .ticker { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
   .ticker-toggle { display: none; }
 }
+
+/* Errores por campo del formulario de contacto */.field-error {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: var(--accent-strong);
+}.field input[aria-invalid="true"],.field textarea[aria-invalid="true"] { border-color: var(--accent-strong); }

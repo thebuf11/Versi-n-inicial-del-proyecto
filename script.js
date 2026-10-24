@@ -79,10 +79,27 @@
       var correo = (data.get("correo") || "").toString().trim();
       var mensaje = (data.get("mensaje") || "").toString().trim();
 
-      if (!nombre || !correo || !mensaje) {
-        if (statusEl) {
-          statusEl.textContent = "Completa todos los campos para poder responderte.";
-        }
+      var errors = {
+        nombre: nombre ? "" : "Escribe tu nombre.",
+        correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)
+          ? ""
+          : "Escribe un correo válido.",
+        mensaje: mensaje ? "" : "Escribe tu mensaje."
+      };
+      var firstInvalid = null;
+
+      Object.keys(errors).forEach(function (name) {
+        var input = form.elements[name];
+        var box = document.getElementById(name + "-error");
+        if (!input) return;
+        input.setAttribute("aria-invalid", errors[name] ? "true" : "false");
+        if (box) box.textContent = errors[name];
+        if (errors[name] && !firstInvalid) firstInvalid = input;
+      });
+
+      if (firstInvalid) {
+        if (statusEl) statusEl.textContent = "Revisa los campos marcados.";
+        firstInvalid.focus();
         return;
       }
 
@@ -109,7 +126,7 @@
         form.reset();
         if (statusEl) {
           statusEl.textContent =
-            "Se ha abierto tu aplicación de correo para terminar el envío.";
+            "Si no se ha abierto tu aplicación de correo, escribe a " + MAIL + ".";
         }
       }, closeDelay);
     });
