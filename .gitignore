@@ -3,3 +3,6 @@
 
 # Salida del workflow de GitHub Pages
 _site/
+
+# Informes internos: nunca se publican ni se suben al repositorio
+auditoria.md
