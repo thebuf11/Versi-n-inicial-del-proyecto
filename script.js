@@ -1,5 +1,5 @@
 /* ============================================================
-   Portfolio personal · Liquid Glass · interacciones
+   Portfolio personal · Neumorfismo · interacciones
    ============================================================ */
 
 (function () {
@@ -8,52 +8,7 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ----------------------------------------------------------
-     1 · Brillo que sigue al puntero sobre cada superficie de cristal
-     ---------------------------------------------------------- */
-  function trackGlow(event) {
-    var el = event.currentTarget;
-    var rect = el.getBoundingClientRect();
-    var x = ((event.clientX - rect.left) / rect.width) * 100;
-    var y = ((event.clientY - rect.top) / rect.height) * 100;
-    el.style.setProperty("--mx", x.toFixed(2) + "%");
-    el.style.setProperty("--my", y.toFixed(2) + "%");
-  }
-
-  document.querySelectorAll(".glass").forEach(function (el) {
-    el.addEventListener("pointermove", trackGlow);
-  });
-
-  /* ----------------------------------------------------------
-     2 · Inclinación 3D de la tarjeta hero (solo escritorio)
-     ---------------------------------------------------------- */
-  var heroCard = document.querySelector("[data-tilt]");
-
-  if (heroCard && !reduceMotion) {
-    var isFine = window.matchMedia("(pointer: fine)").matches;
-
-    if (isFine) {
-      heroCard.addEventListener("pointermove", function (event) {
-        var rect = heroCard.getBoundingClientRect();
-        var px = (event.clientX - rect.left) / rect.width - 0.5;
-        var py = (event.clientY - rect.top) / rect.height - 0.5;
-        var rotateY = px * 7;   // grados máximos
-        var rotateX = -py * 7;
-        heroCard.style.transform =
-          "perspective(1000px) rotateX(" +
-          rotateX.toFixed(2) +
-          "deg) rotateY(" +
-          rotateY.toFixed(2) +
-          "deg)";
-      });
-
-      heroCard.addEventListener("pointerleave", function () {
-        heroCard.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
-      });
-    }
-  }
-
-  /* ----------------------------------------------------------
-     3 · Aparición de bloques al hacer scroll
+     2 · Aparición de bloques al hacer scroll
      ---------------------------------------------------------- */
   var revealEls = document.querySelectorAll(".reveal");
 
@@ -80,7 +35,7 @@
   }
 
   /* ----------------------------------------------------------
-     4 · Marcar el enlace de la sección visible en la navegación
+     3 · Marcar el enlace de la sección visible en la navegación
      ---------------------------------------------------------- */
   var sections = document.querySelectorAll("main section[id]");
   var navLinks = document.querySelectorAll(".nav-links a");
@@ -92,9 +47,10 @@
           if (!entry.isIntersecting) return;
           var id = entry.target.id;
           navLinks.forEach(function (link) {
-            var active = link.getAttribute("href") === "#" + id;
-            link.style.background = active ? "rgba(255,255,255,0.75)" : "";
-            link.style.color = active ? "#0f172a" : "";
+            link.classList.toggle(
+              "is-active",
+              link.getAttribute("href") === "#" + id
+            );
           });
         });
       },
@@ -107,7 +63,7 @@
   }
 
   /* ----------------------------------------------------------
-     5 · Formulario de contacto: envío con animación de carta
+     4 · Formulario de contacto: envío con animación de carta
      ---------------------------------------------------------- */
   var form = document.getElementById("contact-form");
   var overlay = document.getElementById("send-overlay");
@@ -123,10 +79,27 @@
       var correo = (data.get("correo") || "").toString().trim();
       var mensaje = (data.get("mensaje") || "").toString().trim();
 
-      if (!nombre || !correo || !mensaje) {
-        if (statusEl) {
-          statusEl.textContent = "Completa todos los campos para poder responderte.";
-        }
+      var errors = {
+        nombre: nombre ? "" : "Escribe tu nombre.",
+        correo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)
+          ? ""
+          : "Escribe un correo válido.",
+        mensaje: mensaje ? "" : "Escribe tu mensaje."
+      };
+      var firstInvalid = null;
+
+      Object.keys(errors).forEach(function (name) {
+        var input = form.elements[name];
+        var box = document.getElementById(name + "-error");
+        if (!input) return;
+        input.setAttribute("aria-invalid", errors[name] ? "true" : "false");
+        if (box) box.textContent = errors[name];
+        if (errors[name] && !firstInvalid) firstInvalid = input;
+      });
+
+      if (firstInvalid) {
+        if (statusEl) statusEl.textContent = "Revisa los campos marcados.";
+        firstInvalid.focus();
         return;
       }
 
@@ -153,259 +126,371 @@
         form.reset();
         if (statusEl) {
           statusEl.textContent =
-            "Se ha abierto tu aplicación de correo para terminar el envío.";
+            "Si no se ha abierto tu aplicación de correo, escribe a " + MAIL + ".";
         }
       }, closeDelay);
     });
   }
 
   /* ----------------------------------------------------------
-     6 · Año actual en el pie
+     5 · Año actual en el pie
      ---------------------------------------------------------- */
   var yearEl = document.getElementById("year");
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
   }
 
+  /* El asistente del CV vive en chat.js */
+
   /* ----------------------------------------------------------
-     7 · Asistente virtual: "mi versión IA" entrenada con el CV
+     7 · Barra de progreso de lectura
      ---------------------------------------------------------- */
-  var fabEl = document.getElementById("chat-fab");
-  var chatEl = document.getElementById("chat");
-  var closeEl = document.getElementById("chat-close");
-  var chatForm = document.getElementById("chat-form");
-  var chatInput = document.getElementById("chat-input");
-  var chatLog = document.getElementById("chat-log");
-  var chipsBox = document.getElementById("chat-chips");
-  var assistant = document.getElementById("assistant");
+  var progressEl = document.getElementById("progress-bar");
 
-  if (fabEl && chatEl && chatLog && chatForm && chatInput) {
-
-    /* --- Base de conocimiento: datos extraídos del CV --- */
-    var KB = [
-      {
-        id: "saludo",
-        kw: ["hola", "buenas", "buenos dias", "buenas tardes", "que tal", "hey", "saludos"],
-        a: "¡Hola! Soy la versión IA de Iván ✦\n\nEstoy entrenado con su CV, así que pregúntame por su formación, experiencia, habilidades técnicas, proyectos o disponibilidad.\n\nEjemplo: «¿Qué experiencia tienes con marketing?»"
-      },
-      {
-        id: "marketing",
-        kw: ["marketing", "campana", "campanas", "publicidad", "publicitarias", "facebook", "instagram", "google ads", "meta ads", "redes sociales", "contenido", "contenidos", "video", "videos", "edicion", "diseno grafico", "reels", "community"],
-        a: "Sí, tengo experiencia directa: 2 años en CUIDAMA SL (2022–2024) como Especialista en Marketing Digital y Comunicación Visual.\n\n• Campañas en Facebook e Instagram Ads: +30K visualizaciones al mes\n• Contenido visual: fotos, vídeos y reels\n• Estrategia en redes sociales y análisis de métricas\n• Edición con Canva, CapCut y Premiere Pro\n• Google Ads recogido en mis habilidades"
-      },
-      {
-        id: "logistica",
-        kw: ["logistica", "logístico", "stock", "almacen", "carretilla", "pedidos", "pedido", "inventario", "sap", "envasado", "comanda", "cadena de suministro", "transporte"],
-        a: "La logística es donde más años acumulo:\n\n• FLORES EL CALE (2021–2022): envasado, carga/descarga y control de stock; optimicé el almacén reduciendo errores\n• FAMILYCASH (2020–2021): preparación de comandas para más de 15 tiendas, carretilla elevadora y sistemas de inventario\n• BENESOL (2019–2020): control de calidad, etiquetado, pedidos y coordinación interdepartamental\n\nAdemás: SAP básico y control de stock."
-      },
-      {
-        id: "informatica",
-        kw: ["informatico", "informatica", "soporte", "hardware", "redes", "microinformaticos", "sistemas microinformaticos", "tecnico", "tecnicos", "ordenador", "software", "reparacion", "asistencia tecnica"],
-        a: "Sí. Soy Técnico en Sistemas Microinformáticos y Redes (Grado Medio, Colegio Esclaves de María de Valencia) con 380 horas de formación práctica en el Ajuntament de l'Alcúdia de Crespins (2018).\n\nEn el CV recogo el soporte informático en hardware, redes y software, y en ANGRUP SL (2024) hice mantenimiento de centro deportivo."
-      },
-      {
-        id: "herramientas",
-        kw: ["herramientas", "herramienta", "programas", "aplicaciones", "software", "utilizas", "manejas", "sabes usar", "ofimatica"],
-        a: "Herramientas que manejo:\n\n• Marketing: Facebook Ads, Google Ads, Canva, CapCut, Premiere Pro\n• Gestión: SAP (básico) y sistemas de gestión de inventario\n• Soporte: hardware, redes y software\n• Producción: control de stock, etiquetado y preparación de pedidos"
-      },
-      {
-        id: "proyectos",
-        kw: ["proyectos", "proyecto", "portfolio", "portafolio", "logros", "has hecho", "realizado", "acabado", "obras"],
-        a: "Proyectos y logros concretos:\n\n• Campañas con más de 30K visualizaciones al mes en Facebook/Instagram Ads (CUIDAMA)\n• Optimización del almacén con reducción de errores (FLORES EL CALE)\n• Preparación de pedidos para más de 15 tiendas (FAMILYCASH)\n• Esta misma web: HTML, CSS y JavaScript\n\nEl detalle está en la sección «Lo que he hecho»."
-      },
-      {
-        id: "ventas",
-        kw: ["ventas", "venta", "comercio", "comerciales", "atencion al cliente", "clientes", "tienda", "trabajo comercial"],
-        a: "Tengo el Grado Superior en Gestión de Ventas y Espacios Comerciales (Colegio Artesanos de Valencia).\n\nEn cuanto a experiencia relacionada: preparaba comandas para más de 15 tiendas en FAMILYCASH, atendía y mantenía un centro deportivo en ANGRUP SL, y la atención al cliente figura entre mis habilidades."
-      },
-      {
-        id: "idiomas",
-        kw: ["idiomas", "idioma", "ingles", "valenciano", "catalan", "castellano", "espanol", "nivel de idiomas"],
-        a: "Idiomas:\n\n• Español: nativo\n• Valenciano: nativo\n• Inglés: nivel básico (A2), en proceso de mejora"
-      },
-      {
-        id: "permisos",
-        kw: ["carnet", "conducir", "carretilla", "primeros auxilios", "auxilios", "permiso", "permisos", "carnet de conducir"],
-        a: "Permisos y formación complementaria:\n\n• Permiso de conducir B\n• Permiso y experiencia con carretilla elevadora\n• Formación en primeros auxilios"
-      },
-      {
-        id: "disponibilidad",
-        kw: ["disponibilidad", "disponible", "jornada", "horario", "cuando", "incorporacion", "incorporarte", "empezar", "contratar", "contrato", "empleo", "vacante", "oferta", "candidatura", "disponible para"],
-        a: "En el CV no fijo una disponibilidad concreta (jornada ni fecha de incorporación), así que lo mejor es concretarlo directamente: +34 635 152 586 o ivansaezsr@gmail.com.\n\nLo que sí puedo adelantar: permiso de conducir B, experiencia con carretilla elevadora y formación en primeros auxilios."
-      },
-      {
-        id: "contacto",
-        kw: ["contacto", "contactar", "telefono", "correo", "email", "escribir", "llamar", "whatsapp", "linkedin", "donde esta"],
-        a: "Puedes contactar con Iván así:\n\n• Teléfono: +34 635 152 586\n• Correo: ivansaezsr@gmail.com\n• O desde el formulario de la sección Contacto de esta web: llega directo a su correo."
-      },
-      {
-        id: "perfil",
-        kw: ["perfil", "sobre ti", "sobre mi", "quien eres", "quien", "eres", "cualidades", "fortalezas", "puntos fuertes", "autodidacta", "iniciativa", "trabajo en equipo", "softskills", "personalidad"],
-        a: "Perfil resumido: profesional versátil con experiencia en marketing digital, logística y soporte técnico.\n\nDestaca por iniciativa, aprendizaje autodidacta, responsabilidad y capacidad de trabajo en equipo, combinando competencias técnicas y creativas para adaptarse a distintos entornos laborales."
-      },
-      {
-        id: "formacion",
-        kw: ["formacion", "estudios", "estudiar", "estudiado", "grado", "titulo", "titulacion", "centro", "academica", "fp", "colegio", "certificado"],
-        a: "Tengo formación en dos ramas, ventas y tecnología:\n\n• Grado Superior en Gestión de Ventas y Espacios Comerciales — Colegio Artesanos de Valencia\n• Grado Medio en Sistemas Microinformáticos y Redes — Colegio Esclaves de María de Valencia\n• ESO — Colegio Salesianos de Valencia\n• Formación práctica en Sistemas Informáticos y Redes — Ajuntament de l'Alcúdia de Crespins (2018, 380 horas)"
-      },
-      {
-        id: "experiencia",
-        kw: ["experiencia", "experiencias", "trayectoria", "historial", "empleos", "puestos", "has trabajado", "trabajado", "curriculum", "cv", "empresas", "nominas"],
-        a: "Mi trayectoria, de más reciente a más antigua:\n\n• ANGRUP SL (Andorra, 2024) — Administrativo y mantenimiento de centro deportivo\n• CUIDAMA SL (Valencia, 2022–2024) — Marketing Digital y Comunicación Visual\n• FLORES EL CALE SL (Valencia, 2021–2022) — Auxiliar de Producción y Logística\n• FAMILYCASH SL (Valencia, 2020–2021) — Logística y Preparación de Pedidos\n• BENESOL SL (Valencia, 2019–2020) — Operario de Almacén y Logística Interna\n\nTrabajando de forma continuada desde 2019."
-      },
-      {
-        id: "gracias",
-        kw: ["gracias", "grax", "adios", "hasta luego", "perfecto", "genial"],
-        a: "¡A ti! Si quieres seguir, pregúntame por formación, experiencia, proyectos, herramientas, idiomas o disponibilidad."
-      }
-    ];
-
-    var FALLBACK =
-      "Esa información no está en el CV, así que no quiero inventarte una respuesta.\n\n" +
-      "Sí puedo ayudarte con: formación, experiencia laboral, habilidades técnicas, " +
-      "proyectos, herramientas, idiomas, disponibilidad o contacto.\n\n" +
-      "Prueba con: «¿Qué experiencia tienes con marketing?»";
-
-    var norm = function (text) {
-      return String(text)
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9\s]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
+  if (progressEl) {
+    var updateProgress = function () {
+      var doc = document.documentElement;
+      var max = doc.scrollHeight - window.innerHeight;
+      var pct = max > 0 ? window.scrollY / max : 0;
+      progressEl.style.transform =
+        "scaleX(" + Math.min(1, Math.max(0, pct)).toFixed(4) + ")";
     };
 
-    var findAnswer = function (question) {
-      var q = norm(question);
-      if (!q) return null;
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
 
-      var best = null;
-      var bestScore = 0;
+  /* ----------------------------------------------------------
+     8 · Pausar el cintillo de habilidades
+     ---------------------------------------------------------- */
+  var tickerBtn = document.getElementById("ticker-toggle");
+  var tickerSection = document.querySelector(".ticker-section");
 
-      KB.forEach(function (entry) {
-        var score = 0;
-        entry.kw.forEach(function (word) {
-          var k = norm(word);
-          if (!k) return;
-          if (k.indexOf(" ") >= 0) {
-            if (q.indexOf(k) >= 0) score += 2;
-          } else {
-            var re = new RegExp("\\b" + k + "s?\\b");
-            if (re.test(q)) score += 1;
-          }
+  if (tickerBtn && tickerSection) {
+    tickerBtn.addEventListener("click", function () {
+      var paused = tickerSection.classList.toggle("is-paused");
+      tickerBtn.setAttribute("aria-pressed", paused ? "true" : "false");
+      tickerBtn.textContent = paused ? "Reanudar" : "Pausar";
+    });
+  }
+
+  /* ----------------------------------------------------------
+     10 · Contadores de las cifras al entrar en pantalla
+     ---------------------------------------------------------- */
+  var statNums = document.querySelectorAll(".stat strong");
+
+  if (statNums.length && "IntersectionObserver" in window && !reduceMotion) {
+    var countUp = function (el) {
+      var m = /^(\D*)(\d+)(\D*)$/.exec(el.dataset.final);
+      if (!m) return;
+      var target = parseInt(m[2], 10);
+      var start = null;
+      var step = function (now) {
+        if (start === null) start = now;
+        var t = Math.min(1, (now - start) / 1400);
+        var eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = m[1] + Math.round(target * eased) + m[3];
+        if (t < 1) window.requestAnimationFrame(step);
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    var countObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          countObserver.unobserve(entry.target);
+          countUp(entry.target);
         });
-        if (score > bestScore) {
-          bestScore = score;
-          best = entry;
+      },
+      { threshold: 0.6 }
+    );
+
+    statNums.forEach(function (el) {
+      el.dataset.final = el.textContent.trim();
+      el.setAttribute("aria-label", el.dataset.final);
+      el.textContent = el.dataset.final.replace(/\d+/, "0");
+      countObserver.observe(el);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     12 · Copiar el correo al portapapeles
+     ---------------------------------------------------------- */
+  var copyBtn = document.getElementById("mail-copy");
+  var copyLabel = document.getElementById("mail-copy-label");
+
+  if (copyBtn && copyLabel) {
+    var copyTimer = null;
+
+    var showCopied = function (ok) {
+      copyLabel.textContent = ok ? "Copiado" : "No se pudo copiar";
+      copyBtn.classList.toggle("is-copied", ok);
+      window.clearTimeout(copyTimer);
+      copyTimer = window.setTimeout(function () {
+        copyLabel.textContent = "Copiar correo";
+        copyBtn.classList.remove("is-copied");
+      }, 2200);
+    };
+
+    copyBtn.addEventListener("click", function () {
+      var mail = copyBtn.dataset.mail;
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(mail).then(
+          function () { showCopied(true); },
+          function () { showCopied(false); }
+        );
+        return;
+      }
+
+      // Alternativa para páginas abiertas como archivo o sin HTTPS
+      var tmp = document.createElement("textarea");
+      tmp.value = mail;
+      tmp.setAttribute("readonly", "");
+      tmp.style.position = "fixed";
+      tmp.style.opacity = "0";
+      document.body.appendChild(tmp);
+      tmp.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(tmp);
+      showCopied(ok);
+    });
+  }
+
+  /* ----------------------------------------------------------
+     13 · Onda al pulsar botones (también en táctil)
+     ---------------------------------------------------------- */
+  var RIPPLE_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .chip, .chat-send, .nav-github";
+
+  if (!reduceMotion) {
+    document.addEventListener("pointerdown", function (event) {
+      var host = event.target.closest && event.target.closest(RIPPLE_SEL);
+      if (!host) return;
+      var rect = host.getBoundingClientRect();
+      var size = Math.max(rect.width, rect.height) * 2;
+      var wave = document.createElement("span");
+      wave.className = "ripple";
+      wave.style.width = wave.style.height = size + "px";
+      wave.style.left = event.clientX - rect.left - size / 2 + "px";
+      wave.style.top = event.clientY - rect.top - size / 2 + "px";
+      host.appendChild(wave);
+      wave.addEventListener("animationend", function () {
+        if (wave.parentNode) wave.parentNode.removeChild(wave);
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     14 · Efectos del puntero: resplandor, estela, explosión,
+          botones magnéticos y foco de luz (solo ratón)
+     ---------------------------------------------------------- */
+  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+    var FX_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .chip, .nav-github, " +
+      ".chat-send, .card, .stat, .like, .about-block";
+    var MAG_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .nav-github, .chat-fab, .chat-send";
+    var HOT_SEL = "a, button, input, textarea, .fx";
+
+    document.querySelectorAll(FX_SEL).forEach(function (el) {
+      el.classList.add("fx");
+    });
+
+    /* --- Resplandor que persigue al cursor --- */
+    var glow = document.createElement("div");
+    glow.className = "cursor-glow";
+    glow.setAttribute("aria-hidden", "true");
+    document.body.appendChild(glow);
+
+    var gx = -400, gy = -400, gtx = -400, gty = -400, glowOn = false;
+    var glowTick = function () {
+      gx += (gtx - gx) * 0.14;
+      gy += (gty - gy) * 0.14;
+      glow.style.transform = "translate3d(" + (gx - 160) + "px," + (gy - 160) + "px,0)";
+      if (Math.abs(gtx - gx) > 0.4 || Math.abs(gty - gy) > 0.4) {
+        window.requestAnimationFrame(glowTick);
+      } else {
+        glowOn = false;
+      }
+    };
+
+    /* --- Estela y explosión de partículas --- */
+    var canvas = document.createElement("canvas");
+    canvas.className = "fx-canvas";
+    canvas.setAttribute("aria-hidden", "true");
+    document.body.appendChild(canvas);
+    var ctx = canvas.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var cw = 0, ch = 0;
+
+    var resizeCanvas = function () {
+      cw = window.innerWidth;
+      ch = window.innerHeight;
+      canvas.width = cw * dpr;
+      canvas.height = ch * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resizeCanvas();
+    window.addEventListener("resize", resizeCanvas);
+
+    var COLORS = ["#ff7a1a", "#ff9a4d", "#c2410c", "#ffd0a6"];
+    var parts = [];
+    var running = false;
+    var lastT = 0;
+
+    var frame = function (now) {
+      var dt = Math.min(40, now - lastT);
+      lastT = now;
+      ctx.clearRect(0, 0, cw, ch);
+
+      for (var i = parts.length - 1; i >= 0; i--) {
+        var p = parts[i];
+        p.life += dt;
+        if (p.life >= p.max) {
+          parts.splice(i, 1);
+          continue;
+        }
+        var t = p.life / p.max;
+        p.x += (p.vx * dt) / 16;
+        p.y += (p.vy * dt) / 16;
+        p.vy += (0.03 * dt) / 16;
+        ctx.globalAlpha = (1 - t) * p.a;
+        ctx.fillStyle = p.c;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r * (1 - t * 0.5), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      if (parts.length) {
+        window.requestAnimationFrame(frame);
+      } else {
+        running = false;
+      }
+    };
+
+    var spawn = function (x, y, speed, count, size, alpha) {
+      for (var i = 0; i < count && parts.length < 240; i++) {
+        parts.push({
+          x: x,
+          y: y,
+          vx: (Math.random() - 0.5) * speed,
+          vy: (Math.random() - 0.5) * speed - speed * 0.15,
+          life: 0,
+          max: 300 + Math.random() * 300,
+          a: alpha,
+          r: size * (0.6 + Math.random() * 0.8),
+          c: COLORS[Math.floor(Math.random() * COLORS.length)]
+        });
+      }
+      if (!running) {
+        running = true;
+        lastT = performance.now();
+        window.requestAnimationFrame(frame);
+      }
+    };
+
+    /* --- Botones magnéticos (propiedad translate, sin chocar con transform) --- */
+    var mags = new Set();
+    var magRunning = false;
+
+    var magLoop = function () {
+      var active = false;
+      mags.forEach(function (el) {
+        el._cx += (el._tx - el._cx) * 0.2;
+        el._cy += (el._ty - el._cy) * 0.2;
+        var settled = Math.abs(el._tx - el._cx) < 0.05 && Math.abs(el._ty - el._cy) < 0.05;
+        if (settled && el._tx === 0 && el._ty === 0) {
+          el.style.translate = "";
+          mags.delete(el);
+        } else {
+          el.style.translate = el._cx.toFixed(2) + "px " + el._cy.toFixed(2) + "px";
+          active = true;
         }
       });
-
-      return bestScore > 0 ? best : null;
-    };
-
-    /* --- Render de mensajes --- */
-    var scrollLog = function () {
-      chatLog.scrollTop = chatLog.scrollHeight;
-    };
-
-    var addMessage = function (text, who) {
-      var bubble = document.createElement("p");
-      bubble.className = "msg " + (who === "user" ? "msg-user" : "msg-bot");
-      bubble.textContent = text;
-      chatLog.appendChild(bubble);
-      scrollLog();
-      return bubble;
-    };
-
-    var showTyping = function () {
-      var typing = document.createElement("p");
-      typing.className = "msg msg-bot msg-typing";
-      typing.setAttribute("aria-hidden", "true");
-      typing.innerHTML = "<i></i><i></i><i></i>";
-      chatLog.appendChild(typing);
-      scrollLog();
-      return typing;
-    };
-
-    var reply = function (question) {
-      var entry = findAnswer(question);
-      var answer = entry ? entry.a : FALLBACK;
-      var typing = showTyping();
-      var wait = reduceMotion ? 150 : 700;
-
-      window.setTimeout(function () {
-        if (typing.parentNode) typing.parentNode.removeChild(typing);
-        addMessage(answer, "bot");
-      }, wait);
-    };
-
-    var send = function (text) {
-      var clean = (text || "").trim();
-      if (!clean) return;
-      addMessage(clean, "user");
-      reply(clean);
-    };
-
-    /* --- Apertura y cierre --- */
-    var greeted = false;
-
-    var openChat = function () {
-      chatEl.hidden = false;
-      assistant.classList.add("is-open");
-      fabEl.setAttribute("aria-expanded", "true");
-      chatInput.focus();
-
-      if (!greeted) {
-        greeted = true;
-        window.setTimeout(function () {
-          addMessage(
-            "Soy la versión IA de Iván ✦ Entrenado con su CV: formación, " +
-              "experiencia, habilidades, proyectos y disponibilidad.\n\n" +
-              "Pregúntame lo que quieras — por ejemplo: «¿Qué experiencia " +
-              "tienes con marketing?»",
-            "bot"
-          );
-        }, reduceMotion ? 100 : 350);
+      if (active) {
+        window.requestAnimationFrame(magLoop);
       } else {
-        scrollLog();
+        magRunning = false;
       }
     };
 
-    var closeChat = function () {
-      chatEl.hidden = true;
-      assistant.classList.remove("is-open");
-      fabEl.setAttribute("aria-expanded", "false");
-      fabEl.focus();
+    var pull = function (el, tx, ty) {
+      if (el._cx === undefined) { el._cx = 0; el._cy = 0; }
+      el._tx = tx;
+      el._ty = ty;
+      mags.add(el);
+      if (!magRunning) {
+        magRunning = true;
+        window.requestAnimationFrame(magLoop);
+      }
     };
 
-    fabEl.addEventListener("click", function () {
-      if (chatEl.hidden) openChat();
-      else closeChat();
+    /* --- Eventos --- */
+    var lastX = -100, lastY = -100;
+
+    document.addEventListener("pointermove", function (event) {
+      var x = event.clientX, y = event.clientY;
+
+      gtx = x;
+      gty = y;
+      if (!glowOn) {
+        glowOn = true;
+        window.requestAnimationFrame(glowTick);
+      }
+      glow.style.opacity = "1";
+
+      var dx = x - lastX, dy = y - lastY;
+      if (dx * dx + dy * dy > 324) {
+        spawn(x, y, 0.6, 1, 1.8, 0.4);
+        lastX = x;
+        lastY = y;
+      }
+
+      var target = event.target;
+      if (!target.closest) return;
+
+      glow.classList.toggle("is-hot", !!target.closest(HOT_SEL));
+
+      var fxEl = target.closest(".fx");
+      if (fxEl) {
+        var r = fxEl.getBoundingClientRect();
+        fxEl.style.setProperty("--mx", x - r.left + "px");
+        fxEl.style.setProperty("--my", y - r.top + "px");
+      }
+
+      var magEl = target.closest(MAG_SEL);
+      if (magEl) {
+        var mr = magEl.getBoundingClientRect();
+        pull(
+          magEl,
+          (x - (mr.left + mr.width / 2)) * 0.18,
+          (y - (mr.top + mr.height / 2)) * 0.28
+        );
+      }
+    }, { passive: true });
+
+    document.addEventListener("pointerout", function (event) {
+      var magEl = event.target.closest && event.target.closest(MAG_SEL);
+      if (magEl && !magEl.contains(event.relatedTarget)) pull(magEl, 0, 0);
     });
 
-    closeEl.addEventListener("click", closeChat);
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && !chatEl.hidden) closeChat();
+    document.addEventListener("pointerdown", function (event) {
+      spawn(event.clientX, event.clientY, 5, 8, 2.2, 0.55);
     });
 
-    /* --- Envío --- */
-    chatForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      send(chatInput.value);
-      chatInput.value = "";
-      chatInput.focus();
+    document.documentElement.addEventListener("mouseleave", function () {
+      glow.style.opacity = "0";
     });
-
-    /* --- Preguntas sugeridas --- */
-    if (chipsBox) {
-      chipsBox.addEventListener("click", function (event) {
-        var chip = event.target.closest(".chip");
-        if (!chip) return;
-        send(chip.textContent);
-        chatInput.focus();
-      });
-    }
   }
+
+  /* ----------------------------------------------------------
+     11 · Sombra en la barra al hacer scroll
+     ---------------------------------------------------------- */
+  var onScrollNav = function () {
+    document.documentElement.classList.toggle("scrolled", window.scrollY > 8);
+  };
+  window.addEventListener("scroll", onScrollNav, { passive: true });
+  onScrollNav();
 })();

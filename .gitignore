@@ -1,0 +1,8 @@
+# Skills y plugin locales de OpenCode (no forman parte del sitio publicado)
+.claude/
+
+# Salida del workflow de GitHub Pages
+_site/
+
+# Informes internos: nunca se publican ni se suben al repositorio
+auditoria.md
