@@ -4,7 +4,7 @@
 
 ## Sobre Iván Sáez
 - [Sobre mí](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#sobre-mi): perfil, formación, competencias e idiomas.
-- [Proyectos](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#proyectos): prácticas de DAM, web para un negocio local y trayectoria deportiva.
+- [Proyectos](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#proyectos): prácticas de DAM y web para un negocio local.
 - [Preguntas frecuentes](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#faq): respuestas directas sobre perfil, experiencia, formación y contacto.
 - [Me gusta](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#me-gusta): intereses personales y aficiones.
 - [Contacto](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#contacto): correo y formulario.
