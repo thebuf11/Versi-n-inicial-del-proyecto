@@ -2,8 +2,9 @@
    Asistente del CV de Iván
    - Funciona entero en el navegador: sin servidor, sin claves y
      sin coste, aunque la web tenga muchas visitas.
-   - Solo responde con los datos del CV (fuente: CV ivan td.docx).
-     Lo que el CV no dice, lo reconoce en lugar de inventarlo.
+   - Solo responde con los datos del CV (fuente: CV ivan td.docx)
+     y de esta web (DAM, proyectos y aficiones). Lo que no consta,
+     lo reconoce en lugar de inventarlo.
    - No es un modelo de lenguaje: busca la pregunta entre temas
      del CV, por eso no puede salirse de ese terreno.
    ============================================================ */
@@ -40,7 +41,7 @@
       id: "formacion", pri: 1, general: true,
       q: "¿Qué formación tiene?",
       kw: ["formacion", "estudios", "estudiar", "estudiado", "titulo", "titulos", "titulacion", "academica", "grado", "colegio", "eso", "carrera", "cursado", "estudia"],
-      a: "Tiene formación en dos ramas, ventas e informática:\n\n• Grado Superior en Gestión de Ventas y Espacios Comerciales (Colegio Artesanos de Valencia)\n• Grado Medio en Sistemas Microinformáticos y Redes (Colegio Esclaves de María de Valencia)\n• ESO (Colegio Salesianos de Valencia)\n• Formación práctica como Técnica en Sistemas Informáticos y Redes: 380 horas en el Ajuntament de l'Alcúdia de Crespins (2018)",
+      a: "Tiene formación en ventas e informática, y ahora estudia programación:\n\n• Primero de DAM (Desarrollo de Aplicaciones Multiplataforma), curso 2025–2026\n• Grado Superior en Gestión de Ventas y Espacios Comerciales (Colegio Artesanos de Valencia)\n• Grado Medio en Sistemas Microinformáticos y Redes (Colegio Esclaves de María de Valencia)\n• ESO (Colegio Salesianos de Valencia)\n• Formación práctica como Técnica en Sistemas Informáticos y Redes: 380 horas en el Ajuntament de l'Alcúdia de Crespins (2018)",
       next: ["informatica", "ventas", "idiomas"]
     },
     {
@@ -74,7 +75,7 @@
     {
       id: "herramientas", pri: 2,
       q: "¿Qué habilidades y herramientas maneja?",
-      kw: ["herramientas", "herramienta", "programas", "aplicaciones", "utiliza", "maneja", "manejas", "sabe usar", "canva", "capcut", "premiere", "ofimatica", "habilidades", "habilidad", "skills", "competencias", "sabe hacer", "sabe", "capaz"],
+      kw: ["herramientas", "herramienta", "programas", "aplicaciones", "utiliza", "maneja", "manejas", "sabe usar", "canva", "capcut", "premiere", "ofimatica", "habilidades", "habilidad", "skills", "competencias", "sabe hacer", "que sabe", "capaz de"],
       a: "Habilidades que recoge el CV:\n\n• Campañas publicitarias (Facebook Ads, Google Ads)\n• Edición de vídeo y diseño gráfico básico (CapCut, Canva, Premiere)\n• Gestión de redes sociales y contenidos\n• Administración y gestión administrativa (SAP básico)\n• Soporte informático (hardware, redes, software)\n• Trabajo en equipo y atención al cliente",
       next: ["marketing", "informatica", "idiomas"]
     },
@@ -137,14 +138,30 @@
       next: ["administracion", "experiencia", "contacto"]
     },
 
-    /* --- Cosas que el CV NO dice --- */
+    /* --- Datos de esta web (no están en el CV) --- */
     {
-      id: "programacion", pri: 3, nodata: true,
+      id: "programacion", pri: 3,
       q: "¿Sabe programar?",
-      kw: ["programacion", "programar", "programador", "desarrollo web", "desarrollador", "dam", "daw", "java", "python", "javascript", "html", "css", "codigo", "github", "web"],
-      a: "En el CV de Iván no consta formación ni experiencia en programación o desarrollo, así que no puedo confirmarlo desde ahí.\n\nLo más cercano que recoge es el Grado Medio en Sistemas Microinformáticos y Redes y su soporte informático en hardware, redes y software.",
-      next: ["informatica", "herramientas", "formacion"]
+      kw: ["programacion", "programar", "programador", "desarrollo web", "desarrollador", "dam", "daw", "java", "python", "javascript", "html", "css", "codigo", "github"],
+      a: "Está aprendiendo: cursa **Primero de DAM** (2025–2026), donde ha entregado tres prácticas con HTML, CSS y JavaScript, incluida esta misma web.\n\nSus proyectos están en GitHub: github.com/thebuf11",
+      next: ["proyectos", "informatica", "formacion"]
     },
+    {
+      id: "proyectos", pri: 3,
+      q: "¿Qué proyectos ha hecho?",
+      kw: ["proyectos", "proyecto", "portfolio", "portafolio", "web", "pagina", "negocio", "tienda", "practicas de dam"],
+      a: "Los proyectos que muestra esta web:\n\n• **Prácticas de DAM** (2025–2026): tres prácticas con HTML, CSS y JavaScript, incluida esta página\n• **Web para un negocio local**: cinco secciones, formulario de contacto que llega al correo y diseño responsivo para enseñarla desde el móvil",
+      next: ["programacion", "marketing", "contacto"]
+    },
+    {
+      id: "aficiones", pri: 3,
+      q: "¿Qué aficiones tiene?",
+      kw: ["aficiones", "aficion", "hobbies", "hobby", "gustos", "le gusta", "te gusta", "tiempo libre", "deportes", "gimnasio", "gym", "crossfit", "calistenia", "viajar", "viajes", "tecnologia", "linux", "blockchain", "videojuegos", "juegos"],
+      a: "Según la sección «Me gusta» de esta web:\n\n• Viajar siempre que puede\n• Tecnología: montar y desmontar cosas y probar distros Linux\n• Blockchain: wallets y contratos inteligentes\n• Deporte: gimnasio, crossfit y calistenia\n• Videojuegos: roguelikes y estrategia",
+      next: ["perfil", "proyectos", "contacto"]
+    },
+
+    /* --- Cosas que el CV NO dice --- */
     {
       id: "salario", pri: 3, nodata: true,
       q: "¿Qué pretensiones salariales tiene?",
@@ -162,15 +179,15 @@
     {
       id: "otros", pri: 3, nodata: true,
       q: "¿Tiene referencias o LinkedIn?",
-      kw: ["referencias", "recomendacion", "recomendaciones", "linkedin", "portfolio", "portafolio", "foto", "aficiones", "afición", "hobbies", "gustos", "musica", "deportes"],
-      a: "El CV no incluye referencias, perfiles de redes profesionales, fotografía ni aficiones, así que no puedo hablar de eso. Puedes pedirlo directamente a Iván por correo:\n\n• " + MAIL,
+      kw: ["referencias", "recomendacion", "recomendaciones", "linkedin", "foto", "fotografia"],
+      a: "El CV no incluye referencias, perfiles de redes profesionales ni fotografía, así que no puedo hablar de eso. Puedes pedirlo directamente a Iván por correo:\n\n• " + MAIL,
       next: ["contacto", "experiencia", "formacion"]
     },
     {
       id: "identidad", pri: 3,
       q: "¿Eres una inteligencia artificial?",
       kw: ["eres una ia", "eres un bot", "eres un robot", "eres humano", "eres una persona", "eres chatgpt", "quien te creo", "como funcionas", "eres real", "que eres", "inteligencia artificial", "chatgpt"],
-      a: "Soy un asistente automático de esta web. No es un modelo de IA generativa: busca en los datos del CV de Iván y responde solo con ellos, por eso no puedo hablar de otros temas ni inventar datos.",
+      a: "Soy un asistente automático de esta web. No es un modelo de IA generativa: busca en los datos del CV de Iván y de esta web y responde solo con ellos, por eso no puedo hablar de otros temas ni inventar datos.",
       next: ["perfil", "experiencia", "formacion"]
     }
   ];
@@ -182,12 +199,12 @@
 
   var GREETING =
     "Hola. Soy el asistente del CV de Iván.\n\n" +
-    "Respondo solo con lo que pone en su CV: formación, experiencia en cada empresa, " +
-    "habilidades, idiomas, permisos y contacto. Lo que el CV no dice, te lo digo en lugar de inventarlo.";
+    "Respondo solo con lo que pone en su CV y en esta web: formación, experiencia en cada empresa, " +
+    "habilidades, proyectos, aficiones, idiomas y contacto. Lo que no consta, te lo digo en lugar de inventarlo.";
 
   var OUT_OF_SCOPE =
-    "Solo puedo responder con lo que aparece en el CV de Iván, y eso no está en él.\n\n" +
-    "Puedes preguntarme por su formación, experiencia laboral, habilidades, idiomas, permisos o cómo contactarle.";
+    "Solo puedo responder con lo que aparece en el CV de Iván y en esta web, y eso no está.\n\n" +
+    "Puedes preguntarme por su formación, experiencia laboral, habilidades, proyectos, idiomas o cómo contactarle.";
 
   var THANKS = "De nada. Si quieres saber algo más del CV, aquí sigo.";
 
@@ -209,8 +226,10 @@
   };
 
   var stem = function (w) {
-    if (w.length > 4 && /es$/.test(w)) return w.slice(0, -2);
-    if (w.length > 3 && /s$/.test(w)) return w.slice(0, -1);
+    if (w.length > 4 && /es$/.test(w)) w = w.slice(0, -2);
+    else if (w.length > 3 && /s$/.test(w)) w = w.slice(0, -1);
+    // Singular en -e y plural en -es acaban igual: deporte/deportes -> deport
+    if (w.length > 4 && /e$/.test(w)) w = w.slice(0, -1);
     return w;
   };
 
@@ -278,8 +297,8 @@
         return { text: THANKS, next: START_IDS, kind: "thanks" };
       }
       return {
-        text: "No he encontrado eso en el CV de Iván, y solo puedo responder con lo que está en él.\n\n" +
-          "Puedes preguntarme por su formación, experiencia laboral, habilidades, idiomas, permisos o cómo contactarle.",
+        text: "No he encontrado eso en el CV de Iván ni en esta web, y solo puedo responder con lo que consta ahí.\n\n" +
+          "Puedes preguntarme por su formación, experiencia laboral, habilidades, proyectos, idiomas o cómo contactarle.",
         next: START_IDS,
         kind: "scope"
       };

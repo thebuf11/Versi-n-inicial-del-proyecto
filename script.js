@@ -177,7 +177,6 @@
   if (tickerBtn && tickerSection) {
     tickerBtn.addEventListener("click", function () {
       var paused = tickerSection.classList.toggle("is-paused");
-      tickerBtn.setAttribute("aria-pressed", paused ? "true" : "false");
       tickerBtn.textContent = paused ? "Reanudar" : "Pausar";
     });
   }
@@ -216,7 +215,12 @@
 
     statNums.forEach(function (el) {
       el.dataset.final = el.textContent.trim();
-      el.setAttribute("aria-label", el.dataset.final);
+      // El lector de pantalla lee la cifra final, no la animación
+      var label = document.createElement("span");
+      label.className = "sr-only";
+      label.textContent = el.dataset.final;
+      el.parentNode.insertBefore(label, el);
+      el.setAttribute("aria-hidden", "true");
       el.textContent = el.dataset.final.replace(/\d+/, "0");
       countObserver.observe(el);
     });

@@ -96,6 +96,19 @@ button { cursor: pointer; }
   border-radius: 4px;
 }
 
+/* Texto solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: fixed;
   top: 12px;
@@ -857,6 +870,7 @@ main section[id] { scroll-margin-top: 110px; }
 }
 
 .field { display: grid; gap: 8px; }
+.field label,
 .field span {
   font-size: 0.88rem;
   font-weight: 500;
@@ -1446,11 +1460,14 @@ main section[id] { scroll-margin-top: 110px; }
   .ticker-toggle { display: none; }
 }
 
-/* Errores por campo del formulario de contacto */.field-error {
+/* Errores por campo del formulario de contacto */
+.field .field-error {
   min-height: 1.2em;
   font-size: 0.85rem;
   color: var(--accent-strong);
-}.field input[aria-invalid="true"],.field textarea[aria-invalid="true"] { border-color: var(--accent-strong); }
+}
+.field input[aria-invalid="true"],
+.field textarea[aria-invalid="true"] { border-color: var(--accent-strong); }
 
 /* ------------------------------------------------------------
    Esqueleto de carga e indicador de porcentaje

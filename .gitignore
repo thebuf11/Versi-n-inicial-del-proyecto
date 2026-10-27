@@ -1,6 +1,9 @@
 # Skills y plugin locales de OpenCode (no forman parte del sitio publicado)
 .claude/
 
+# Estado local de oh-my-claudecode
+.omc/
+
 # Salida del workflow de GitHub Pages
 _site/
 

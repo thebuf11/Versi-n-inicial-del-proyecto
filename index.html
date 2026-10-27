@@ -196,7 +196,7 @@
 
     <!-- Cintillo de habilidades (dato del CV) -->
     <section class="ticker-section" aria-label="Habilidades y herramientas">
-      <button type="button" class="ticker-toggle" id="ticker-toggle" aria-pressed="false">Pausar</button>
+      <button type="button" class="ticker-toggle" id="ticker-toggle">Pausar</button>
       <div class="ticker">
         <div class="ticker-track">
           <ul class="ticker-row">
@@ -330,7 +330,7 @@
           <p class="card-year">Proyecto real</p>
           <h3>Web para un negocio local</h3>
           <p>Monté la página de una tienda de barrio: cinco secciones, formulario
-            de contacto que de verdad llega el correo y diseño responsivo para que
+            de contacto que de verdad llega al correo y diseño responsivo para que
             el dueño pudiera enseñarla desde el móvil.</p>
         </article>
 
@@ -457,22 +457,22 @@
               enctype="text/plain"
               novalidate>
           <div class="field-row">
-            <label class="field">
-              <span>Nombre</span>
+            <div class="field">
+              <label for="nombre">Nombre</label>
               <input type="text" name="nombre" id="nombre" autocomplete="name" placeholder="Tu nombre" required aria-describedby="nombre-error">
               <span class="field-error" id="nombre-error" role="alert"></span>
-            </label>
-            <label class="field">
-              <span>Tu correo</span>
+            </div>
+            <div class="field">
+              <label for="correo">Tu correo</label>
               <input type="email" name="correo" id="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com" required aria-describedby="correo-error">
               <span class="field-error" id="correo-error" role="alert"></span>
-            </label>
+            </div>
           </div>
-          <label class="field">
-            <span>Mensaje</span>
+          <div class="field">
+            <label for="mensaje">Mensaje</label>
             <textarea name="mensaje" id="mensaje" rows="4" placeholder="Cuéntame lo que necesites…" required aria-describedby="mensaje-error"></textarea>
             <span class="field-error" id="mensaje-error" role="alert"></span>
-          </label>
+          </div>
           <div class="form-actions">
             <button type="submit" class="btn btn-solid">Enviar mensaje</button>
           </div>
@@ -503,7 +503,7 @@
   <!-- 6 · PIE -->
   <footer class="footer reveal">
     <p class="footer-name">Iván Sáez · <span id="year">2026</span></p>
-    <p class="footer-note">Hecho a mano en Valencia. · Actualizado el <time datetime="2026-10-24">24 de octubre de 2026</time></p>
+    <p class="footer-note">Hecho a mano en Valencia. · Actualizado el <time datetime="2026-10-27">27 de octubre de 2026</time></p>
   </footer>
 
   <!-- Animación: carta enviándose -->
@@ -519,7 +519,7 @@
         <path d="M8 11 L40 34 L72 11" fill="none" stroke="#0f172a" stroke-width="4"
               stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <p class="send-text">Mensaje enviado</p>
+      <p class="send-text">Abriendo tu correo…</p>
     </div>
   </div>
 
@@ -530,7 +530,7 @@
         <span class="chat-avatar" aria-hidden="true">Iv<span>.</span></span>
         <div class="chat-id">
           <strong id="chat-title">Asistente de Iván</strong>
-          <span class="chat-presence"><i aria-hidden="true"></i> Solo responde con su CV</span>
+          <span class="chat-presence"><i aria-hidden="true"></i> Responde con su CV y esta web</span>
         </div>
         <button type="button" class="chat-reset" id="chat-reset" aria-label="Empezar una conversación nueva" title="Nueva conversación">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
@@ -544,12 +544,12 @@
 
       <form class="chat-form" id="chat-form" autocomplete="off">
         <input class="chat-input" id="chat-input" type="text" maxlength="160"
-               placeholder="Pregunta sobre el CV de Iván…" aria-label="Escribe tu pregunta sobre el CV">
+               placeholder="Pregunta sobre Iván…" aria-label="Escribe tu pregunta sobre Iván">
         <button class="chat-send" id="chat-send" type="submit" aria-label="Enviar mensaje">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         </button>
       </form>
-      <p class="chat-note">Asistente automático: responde solo con los datos del CV de Iván.</p>
+      <p class="chat-note">Asistente automático: responde solo con los datos del CV de Iván y de esta web.</p>
     </div>
 
 
