@@ -343,7 +343,9 @@
     var glowTick = function () {
       gx += (gtx - gx) * 0.14;
       gy += (gty - gy) * 0.14;
-      glow.style.transform = "translate3d(" + (gx - 160) + "px," + (gy - 160) + "px,0)";
+      // translate (no transform) para que el scale de .is-hot crezca
+      // desde el centro sin alejar el resplandor del cursor
+      glow.style.translate = (gx - 160) + "px " + (gy - 160) + "px";
       if (Math.abs(gtx - gx) > 0.4 || Math.abs(gty - gy) > 0.4) {
         window.requestAnimationFrame(glowTick);
       } else {
