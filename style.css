@@ -1444,25 +1444,51 @@ main { overflow-x: clip; }
 /* ------------------------------------------------------------
    17 · Movimiento reducido
    ------------------------------------------------------------ */
+/* html.motion-on: el visitante ha pulsado «Activar animaciones» */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  html:not(.motion-on) { scroll-behavior: auto; }
 
-  *, *::before, *::after {
+  html:not(.motion-on) *,
+  html:not(.motion-on) *::before,
+  html:not(.motion-on) *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 
-  .js .reveal,
-  .js .reveal .stat,
-  .js .reveal .about-block,
-  .js .reveal .like { opacity: 1; transform: none; }
-  .js .panel::before,
-  .js #proyectos::before { transform: none; }
-  .hero-name .accent { background-position: 0 0; }
+  html:not(.motion-on).js .reveal,
+  html:not(.motion-on).js .reveal .stat,
+  html:not(.motion-on).js .reveal .about-block,
+  html:not(.motion-on).js .reveal .like { opacity: 1; transform: none; }
+  html:not(.motion-on).js .panel::before,
+  html:not(.motion-on).js #proyectos::before { transform: none; }
+  html:not(.motion-on) .hero-name .accent { background-position: 0 0; }
 
-  .ticker { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
-  .ticker-toggle { display: none; }
+  html:not(.motion-on) .ticker { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  html:not(.motion-on) .ticker-toggle { display: none; }
+}
+
+/* Botón para activar o desactivar las animaciones; solo se muestra
+   cuando el sistema pide movimiento reducido */
+.motion-toggle {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: var(--z-assistant);
+  display: none;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 10px 24px -14px rgba(70, 35, 10, 0.45);
+}
+.motion-toggle:hover { border-color: var(--accent); }
+@media (prefers-reduced-motion: reduce) {
+  .motion-toggle { display: inline-flex; align-items: center; }
 }
 
 /* Errores por campo del formulario de contacto */
@@ -1519,5 +1545,5 @@ main { overflow-x: clip; }
 .nav-pct.is-end { color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
-  .sk { animation: none; }
+  html:not(.motion-on) .sk { animation: none; }
 }

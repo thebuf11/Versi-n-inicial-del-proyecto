@@ -5,7 +5,31 @@
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var systemReduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var motionOn = document.documentElement.classList.contains("motion-on");
+  var reduceMotion = systemReduce && !motionOn;
+
+  /* ----------------------------------------------------------
+     1 · Botón «Activar animaciones» (solo con movimiento reducido)
+     ---------------------------------------------------------- */
+  if (systemReduce) {
+    var motionBtn = document.createElement("button");
+    motionBtn.type = "button";
+    motionBtn.className = "motion-toggle";
+    motionBtn.textContent = motionOn ? "Desactivar animaciones" : "Activar animaciones";
+    motionBtn.setAttribute("aria-pressed", motionOn ? "true" : "false");
+    motionBtn.addEventListener("click", function () {
+      try {
+        if (motionOn) localStorage.removeItem("motion");
+        else localStorage.setItem("motion", "on");
+      } catch (e) {}
+      // Los efectos se preparan al cargar, así que se recarga la página
+      if (motionOn) document.documentElement.classList.remove("motion-on");
+      else document.documentElement.classList.add("motion-on");
+      window.location.reload();
+    });
+    document.body.appendChild(motionBtn);
+  }
 
   /* ----------------------------------------------------------
      2 · Aparición de bloques al hacer scroll

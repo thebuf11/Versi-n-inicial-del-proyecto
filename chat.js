@@ -11,7 +11,8 @@
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    !document.documentElement.classList.contains("motion-on");
 
   var MAIL = "isasan@eeartesanos.com";
 
