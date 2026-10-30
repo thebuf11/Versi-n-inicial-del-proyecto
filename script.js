@@ -322,7 +322,7 @@
      14 · Efectos del puntero: resplandor, estela, explosión,
           botones magnéticos y foco de luz (solo ratón)
      ---------------------------------------------------------- */
-  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
+  var initPointerFx = function () {
     var FX_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .chip, .nav-github, " +
       ".chat-send";
     var MAG_SEL = ".btn, .mail-card, .social-btn, .mail-copy, .nav-github, .chat-fab, .chat-send";
@@ -518,6 +518,22 @@
     document.documentElement.addEventListener("mouseleave", function () {
       glow.style.opacity = "0";
     });
+  };
+
+  /* Algunos PC con ratón se anuncian como táctiles (tabletas gráficas,
+     monitores táctiles…), así que si (pointer: fine) falla se espera
+     al primer movimiento real de un ratón */
+  if (!reduceMotion) {
+    if (window.matchMedia("(pointer: fine)").matches) {
+      initPointerFx();
+    } else {
+      var onFirstMouse = function (event) {
+        if (event.pointerType !== "mouse") return;
+        document.removeEventListener("pointermove", onFirstMouse);
+        initPointerFx();
+      };
+      document.addEventListener("pointermove", onFirstMouse, { passive: true });
+    }
   }
 
   /* ----------------------------------------------------------

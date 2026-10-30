@@ -37,7 +37,15 @@
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     fila(!reduce, reduce ? "El sistema pide movimiento reducido (animaciones de Windows desactivadas)" : "Animaciones del sistema activadas");
     var fino = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
-    fila(fino, fino ? "Hay ratón" : "No se detecta ratón (sin efectos de cursor)");
+    fila(fino, fino ? "Puntero principal: ratón" : "Chrome anuncia el puntero principal como táctil");
+    var algunFino = window.matchMedia && window.matchMedia("(any-pointer: fine)").matches;
+    fila(algunFino, algunFino ? "Hay algún ratón conectado" : "No se detecta ningún ratón");
+    var movido = false;
+    document.addEventListener("pointermove", function (event) {
+      if (movido) return;
+      movido = true;
+      fila(event.pointerType === "mouse", "Al mover, el puntero es de tipo: <code>" + event.pointerType + "</code>");
+    });
     fila("IntersectionObserver" in window, "IntersectionObserver disponible");
     var canvas = document.createElement("canvas");
     fila(!!(canvas.getContext && canvas.getContext("2d")), "Canvas disponible (partículas)");
