@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Diagnóstico del navegador</title>
+  <style>
+    body { margin: 0; padding: 24px 16px; background: #f6f4ef; color: #1a1612;
+      font: 18px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 1.5rem; margin: 0 0 16px; }
+    li { margin: 8px 0; }
+    .ok { color: #15803d; font-weight: 700; }
+    .mal { color: #c2410c; font-weight: 700; }
+    code { background: #ece7dc; padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Diagnóstico del navegador</h1>
+    <noscript>
+      <p class="mal">✗ JavaScript está DESACTIVADO o bloqueado en este navegador.</p>
+      <p>Por eso la web se ve estática: los efectos necesitan JavaScript.</p>
+    </noscript>
+    <ul id="lista"></ul>
+    <p>Haz una captura de esta pantalla o copia lo que pone.</p>
+  </main>
+  <script>
+    var lista = document.getElementById("lista");
+    function fila(ok, texto) {
+      var li = document.createElement("li");
+      li.innerHTML = '<span class="' + (ok ? "ok" : "mal") + '">' + (ok ? "✓" : "✗") + "</span> " + texto;
+      lista.appendChild(li);
+    }
+    fila(true, "JavaScript funciona");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    fila(!reduce, reduce ? "El sistema pide movimiento reducido (animaciones de Windows desactivadas)" : "Animaciones del sistema activadas");
+    var fino = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+    fila(fino, fino ? "Hay ratón" : "No se detecta ratón (sin efectos de cursor)");
+    fila("IntersectionObserver" in window, "IntersectionObserver disponible");
+    var canvas = document.createElement("canvas");
+    fila(!!(canvas.getContext && canvas.getContext("2d")), "Canvas disponible (partículas)");
+    var ls = false;
+    try { localStorage.setItem("t", "1"); localStorage.removeItem("t"); ls = true; } catch (e) {}
+    fila(ls, "localStorage disponible");
+    var cssOk = window.CSS && CSS.supports && CSS.supports("overflow-x", "clip");
+    fila(!!cssOk, "CSS moderno (overflow: clip)");
+    var req = new XMLHttpRequest();
+    req.open("GET", "./?nc=" + Date.now());
+    req.onload = function () {
+      var m = /script\.js\?v=([\w]+)/.exec(req.responseText);
+      fila(!!m, "Versión publicada de la web: <code>" + (m ? m[1] : "desconocida") + "</code>");
+    };
+    req.send();
+    fila(true, "Navegador: <code>" + navigator.userAgent.replace(/</g, "&lt;") + "</code>");
+  </script>
+</body>
+</html>
