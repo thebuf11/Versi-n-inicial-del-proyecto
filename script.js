@@ -10,18 +10,19 @@
   var reduceMotion = systemReduce && !motionOn;
 
   /* ----------------------------------------------------------
-     1 · Botón «Activar animaciones» (solo con movimiento reducido)
+     1 · Botón para desactivar las animaciones (solo se ofrece
+         cuando el sistema pide movimiento reducido)
      ---------------------------------------------------------- */
   if (systemReduce) {
     var motionBtn = document.createElement("button");
     motionBtn.type = "button";
     motionBtn.className = "motion-toggle";
     motionBtn.textContent = motionOn ? "Desactivar animaciones" : "Activar animaciones";
-    motionBtn.setAttribute("aria-pressed", motionOn ? "true" : "false");
+    motionBtn.setAttribute("aria-pressed", motionOn ? "false" : "true");
     motionBtn.addEventListener("click", function () {
       try {
-        if (motionOn) localStorage.removeItem("motion");
-        else localStorage.setItem("motion", "on");
+        if (motionOn) localStorage.setItem("motion", "off");
+        else localStorage.removeItem("motion");
       } catch (e) {}
       // Los efectos se preparan al cargar, así que se recarga la página
       if (motionOn) document.documentElement.classList.remove("motion-on");
