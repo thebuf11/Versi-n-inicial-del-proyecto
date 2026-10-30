@@ -94,6 +94,10 @@
   var overlay = document.getElementById("send-overlay");
   var statusEl = document.getElementById("form-status");
   var MAIL = "isasan@eeartesanos.com";
+  // FormSubmit reenvía el mensaje a MAIL sin que el visitante abra su correo.
+  // El primer envío manda a MAIL un correo de activación que hay que confirmar.
+  var SEND_URL = "https://formsubmit.co/ajax/" + MAIL;
+  var submitBtn = form && form.querySelector('button[type="submit"]');
 
   if (form && overlay) {
     form.addEventListener("submit", function (event) {
@@ -128,32 +132,55 @@
         return;
       }
 
+      // Campo trampa: solo lo rellenan los bots
+      var honey = form.elements._honey;
+      if (honey && honey.value) return;
+
       if (statusEl) statusEl.textContent = "Enviando…";
+      if (submitBtn) submitBtn.disabled = true;
       overlay.classList.add("show");
       overlay.setAttribute("aria-hidden", "false");
 
-      var subject = encodeURIComponent("Mensaje desde tu web — " + nombre);
-      var body = encodeURIComponent(
-        mensaje + "\n\n— " + nombre + "\nRespuesta a: " + correo
-      );
+      // La animación de la carta dura al menos esto, aunque el envío sea más rápido
+      var minDelay = reduceMotion ? 400 : 1900;
+      var startedAt = Date.now();
 
-      var mailDelay = reduceMotion ? 400 : 1900;
-      var closeDelay = reduceMotion ? 1600 : 3400;
+      var finish = function (ok, text) {
+        var wait = Math.max(0, minDelay - (Date.now() - startedAt));
+        window.setTimeout(function () {
+          overlay.classList.remove("show");
+          overlay.setAttribute("aria-hidden", "true");
+          if (submitBtn) submitBtn.disabled = false;
+          if (ok) form.reset();
+          if (statusEl) statusEl.textContent = text;
+        }, wait);
+      };
 
-      window.setTimeout(function () {
-        window.location.href =
-          "mailto:" + MAIL + "?subject=" + subject + "&body=" + body;
-      }, mailDelay);
-
-      window.setTimeout(function () {
-        overlay.classList.remove("show");
-        overlay.setAttribute("aria-hidden", "true");
-        form.reset();
-        if (statusEl) {
-          statusEl.textContent =
-            "Si no se ha abierto tu aplicación de correo, escribe a " + MAIL + ".";
-        }
-      }, closeDelay);
+      fetch(SEND_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          nombre: nombre,
+          correo: correo,
+          mensaje: mensaje,
+          _replyto: correo,
+          _subject: "Mensaje desde tu web — " + nombre,
+          _template: "table"
+        })
+      })
+        .then(function (res) {
+          return res.json().then(function (json) {
+            return { ok: res.ok, json: json };
+          });
+        })
+        .then(function (result) {
+          var sent = result.ok && String(result.json.success) === "true";
+          if (!sent) throw new Error(result.json.message || "Envío rechazado");
+          finish(true, "¡Mensaje enviado! Te responderé lo antes posible.");
+        })
+        .catch(function () {
+          finish(false, "No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbeme a " + MAIL + ".");
+        });
     });
   }
 

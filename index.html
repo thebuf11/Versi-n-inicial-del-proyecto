@@ -136,7 +136,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
   </noscript>
-  <link rel="stylesheet" href="style.css?v=20261030e">
+  <link rel="stylesheet" href="style.css?v=20261030f">
 </head>
 <body>
 
@@ -458,7 +458,12 @@
 
         <p class="contact-divider"><span>o escríbeme desde aquí</span></p>
 
-        <form class="contact-form" id="contact-form" novalidate>
+        <!-- Sin JavaScript se envía directamente a FormSubmit (HTTPS) -->
+        <form class="contact-form" id="contact-form" novalidate
+              action="https://formsubmit.co/isasan@eeartesanos.com" method="post">
+          <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <input type="hidden" name="_subject" value="Mensaje desde tu web">
+          <input type="hidden" name="_template" value="table">
           <div class="field-row">
             <div class="field">
               <label for="nombre">Nombre</label>
@@ -522,7 +527,7 @@
         <path d="M8 11 L40 34 L72 11" fill="none" stroke="#0f172a" stroke-width="4"
               stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <p class="send-text">Abriendo tu correo…</p>
+      <p class="send-text">Enviando tu mensaje…</p>
     </div>
   </div>
 
@@ -566,7 +571,7 @@
     </button>
   </div>
 
-  <script src="script.js?v=20261030e"></script>
-  <script src="chat.js?v=20261030e"></script>
+  <script src="script.js?v=20261030f"></script>
+  <script src="chat.js?v=20261030f"></script>
 </body>
 </html>
