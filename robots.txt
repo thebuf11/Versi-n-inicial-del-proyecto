@@ -20,4 +20,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://thebuf11.github.io/Versi-n-inicial-del-proyecto/sitemap.xml
+Sitemap: https://thebuf11.github.io/mi-web/sitemap.xml
