@@ -142,7 +142,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
   </noscript>
-  <link rel="stylesheet" href="css/style.css?v=20261031c">
+  <link rel="stylesheet" href="css/style.css?v=20261031d">
 </head>
 <body>
 
@@ -476,12 +476,18 @@
 
         <p class="contact-divider"><span>o escríbeme desde aquí</span></p>
 
-        <!-- Sin JavaScript se envía directamente a FormSubmit (HTTPS) -->
+        <!-- Envío normal a FormSubmit (con o sin JavaScript). No usa AJAX
+             porque la respuesta automática solo funciona con envío normal -->
         <form class="contact-form" id="contact-form" novalidate
               action="https://formsubmit.co/isasan@eeartesanos.com" method="post">
           <input type="text" name="_honey" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
           <input type="hidden" name="_subject" value="Mensaje desde tu web">
           <input type="hidden" name="_template" value="table">
+          <!-- Después de enviar, FormSubmit lleva al visitante a mi página de gracias -->
+          <input type="hidden" name="_next" value="https://thebuf11.github.io/mi-web/gracias.html">
+          <!-- Correo automático al visitante; FormSubmit lo manda al campo name="email" -->
+          <input type="hidden" name="_autoresponse" value="¡Hola! Soy Iván. Me ha llegado tu mensaje desde mi web y te contestaré en 24-48 horas. Debajo tienes una copia de lo que me escribiste. Un saludo.">
+
           <div class="field-row">
             <div class="field">
               <label for="nombre">Nombre</label>
@@ -490,7 +496,7 @@
             </div>
             <div class="field">
               <label for="correo">Tu correo</label>
-              <input type="email" name="correo" id="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com" required aria-describedby="correo-error">
+              <input type="email" name="email" id="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com" required aria-describedby="correo-error">
               <span class="field-error" id="correo-error" role="alert"></span>
             </div>
           </div>
@@ -589,7 +595,7 @@
     </button>
   </div>
 
-  <script src="js/script.js?v=20261031c"></script>
-  <script src="js/chat.js?v=20261031c"></script>
+  <script src="js/script.js?v=20261031d"></script>
+  <script src="js/chat.js?v=20261031d"></script>
 </body>
 </html>

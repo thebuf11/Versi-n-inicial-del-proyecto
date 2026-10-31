@@ -16,6 +16,7 @@ estático, por ejemplo `npx http-server` desde esta carpeta.
 ```
 mi-web/
 ├── index.html        estructura: cabecera, sobre mí, proyectos, me gusta, FAQ, contacto
+├── gracias.html      página a la que vuelve el visitante tras enviar el formulario
 ├── css/style.css     estilo: variables de color (claro y oscuro), secciones numeradas y comentadas
 ├── js/script.js      interacción: modo oscuro, formulario, animaciones, contadores…
 ├── js/chat.js        asistente del CV (responde preguntas sobre mí)
@@ -35,7 +36,8 @@ Google Fonts. El formulario envía con [FormSubmit](https://formsubmit.co/).
 
 - **Modo oscuro** con botón en la barra; recuerda la elección (`localStorage`) y,
   si no hay elección, sigue la preferencia del sistema.
-- **Formulario de contacto** con validación, mensaje de éxito o error y envío real al correo.
+- **Formulario de contacto** con validación, envío real al correo, respuesta
+  automática al visitante y página de confirmación.
 - **Asistente del CV**: un chat que responde preguntas sobre mi formación y experiencia.
 - Menú adaptado al móvil, barra de progreso de lectura, contadores animados y copiar el correo con un clic.
 
@@ -47,16 +49,22 @@ Google Fonts. El formulario envía con [FormSubmit](https://formsubmit.co/).
 correo configurado; en muchos móviles y ordenadores de clase no pasa nada al pulsarlo,
 y la rúbrica considera un botón muerto como suspenso.
 
-**Decisión:** el formulario envía los datos con `fetch` a FormSubmit, que me los
-reenvía por correo. Sin JavaScript, el `action` del formulario hace el mismo envío.
-Un campo trampa oculto (`_honey`) frena a los bots.
+**Decisión:** el formulario se envía a FormSubmit, que me reenvía el mensaje por
+correo y además **responde automáticamente al visitante** (`_autoresponse`) con
+una copia de lo que escribió. Un campo trampa oculto (`_honey`) frena a los bots.
 
-**Coste:** depende de un servicio externo gratuito, y el primer envío obliga a
-confirmar un correo de activación.
+Al principio usaba `fetch` (AJAX) para no salir de la página, pero FormSubmit no
+manda la respuesta automática con AJAX. Por eso el formulario se envía de forma
+normal y vuelve a mi página `gracias.html` (`_next`).
 
-**Recorrido del dato:** el visitante escribe → `js/script.js` valida los campos →
-`fetch` POST a `formsubmit.co/ajax/…` → FormSubmit me envía el correo → la web
-muestra «mensaje enviado» o el error.
+**Coste:** depende de un servicio externo gratuito, el primer envío obliga a
+confirmar un correo de activación y el visitante pasa un momento por la casilla
+«no soy un robot» de FormSubmit.
+
+**Recorrido del dato:** el visitante escribe → `js/script.js` valida los campos y
+enseña la animación de la carta → `form.submit()` hace un POST a
+`formsubmit.co/isasan@eeartesanos.com` → FormSubmit me envía el mensaje a mí y la
+respuesta automática al campo `email` del visitante → redirige a `gracias.html`.
 
 ### 2. Asistente del CV basado en reglas, sin API de IA
 

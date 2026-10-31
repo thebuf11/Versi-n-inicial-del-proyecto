@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensaje enviado | Iván Sáez</title>
+  <meta name="description" content="Gracias por escribirme. Te he enviado un correo de confirmación y te responderé en 24-48 horas.">
+  <meta name="author" content="Iván Sáez">
+  <!-- Página de llegada tras enviar el formulario: no tiene sentido en Google -->
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#ff7a1a">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://thebuf11.github.io/mi-web/gracias.html">
+
+  <!-- Open Graph: la misma tarjeta que la página principal -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Iván Sáez">
+  <meta property="og:url" content="https://thebuf11.github.io/mi-web/gracias.html">
+  <meta property="og:title" content="Mensaje enviado | Iván Sáez">
+  <meta property="og:description" content="Gracias por escribirme. Te responderé en 24-48 horas.">
+  <meta property="og:image" content="https://thebuf11.github.io/mi-web/img/og-image.png">
+
+  <link rel="icon" href="img/favicon.svg">
+
+  <script>
+    /* Igual que en index.html: tema y animaciones antes de pintar */
+    document.documentElement.classList.add("js");
+    var motionOff = false;
+    try { motionOff = localStorage.getItem("motion") === "off"; } catch (e) {}
+    if (!motionOff) document.documentElement.classList.add("motion-on");
+    var theme = null;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (!theme) theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=20261031d">
+</head>
+<body>
+
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- Navegación reducida: vuelta a la portada y modo oscuro -->
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="./">Iv<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="./#sobre-mi">Sobre mí</a></li>
+        <li><a href="./#proyectos">Proyectos</a></li>
+        <li><a href="./#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="nav-github theme-toggle" id="theme-toggle" type="button"
+                aria-label="Modo oscuro" aria-pressed="false" title="Cambiar a modo oscuro">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <main id="contenido">
+    <section class="section thanks">
+      <div class="panel">
+        <!-- Sobre con check: SVG propio, el mismo naranja de la marca -->
+        <svg class="thanks-icon" viewBox="0 0 96 96" aria-hidden="true">
+          <rect x="10" y="22" width="76" height="52" rx="8" fill="#ff7a1a"/>
+          <path d="M12 26 48 52 84 26" fill="none" stroke="#14110f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="74" cy="70" r="16" fill="#14110f"/>
+          <path d="M67 70 72 75 81 65" fill="none" stroke="#ff7a1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="section-title">Mensaje enviado</h1>
+        <p class="lead">
+          Gracias por escribirme. Te acaba de llegar un correo de confirmación con
+          una copia de tu mensaje (si no lo ves, mira en spam). Te contestaré en
+          <strong>24-48 horas</strong>.
+        </p>
+        <p class="thanks-actions">
+          <a class="btn btn-solid" href="./">Volver a mi web</a>
+          <a class="btn btn-ghost" href="./#proyectos">Ver mis proyectos</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-name">Iván Sáez · <span id="year">2026</span></p>
+    <p class="footer-note">Hecho a mano en Valencia.</p>
+  </footer>
+
+  <script src="js/script.js?v=20261031d"></script>
+</body>
+</html>

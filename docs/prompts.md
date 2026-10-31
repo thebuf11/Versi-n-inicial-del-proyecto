@@ -15,6 +15,8 @@ de commits.
 | 7 | «Quita del repo lo que no es la web y ordénala en carpetas css/, js/ e img/.» | Arquitectura: «sin carpetas» es Insuficiente | Mantener las herramientas en mi disco pero fuera del repo | Saca del repositorio… / Ordena la web… |
 | 8 | «Añade modo oscuro que recuerde la elección.» | Diseño e interactividad con estado | Mantener el naranja de la marca, aclarado para el contraste | Añade modo oscuro… |
 | 9 | «Haz dos SVG propios: el logo como favicon y una ilustración de mis tres frentes.» | Medios: ≥2 SVG propios | La idea de los tres círculos que se cruzan | Añade dos SVG propios… |
+| 10 | «Cambia tú el nombre del repo a mi-web.» | La sesión 2 pide que el repo se llame mi-web | Avisar de que la dirección antigua de la web deja de funcionar | Cambia las URLs del sitio… |
+| 11 | «Añade la respuesta automática de FormSubmit.» | Contacto Excelente: canal con respuesta automática | Como FormSubmit no la manda con AJAX, paso a envío normal, conservo la carta y creo gracias.html | Responde automáticamente a quien escribe… |
 
 ## Lo que aprendí dirigiendo a la IA
 

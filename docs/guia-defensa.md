@@ -98,14 +98,18 @@ Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sol
 | 15 | **Modo oscuro** | El botón lee el tema actual de `<html data-theme>`, lo cambia, lo guarda en `localStorage` y actualiza `aria-pressed` y el título. Al volver otro día, el script del `<head>` lo lee y lo aplica. |
 
 ### El recorrido del dato del formulario (te lo preguntarán seguro)
-1. El visitante pulsa «Enviar». JS **frena el envío normal** (`event.preventDefault()`).
+1. El visitante pulsa «Enviar». JS **frena el envío un momento** (`event.preventDefault()`) para revisar los datos.
 2. **Valida:** nombre no vacío, correo con forma `algo@algo.algo` (una expresión regular) y mensaje no vacío. Si algo falla, escribe el error bajo el campo, lo marca con `aria-invalid` y pone el foco ahí.
 3. **Campo trampa (`_honey`):** está oculto. Una persona no lo ve, un bot lo rellena. Si viene relleno, no se envía nada.
-4. Enseña la **animación de la carta** y desactiva el botón para que no se envíe dos veces.
-5. **`fetch`** manda los datos en JSON a `https://formsubmit.co/ajax/isasan@eeartesanos.com`.
-6. **FormSubmit** (un servicio gratuito) me reenvía el mensaje por correo.
-7. Si responde `success: true`: «¡Mensaje enviado!» y se vacía el formulario. Si no: un mensaje de error con mi correo como alternativa.
-8. Sin JavaScript también funciona: el `<form action="https://formsubmit.co/...">` hace el mismo envío de forma normal.
+4. Enseña la **animación de la carta**, desactiva el botón para que no se envíe dos veces y pone el nombre del visitante en el asunto (`_subject`).
+5. A los 1,5 s, **`form.submit()`** envía el formulario de forma normal (POST) a `https://formsubmit.co/isasan@eeartesanos.com`, que es el `action` del `<form>`.
+6. **FormSubmit** (un servicio gratuito) enseña su casilla «no soy un robot» y después:
+   - **me reenvía el mensaje** a mi correo;
+   - **responde automáticamente al visitante** con el texto del campo oculto `_autoresponse` y una copia de su mensaje. Usa el campo `name="email"`, por eso el correo del formulario se llama así.
+7. Por último lleva al visitante a **`gracias.html`** (campo oculto `_next`), una página mía con el mismo diseño.
+8. Sin JavaScript también funciona: el navegador envía el `<form>` igual, solo que sin validación ni carta.
+
+**Por qué no AJAX (`fetch`):** al principio lo usaba para quedarme en la misma página, pero FormSubmit no manda la respuesta automática si el envío es por AJAX. Lo comprobé en su documentación y cambié a envío normal.
 
 **Por qué no `mailto:`:** depende de que el visitante tenga un programa de correo configurado. En muchos equipos no pasa nada al pulsarlo, y un botón que no hace nada es suspenso directo.
 

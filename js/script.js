@@ -93,19 +93,30 @@
   var form = document.getElementById("contact-form");
   var overlay = document.getElementById("send-overlay");
   var statusEl = document.getElementById("form-status");
-  var MAIL = "isasan@eeartesanos.com";
-  // FormSubmit reenvía el mensaje a MAIL sin que el visitante abra su correo.
-  // El primer envío manda a MAIL un correo de activación que hay que confirmar.
-  var SEND_URL = "https://formsubmit.co/ajax/" + MAIL;
+  // El formulario se envía de forma normal al action de FormSubmit (ver
+  // index.html): así funciona la respuesta automática al visitante, que no
+  // está disponible con AJAX. JS solo valida y enseña la carta antes.
   var submitBtn = form && form.querySelector('button[type="submit"]');
 
   if (form && overlay) {
+    var hideOverlay = function () {
+      overlay.classList.remove("show");
+      overlay.setAttribute("aria-hidden", "true");
+      if (submitBtn) submitBtn.disabled = false;
+      if (statusEl) statusEl.textContent = "";
+    };
+    // Si el visitante vuelve atrás desde FormSubmit, la página no debe
+    // quedarse con la carta encima
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) hideOverlay();
+    });
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
       var data = new FormData(form);
       var nombre = (data.get("nombre") || "").toString().trim();
-      var correo = (data.get("correo") || "").toString().trim();
+      var correo = (data.get("email") || "").toString().trim();
       var mensaje = (data.get("mensaje") || "").toString().trim();
 
       var errors = {
@@ -118,7 +129,7 @@
       var firstInvalid = null;
 
       Object.keys(errors).forEach(function (name) {
-        var input = form.elements[name];
+        var input = document.getElementById(name);
         var box = document.getElementById(name + "-error");
         if (!input) return;
         input.setAttribute("aria-invalid", errors[name] ? "true" : "false");
@@ -141,46 +152,13 @@
       overlay.classList.add("show");
       overlay.setAttribute("aria-hidden", "false");
 
-      // La animación de la carta dura al menos esto, aunque el envío sea más rápido
-      var minDelay = reduceMotion ? 400 : 1900;
-      var startedAt = Date.now();
+      form.elements._subject.value = "Mensaje desde tu web — " + nombre;
 
-      var finish = function (ok, text) {
-        var wait = Math.max(0, minDelay - (Date.now() - startedAt));
-        window.setTimeout(function () {
-          overlay.classList.remove("show");
-          overlay.setAttribute("aria-hidden", "true");
-          if (submitBtn) submitBtn.disabled = false;
-          if (ok) form.reset();
-          if (statusEl) statusEl.textContent = text;
-        }, wait);
-      };
-
-      fetch(SEND_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          nombre: nombre,
-          correo: correo,
-          mensaje: mensaje,
-          _replyto: correo,
-          _subject: "Mensaje desde tu web — " + nombre,
-          _template: "table"
-        })
-      })
-        .then(function (res) {
-          return res.json().then(function (json) {
-            return { ok: res.ok, json: json };
-          });
-        })
-        .then(function (result) {
-          var sent = result.ok && String(result.json.success) === "true";
-          if (!sent) throw new Error(result.json.message || "Envío rechazado");
-          finish(true, "¡Mensaje enviado! Te responderé lo antes posible.");
-        })
-        .catch(function () {
-          finish(false, "No se ha podido enviar el mensaje. Inténtalo de nuevo o escríbeme a " + MAIL + ".");
-        });
+      // Se deja ver la carta y luego se envía de verdad. form.submit() no
+      // vuelve a lanzar este evento, así que no se repite la validación
+      window.setTimeout(function () {
+        form.submit();
+      }, reduceMotion ? 300 : 1500);
     });
   }
 
