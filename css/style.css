@@ -1612,3 +1612,14 @@ main { overflow-x: clip; }
 .thanks-icon { display: block; width: 88px; height: 88px; margin-bottom: 16px; }
 .thanks .lead { margin-top: 20px; }
 .thanks-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+
+/* Foto de «Sobre mí»: redonda, con el anillo naranja de la marca */
+.about-photo {
+  display: block;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--surface);
+  box-shadow: 0 0 0 3px var(--orange), var(--shadow);
+}
