@@ -1592,3 +1592,16 @@ main { overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) {
   html:not(.motion-on) .sk { animation: none; }
 }
+
+/* Ilustración propia de «Sobre mí» */
+.about-figure {
+  margin: 28px 0 0;
+  max-width: 360px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.about-figure img { display: block; width: 100%; height: auto; }
+/* En oscuro la tarjeta sigue clara para que el SVG se lea igual */
+[data-theme="dark"] .about-figure { background: #f6f4ef; }
