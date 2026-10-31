@@ -13,8 +13,8 @@ Sobre mí (2-4 líneas):
 
 Cosas que he hecho:
   1. Primero de DAM: tres prácticas con HTML, CSS y JavaScript, incluida esta web.
-  2. Web para un negocio local: cinco secciones, formulario que llega al
-     correo y diseño adaptado al móvil.
+  2. Esta web personal: HTML, CSS y JS sin frameworks, formulario con respuesta
+     automática, modo oscuro; 100 en accesibilidad en Lighthouse.
   3. Campañas de marketing digital (+30K visualizaciones al mes en Facebook e Instagram).
   4. 380 h de prácticas de Sistemas Microinformáticos y Redes.
 

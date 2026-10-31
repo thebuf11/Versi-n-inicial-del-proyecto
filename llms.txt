@@ -4,7 +4,7 @@
 
 ## Sobre Iván Sáez
 - [Sobre mí](https://thebuf11.github.io/mi-web/#sobre-mi): perfil, formación, competencias e idiomas.
-- [Proyectos](https://thebuf11.github.io/mi-web/#proyectos): prácticas de DAM y web para un negocio local.
+- [Proyectos](https://thebuf11.github.io/mi-web/#proyectos): campañas en redes sociales (CUIDAMA, +30K visualizaciones al mes), esta web personal y prácticas de DAM.
 - [Preguntas frecuentes](https://thebuf11.github.io/mi-web/#faq): respuestas directas sobre perfil, experiencia, formación y contacto.
 - [Me gusta](https://thebuf11.github.io/mi-web/#me-gusta): intereses personales y aficiones.
 - [Contacto](https://thebuf11.github.io/mi-web/#contacto): correo y formulario.

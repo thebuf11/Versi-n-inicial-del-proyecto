@@ -1623,3 +1623,32 @@ main { overflow-x: clip; }
 @media (max-width: 560px) {
   .about-timeline { max-width: 360px; }
 }
+
+/* Tarjetas de proyecto: problema → solución → resultado en una lista de definiciones */
+.card-steps {
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 8px 16px;
+  max-width: 62ch;
+  margin-top: 8px;
+}
+.card-steps dt {
+  padding-top: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+.card-steps dd {
+  margin: 0;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.card-steps strong { color: var(--ink); }
+
+@media (max-width: 560px) {
+  .card-steps { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .card-steps dd { margin-bottom: 10px; }
+}
