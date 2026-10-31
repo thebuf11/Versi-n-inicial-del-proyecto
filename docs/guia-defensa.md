@@ -16,9 +16,9 @@ cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 | Correo de contacto | isasan@eeartesanos.com |
 | Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
 | Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
-| Historial | 44 commits en `main` (36 de trabajo + 8 fusiones de ramas) |
+| Historial | 46 commits en `main` (37 de trabajo + 9 fusiones de ramas) |
 | Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
-| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo`, `proyectos-reales`, `texto-sobre-mi`, `perfil-completo` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
+| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo`, `proyectos-reales`, `texto-sobre-mi`, `perfil-completo`, `sin-logistica` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
 
 **Antes se llamaba** `Versi-n-inicial-del-proyecto`. Lo renombré a `mi-web` porque
 la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
@@ -47,7 +47,7 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
 | Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
 | Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
-| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 44 commits |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 46 commits |
 
 ### Los 7 criterios
 
@@ -59,7 +59,7 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), **dos SVG propios en archivo**: el logo (`favicon.svg`) y la línea de tiempo «Mi recorrido» (`recorrido.svg`, con versión para móvil), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS | Competente |
 | **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
 | **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
-| **Proceso** (15) | 44 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+| **Proceso** (15) | 46 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
 
 ---
 
