@@ -3,11 +3,11 @@
 > Portfolio profesional de Iván Sáez (Valencia, España), especializado en marketing digital, administración e informática. Grado Superior en Gestión de Ventas y Espacios Comerciales y Técnico en Sistemas Microinformáticos y Redes.
 
 ## Sobre Iván Sáez
-- [Sobre mí](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#sobre-mi): perfil, formación, competencias e idiomas.
-- [Proyectos](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#proyectos): prácticas de DAM y web para un negocio local.
-- [Preguntas frecuentes](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#faq): respuestas directas sobre perfil, experiencia, formación y contacto.
-- [Me gusta](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#me-gusta): intereses personales y aficiones.
-- [Contacto](https://thebuf11.github.io/Versi-n-inicial-del-proyecto/#contacto): correo y formulario.
+- [Sobre mí](https://thebuf11.github.io/mi-web/#sobre-mi): perfil, formación, competencias e idiomas.
+- [Proyectos](https://thebuf11.github.io/mi-web/#proyectos): prácticas de DAM y web para un negocio local.
+- [Preguntas frecuentes](https://thebuf11.github.io/mi-web/#faq): respuestas directas sobre perfil, experiencia, formación y contacto.
+- [Me gusta](https://thebuf11.github.io/mi-web/#me-gusta): intereses personales y aficiones.
+- [Contacto](https://thebuf11.github.io/mi-web/#contacto): correo y formulario.
 
 ## Datos clave
 - Nombre: Iván Sáez (Iván Saez Santa Rosalia)

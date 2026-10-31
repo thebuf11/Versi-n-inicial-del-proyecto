@@ -32,7 +32,7 @@ jobs:
       - name: Preparar solo los archivos del sitio
         run: |
           mkdir -p _site
-          cp index.html style.css script.js chat.js robots.txt sitemap.xml llms.txt og-image.png diagnostico.html _site/
+          cp -r index.html css js img robots.txt sitemap.xml llms.txt _site/
 
       - name: Empaquetar el sitio
         uses: actions/upload-pages-artifact@v3

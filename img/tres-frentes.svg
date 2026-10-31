@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" role="img" aria-labelledby="t">
+  <title id="t">Mis tres frentes: marketing, administración e informática, y yo en el centro</title>
+  <!-- Tres círculos que se cruzan: cada uno es un frente; donde se tocan, estoy yo -->
+  <g fill-opacity="0.22" stroke-width="3">
+    <circle cx="130" cy="115" r="82" fill="#ff7a1a" stroke="#c2410c"/>
+    <circle cx="230" cy="115" r="82" fill="#f59e0b" stroke="#b45309"/>
+    <circle cx="180" cy="195" r="82" fill="#78716c" stroke="#57534e"/>
+  </g>
+  <g font-family="system-ui, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="700" fill="#8a3a12" text-anchor="middle">
+    <text x="100" y="95">Marketing</text>
+    <text x="262" y="95">Admin.</text>
+    <text x="180" y="262">Informática</text>
+  </g>
+  <!-- El punto naranja del logo marca el centro -->
+  <circle cx="180" cy="142" r="13" fill="#ff7a1a"/>
+  <text x="180" y="147" font-family="system-ui, Segoe UI, Roboto, sans-serif" font-size="13" font-weight="800" fill="#14110f" text-anchor="middle">yo</text>
+</svg>

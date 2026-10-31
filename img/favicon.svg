@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Logo «Iv.»: tinta oscura, letras crema y el punto naranja de la marca -->
+  <rect width="64" height="64" rx="18" fill="#14110f"/>
+  <text x="29" y="43" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#f6f4ef">Iv</text>
+  <circle cx="47" cy="41" r="4.5" fill="#ff7a1a"/>
+</svg>
