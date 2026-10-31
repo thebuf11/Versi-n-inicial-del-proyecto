@@ -150,8 +150,8 @@
     {
       id: "proyectos", pri: 3,
       q: "¿Qué proyectos ha hecho?",
-      kw: ["proyectos", "proyecto", "portfolio", "portafolio", "web", "pagina", "negocio", "tienda", "practicas de dam"],
-      a: "Los proyectos que muestra esta web:\n\n• **Prácticas de DAM** (2025–2026): tres prácticas con HTML, CSS y JavaScript, incluida esta página\n• **Web para un negocio local**: cinco secciones, formulario de contacto que llega al correo y diseño responsivo para enseñarla desde el móvil",
+      kw: ["proyectos", "proyecto", "portfolio", "portafolio", "web", "pagina", "practicas de dam", "campanas"],
+      a: "Los proyectos que muestra esta web, contados como problema → solución → resultado:\n\n• **Campañas en redes sociales** (CUIDAMA, 2022–2024): campañas de Facebook e Instagram Ads y contenido propio. Resultado: más de 30K visualizaciones al mes\n• **Esta web personal** (2026): HTML, CSS y JavaScript sin frameworks, formulario con respuesta automática y modo oscuro. Resultado: 100 en accesibilidad en Lighthouse\n• **Primero de DAM** (2025–2026): tres prácticas con HTML, CSS y JavaScript, incluida esta página",
       next: ["programacion", "marketing", "contacto"]
     },
     {

@@ -16,9 +16,9 @@ cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 | Correo de contacto | isasan@eeartesanos.com |
 | Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
 | Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
-| Historial | 38 commits en `main` (33 de trabajo + 5 fusiones de ramas) |
+| Historial | 40 commits en `main` (34 de trabajo + 6 fusiones de ramas) |
 | Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
-| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
+| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo`, `proyectos-reales` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
 
 **Antes se llamaba** `Versi-n-inicial-del-proyecto`. Lo renombré a `mi-web` porque
 la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
@@ -47,19 +47,19 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
 | Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
 | Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
-| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 38 commits |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 40 commits |
 
 ### Los 7 criterios
 
 | Criterio (puntos) | Qué tengo | Nivel al que apunto |
 |---|---|---|
 | **Contacto** (15) | Formulario validado que envía, respuesta automática al visitante (probada: llega), página de gracias. Sé explicar el recorrido del dato (apartado 5) | Excelente |
-| **Contenido** (15) | Sobre mí, proyectos, habilidades (cintillo y «Lo que aporto»), experiencia (cifras), me gusta, FAQ, contacto | Competente. Falta poner los proyectos como problema → solución → resultado |
+| **Contenido** (15) | Sobre mí, proyectos, habilidades (cintillo y «Lo que aporto»), experiencia (cifras), me gusta, FAQ, contacto. Los 3 proyectos van como problema → solución → resultado con una cifra real | Competente |
 | **Diseño** (15) | Paleta deliberada (papel cálido, tinta y un naranja), tipografía Geist, variables CSS, responsive, modo oscuro, favicon propio, microinteracciones, 2 páginas con el mismo estilo | Competente |
 | **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), **dos SVG propios en archivo**: el logo (`favicon.svg`) y la línea de tiempo «Mi recorrido» (`recorrido.svg`, con versión para móvil), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS | Competente |
 | **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
 | **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
-| **Proceso** (15) | 38 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+| **Proceso** (15) | 40 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
 
 ---
 
@@ -114,7 +114,12 @@ Recorrido de arriba abajo:
    - `#inicio`: el héroe, con el nombre, la frase y dos botones.
    - El cintillo de habilidades que se desplaza, con su botón «Pausar».
    - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, la **línea de tiempo** «Mi recorrido» (`img/recorrido.svg`), las cifras y la formación.
-   - `#proyectos`: «Lo que he hecho».
+   - `#proyectos`: «Lo que he hecho», tres tarjetas contadas como **problema → solución → resultado**:
+     1. **Campañas en redes sociales** (CUIDAMA, 2022-2024): Facebook e Instagram Ads y contenido propio → más de 30K visualizaciones al mes.
+     2. **Esta web personal**: HTML, CSS y JS sin frameworks, contacto real, modo oscuro → 100 en accesibilidad en Lighthouse.
+     3. **Primero de DAM**: de copiar y pegar a entender → tres prácticas entregadas.
+
+     Cada paso va en una lista de definiciones (`<dl>`, con `<dt>` para «Problema» y `<dd>` para el texto). Es la etiqueta de HTML pensada para pares «nombre → valor», y en el móvil el CSS (`.card-steps`) pone la etiqueta encima del texto.
    - `#me-gusta`: aficiones con iconos.
    - `#faq`: preguntas frecuentes.
    - `#contacto`: tarjeta de correo, botón «Copiar correo» y **formulario**.
@@ -313,6 +318,7 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 | 31/10 | **Mi foto** optimizada, en la rama `foto-propia` | Añade mi foto en «Sobre mí»… |
 | 31/10 | **Quito la ilustración** de los tres círculos: la cambiaré por otra imagen | Quita la ilustración de los tres frentes… |
 | 31/10 | **Línea de tiempo «Mi recorrido»** (SVG propio, con versión para móvil), en la rama `linea-tiempo` | Añade mi recorrido en una línea de tiempo SVG… |
+| 31/10 | **Proyectos reales** como problema → solución → resultado; quito la «web para un negocio local», que no era real | Cuenta los proyectos como problema → solución → resultado… |
 
 ---
 
@@ -345,7 +351,7 @@ en cada fotograma la acerco un trozo del camino. Las partículas se dibujan en u
 `<canvas>`. Solo se activan con ratón.
 
 **¿Qué mejorarías?**
-Contar los proyectos con problema → solución → resultado y cifras reales.
+Añadir capturas de mis campañas y de las prácticas de DAM a las tarjetas de proyectos.
 
 ---
 
@@ -353,4 +359,4 @@ Contar los proyectos con problema → solución → resultado y cifras reales.
 - [x] Comprobar que la **respuesta automática** llega. Probado el 31/10/2026: funciona.
 - [x] Decidir sobre los **efectos del ratón**: se quedan (explicados en el apartado 5).
 - [x] Poner una **imagen nueva** en «Sobre mí»: la línea de tiempo «Mi recorrido» (31/10/2026).
-- [ ] Reescribir las 2 tarjetas de **«Lo que he hecho»** con problema → solución → resultado y una cifra real. De momento se quedan como están.
+- [x] Reescribir **«Lo que he hecho»** con problema → solución → resultado y cifras reales: 3 tarjetas (31/10/2026).
