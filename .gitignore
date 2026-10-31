@@ -9,3 +9,9 @@ _site/
 
 # Informes internos: nunca se publican ni se suben al repositorio
 auditoria.md
+
+# Herramientas y copias locales: no forman parte de la web
+opencode/
+.backup-diseno/
+.mcp.json.txt
+opencode.json.txt
