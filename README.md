@@ -90,4 +90,4 @@ ningún servicio y no expone ninguna clave.
 
 El historial de commits cuenta cómo ha crecido la web. Las funciones grandes se
 hicieron en ramas propias (`modo-oscuro`, `reestructura-carpetas`) y se fusionaron
-en `main`. Las versiones importantes llevan etiqueta (`v2.0`, `v3.0`).
+en `main`. Las versiones importantes llevan etiqueta (`v2.0`, `v3.0` y `v4.0`, la versión de entrega).
