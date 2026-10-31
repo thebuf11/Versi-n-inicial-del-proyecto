@@ -1,28 +1,109 @@
-# Guía de mi web, archivo por archivo
+# Guía de defensa de mi web
 
-Para explicar en la defensa qué hace cada parte y por qué.
+Para explicar en clase qué hace cada parte de mi web, por qué la hice así y qué
+cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 
-## La idea general (3 frases para empezar la defensa)
+---
+
+## 0. Datos del proyecto
+
+| Dato | Valor |
+|---|---|
+| Autor | Iván Sáez (1º DAM, Valencia) |
+| Web publicada | https://thebuf11.github.io/mi-web/ |
+| Repositorio | https://github.com/thebuf11/mi-web (público) |
+| Página de gracias | https://thebuf11.github.io/mi-web/gracias.html |
+| Correo de contacto | isasan@eeartesanos.com |
+| Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
+| Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
+| Historial | 35 commits en `main` (31 de trabajo + 4 fusiones de ramas) |
+| Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
+| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
+
+**Antes se llamaba** `Versi-n-inicial-del-proyecto`. Lo renombré a `mi-web` porque
+la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
+
+### Tamaño de los archivos
+
+| Archivo | Líneas / peso | Para qué |
+|---|---|---|
+| `index.html` | 604 líneas | La página principal |
+| `gracias.html` | 97 líneas | Página a la que vuelve el visitante tras escribirme |
+| `css/style.css` | ~1.630 líneas | Todo el aspecto, claro y oscuro |
+| `js/script.js` | 595 líneas | Las interacciones |
+| `js/chat.js` | 522 líneas | El asistente del CV |
+| `img/ivan.webp` | 10 KB (480×480) | Mi foto, optimizada desde un JPEG de 80 KB |
+| `img/tres-frentes.svg` | 1 KB | Ilustración propia |
+| `img/favicon.svg` | 0,4 KB | Mi logo «Iv.» |
+| `img/og-image.png` | 23 KB | Imagen al compartir el enlace |
+
+---
+
+## 1. Cómo cumple la rúbrica
+
+### Requisitos mínimos (sin esto no se evalúa)
+
+| Requisito | Estado | Prueba |
+|---|---|---|
+| Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
+| Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
+| Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 35 commits |
+
+### Los 7 criterios
+
+| Criterio (puntos) | Qué tengo | Nivel al que apunto |
+|---|---|---|
+| **Contacto** (15) | Formulario validado que envía, respuesta automática al visitante, página de gracias. Sé explicar el recorrido del dato (apartado 5) | Excelente si la autorrespuesta llega |
+| **Contenido** (15) | Sobre mí, proyectos, habilidades (cintillo y «Lo que aporto»), experiencia (cifras), me gusta, FAQ, contacto | Competente. Falta poner los proyectos como problema → solución → resultado |
+| **Diseño** (15) | Paleta deliberada (papel cálido, tinta y un naranja), tipografía Geist, variables CSS, responsive, modo oscuro, favicon propio, microinteracciones, 2 páginas con el mismo estilo | Competente |
+| **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), 2 SVG propios en archivo + iconos SVG, animaciones CSS/JS | Competente |
+| **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
+| **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
+| **Proceso** (15) | 35 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+
+---
+
+## 2. La idea general (3 frases para empezar la defensa)
 1. **`index.html`** dice **qué hay** en la página: los bloques y sus textos.
 2. **`css/style.css`** dice **cómo se ve**: colores, tamaños, posiciones y animaciones.
 3. **`js/script.js`** y **`js/chat.js`** dicen **qué hace** la página cuando el visitante actúa: clic, scroll, escribir.
 
-GitHub guarda el historial y GitHub Pages lo publica. El workflow `.github/workflows/pages.yml` hace la publicación automáticamente cada vez que subo algo a `main`.
+GitHub guarda el historial y GitHub Pages lo publica. El workflow
+`.github/workflows/pages.yml` lo hace solo cada vez que subo algo a `main`.
+
+### Estructura de carpetas
+
+```
+mi-web/
+├── index.html          página principal
+├── gracias.html        página tras enviar el formulario
+├── css/style.css       estilos (claro y oscuro)
+├── js/script.js        interacciones
+├── js/chat.js          asistente del CV
+├── img/                ivan.webp, tres-frentes.svg, favicon.svg, og-image.png
+├── docs/               guia-defensa.md (esta guía) y prompts.md
+├── README.md           cómo está hecha y decisiones de arquitectura
+├── notas.txt           ficha de contenidos de la sesión 1
+├── robots.txt, sitemap.xml, llms.txt
+└── .github/workflows/pages.yml
+```
 
 ---
 
-## 1. index.html: el esqueleto
+## 3. index.html: el esqueleto
 Recorrido de arriba abajo:
 
 1. **`<head>` (lo que no se ve):**
-   - **título y descripción:** salen en Google y en la pestaña del navegador.
+   - **Título y descripción:** salen en Google y en la pestaña del navegador.
    - **Open Graph (`og:`):** la tarjeta que aparece al compartir el enlace por WhatsApp o LinkedIn, con `img/og-image.png`.
    - **JSON-LD:** una ficha «para máquinas» que le dice a Google quién soy (nombre, estudios, GitHub).
-   - **script pequeño en línea:** se ejecuta *antes* de pintar la página.
+   - **Favicon:** `img/favicon.svg`, mi logo.
+   - **Script pequeño en línea:** se ejecuta *antes* de pintar la página.
      - Mira si desactivé las animaciones (`localStorage.motion`).
      - Mira qué tema elegí (`localStorage.theme`). Si no elegí ninguno, usa el del sistema y pone `data-theme="dark"` o `"light"` en la etiqueta `<html>`.
      - Se hace tan pronto para que no haya un destello blanco al cargar en modo oscuro.
-   - **fuente Geist** de Google Fonts y **`css/style.css`**.
+   - **Fuente Geist** de Google Fonts y **`css/style.css`**. El `?v=20261031e` del final obliga al navegador a descargar la versión nueva y no usar una vieja guardada.
 2. **Barra de progreso y esqueleto de carga:** la línea naranja de arriba, y unas cajas grises que se ven mientras carga la página.
 3. **«Saltar al contenido»:** un enlace invisible para quien navega con teclado o lector de pantalla.
 4. **`<nav>`:**
@@ -33,7 +114,7 @@ Recorrido de arriba abajo:
 5. **`<main>`, con las secciones de la web.** Cada una es un `<section id="...">`, y ese `id` es el destino de los enlaces del menú.
    - `#inicio`: el héroe, con el nombre, la frase y dos botones.
    - El cintillo de habilidades que se desplaza, con su botón «Pausar».
-   - `#sobre-mi`: texto, la **ilustración SVG** `img/tres-frentes.svg`, las cifras y la formación.
+   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, la **ilustración SVG** `img/tres-frentes.svg`, las cifras y la formación.
    - `#proyectos`: «Lo que he hecho».
    - `#me-gusta`: aficiones con iconos.
    - `#faq`: preguntas frecuentes.
@@ -42,50 +123,58 @@ Recorrido de arriba abajo:
 7. **Capa de envío:** la animación de la carta volando, y el **asistente** (el botón redondo «Iv.» de abajo a la derecha).
 8. Al final, **`js/script.js`** y **`js/chat.js`**. Van al final para que el HTML ya exista cuando el JS lo busque.
 
-**Cómo decirlo:** «El HTML es semántico: uso `nav`, `main`, `section`, `footer` y `h1`/`h2` en orden, y no solo `div`. Así un lector de pantalla y Google entienden la estructura».
+**Cómo decirlo:** «El HTML es semántico: uso `nav`, `main`, `section`, `footer` y
+`h1`/`h2` en orden, y no solo `div`. Así un lector de pantalla y Google entienden la
+estructura».
+
+### La foto
+```html
+<img class="about-photo" src="img/ivan.webp" width="160" height="160"
+     loading="lazy" decoding="async" alt="Retrato de Iván Sáez con americana…">
+```
+- **WebP** pesa mucho menos que JPEG con la misma calidad: pasé de 80 KB a 10 KB.
+- La guardé a **480×480** aunque se ve a **160 px**, para que salga nítida en pantallas retina (que tienen 2-3 píxeles por punto).
+- **`width`/`height`:** el navegador reserva el hueco antes de descargarla y la página no «salta».
+- **`loading="lazy"`:** no se descarga hasta que te acercas a ella.
+- **`alt`:** lo que lee un lector de pantalla si no puedes verla.
+- El CSS (`.about-photo`) la recorta en círculo (`border-radius: 50%`, `object-fit: cover`) con un anillo naranja de la marca.
+
+### gracias.html
+Segunda página con el mismo `<head>` (tema, favicon, fuentes, CSS), una barra de
+navegación reducida, un SVG de un sobre con un check y botones para volver. Lleva
+`noindex` porque no tiene sentido que salga en Google.
 
 ---
 
-## 2. css/style.css: el aspecto
-Está dividido en **17 bloques numerados y comentados**, en el mismo orden que la página:
-- 1 · Variables
-- 2 · Base
-- 3 · Navegación
-- 4 · Estructura
-- 5 · Héroe
-- 6 · Botones
-- 7 · Cintillo
-- 8 · Sobre mí
-- 9 · Proyectos
-- 10 · Me gusta
-- 11 · Contacto
-- 12 · Pie
-- 13 · Aparición
-- 14 · Animación de envío
-- 15 · Asistente
-- 16 · Pantallas pequeñas
-- 17 · Movimiento reducido
+## 4. css/style.css: el aspecto
+Está dividido en **17 bloques numerados y comentados**, en el mismo orden que la página,
+y al final unos bloques añadidos después (ilustración, gracias.html y foto):
+1 · Variables · 2 · Base · 3 · Navegación · 4 · Estructura · 5 · Héroe · 6 · Botones ·
+7 · Cintillo · 8 · Sobre mí · 9 · Proyectos · 10 · Me gusta · 11 · Contacto · 12 · Pie ·
+13 · Aparición · 14 · Animación de envío · 15 · Asistente · 16 · Pantallas pequeñas ·
+17 · Movimiento reducido.
 
 Lo importante:
 
-1. **Variables (`:root`).** Todos los colores están en un sitio: `--bg` (fondo), `--ink` (texto), `--accent` (naranja)... El resto del CSS nunca escribe un color directamente: escribe `var(--ink)`.
-2. **El modo oscuro aprovecha eso.** El bloque `:root[data-theme="dark"]` vuelve a definir las mismas variables con otros valores: fondo casi negro, texto crema y un naranja más claro. Como todo usa variables, cambia la web entera sin tocar nada más.
-   - Hay variables especiales para el texto que va encima de un fondo de color: `--on-ink`, `--on-accent` y `--on-orange`. Sin ellas, en oscuro el texto del cintillo naranja salía crema sobre naranja y no se leía. Lighthouse lo detectó y lo arreglé.
-3. **Responsive.** Las *media queries* (`@media (max-width: 760px)`...) cambian la colocación en el móvil: una columna, letra más pequeña y el menú debajo. `clamp()` hace que tamaños y márgenes crezcan poco a poco con la pantalla.
+1. **Variables (`:root`).** Todos los colores están en un sitio: `--bg` (fondo), `--ink` (texto), `--accent` (naranja)... El resto del CSS no escribe colores sueltos: escribe `var(--ink)`.
+2. **El modo oscuro aprovecha eso.** El bloque `:root[data-theme="dark"]` vuelve a definir las mismas variables con otros valores: fondo casi negro (`#15120f`), texto crema (`#f4efe6`) y un naranja más claro (`#fb923c`) para que se lea. Como todo usa variables, cambia la web entera sin tocar nada más.
+   - Hay variables para el texto que va encima de un fondo de color: `--on-ink`, `--on-accent` y `--on-orange`. Sin ellas, en oscuro el texto del cintillo naranja salía crema sobre naranja (contraste 2,27:1, el mínimo es 4,5:1). Lighthouse lo detectó y lo arreglé.
+3. **Responsive.** Las *media queries* (`@media (min-width: 900px)`, `(max-width: 760px)`...) cambian la colocación: en ordenador el título va a la izquierda y el contenido a la derecha; en el móvil, todo en una columna. `clamp()` hace que tamaños y márgenes crezcan poco a poco con la pantalla.
 4. **Animaciones.** Los `@keyframes` definen movimientos: el cintillo, la carta y el brillo de los botones. Las secciones aparecen al hacer scroll porque empiezan transparentes y desplazadas, y la clase `.in-view`, que pone JS, las lleva a su sitio.
 5. **Accesibilidad.** `:focus-visible` dibuja un borde visible al navegar con teclado. El bloque 17 respeta a quien pide menos movimiento en su sistema.
 
 ---
 
-## 3. js/script.js: la interacción
-Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sola, para que mis variables no choquen con las de otros scripts. Las secciones están numeradas:
+## 5. js/script.js: la interacción
+Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sola,
+para que mis variables no choquen con las de otros scripts. Las secciones están numeradas:
 
 | Nº | Qué hace | Cómo funciona (en mis palabras) |
 |---|---|---|
 | 1 | Botón de animaciones | Solo aparece si el sistema pide «movimiento reducido». Guarda la elección y recarga la página. |
 | 2 | Aparición al hacer scroll | Un **IntersectionObserver** «vigila» los bloques. Cuando uno entra en pantalla, le pone la clase `in-view` y el CSS hace la animación. |
 | 3 | Menú activo | Otro observer mira qué sección está en el centro de la pantalla y subraya su enlace en el menú. |
-| 4 | **Formulario** | Explicado abajo, es lo más importante. |
+| 4 | **Formulario** | Explicado justo debajo. Es lo más importante. |
 | 5 | Año del pie | `new Date().getFullYear()`, así nunca se queda desactualizado. |
 | 7 | Barra de progreso | Cuánto he bajado ÷ cuánto se puede bajar = porcentaje. Estira la barra con `scaleX` y escribe el % (o «¡Fin!»). |
 | 8 | Pausar cintillo | El botón añade o quita la clase `is-paused` y el CSS para la animación. |
@@ -97,6 +186,8 @@ Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sol
 | 11 | Sombra de la barra | Si he bajado más de 8 px, añade la clase `scrolled` y el menú gana sombra. |
 | 15 | **Modo oscuro** | El botón lee el tema actual de `<html data-theme>`, lo cambia, lo guarda en `localStorage` y actualiza `aria-pressed` y el título. Al volver otro día, el script del `<head>` lo lee y lo aplica. |
 
+Los números no van en orden en el archivo porque fui añadiendo secciones con el tiempo.
+
 ### El recorrido del dato del formulario (te lo preguntarán seguro)
 1. El visitante pulsa «Enviar». JS **frena el envío un momento** (`event.preventDefault()`) para revisar los datos.
 2. **Valida:** nombre no vacío, correo con forma `algo@algo.algo` (una expresión regular) y mensaje no vacío. Si algo falla, escribe el error bajo el campo, lo marca con `aria-invalid` y pone el foco ahí.
@@ -104,19 +195,25 @@ Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sol
 4. Enseña la **animación de la carta**, desactiva el botón para que no se envíe dos veces y pone el nombre del visitante en el asunto (`_subject`).
 5. A los 1,5 s, **`form.submit()`** envía el formulario de forma normal (POST) a `https://formsubmit.co/isasan@eeartesanos.com`, que es el `action` del `<form>`.
 6. **FormSubmit** (un servicio gratuito) enseña su casilla «no soy un robot» y después:
-   - **me reenvía el mensaje** a mi correo;
+   - **me reenvía el mensaje** a mi correo, en forma de tabla (`_template=table`);
    - **responde automáticamente al visitante** con el texto del campo oculto `_autoresponse` y una copia de su mensaje. Usa el campo `name="email"`, por eso el correo del formulario se llama así.
-7. Por último lleva al visitante a **`gracias.html`** (campo oculto `_next`), una página mía con el mismo diseño.
-8. Sin JavaScript también funciona: el navegador envía el `<form>` igual, solo que sin validación ni carta.
+7. Por último lleva al visitante a **`gracias.html`** (campo oculto `_next`).
+8. Si el visitante vuelve atrás, el evento `pageshow` quita la carta para que la página no se quede bloqueada.
+9. Sin JavaScript también funciona: el navegador envía el `<form>` igual, solo que sin validación ni carta.
 
-**Por qué no AJAX (`fetch`):** al principio lo usaba para quedarme en la misma página, pero FormSubmit no manda la respuesta automática si el envío es por AJAX. Lo comprobé en su documentación y cambié a envío normal.
+**Por qué no AJAX (`fetch`):** al principio lo usaba para quedarme en la misma página,
+pero FormSubmit no manda la respuesta automática si el envío es por AJAX. Lo comprobé
+en su documentación y cambié a envío normal.
 
-**Por qué no `mailto:`:** depende de que el visitante tenga un programa de correo configurado. En muchos equipos no pasa nada al pulsarlo, y un botón que no hace nada es suspenso directo.
+**Por qué no `mailto:`:** depende de que el visitante tenga un programa de correo
+configurado. En muchos equipos no pasa nada al pulsarlo, y un botón que no hace nada
+es suspenso directo.
 
 ---
 
-## 4. js/chat.js: el asistente del CV
-**Idea clave:** no es una IA. Es un **buscador de palabras clave** sobre una lista de temas que escribí yo. Por eso no inventa nada y no necesita ninguna clave secreta.
+## 6. js/chat.js: el asistente del CV
+**Idea clave:** no es una IA. Es un **buscador de palabras clave** sobre una lista de
+temas que escribí yo. Por eso no inventa nada y no necesita ninguna clave secreta.
 
 1. **Temas (`TOPICS`).** Cada tema tiene:
    - `q`: la pregunta que sale en los botones
@@ -136,31 +233,76 @@ Todo va dentro de `(function () { ... })();`. Es una función que se ejecuta sol
    - si no encuentra nada, dice que eso no está en el CV, en vez de inventarlo
 6. **Interfaz.** Abre y cierra la ventana, pinta los mensajes y las sugerencias, y escribe el texto **sin `innerHTML`**, para que nadie pueda colar código en el chat.
 
-**Por qué sin API:** una web en GitHub Pages es pública. Si pongo una clave de API en el JS, cualquiera la ve con F12 y la puede gastar.
+**Por qué sin API:** una web en GitHub Pages es pública. Si pongo una clave de API en
+el JS, cualquiera la ve con F12 y la puede gastar.
 
 ---
 
-## 5. Archivos de apoyo
+## 7. Archivos de apoyo
 - **`img/`:**
+  - `ivan.webp`: mi foto (ver apartado 3).
   - `favicon.svg`: el icono de la pestaña, un logo hecho en SVG, es decir, en código: figuras y texto, no píxeles.
   - `tres-frentes.svg`: mis tres áreas como tres círculos que se cruzan, con «yo» en el centro.
   - `og-image.png`: la imagen al compartir el enlace.
 - **`robots.txt` / `sitemap.xml`:** le dicen a Google qué puede leer y dónde está la página.
 - **`llms.txt`:** un resumen para asistentes de IA tipo ChatGPT.
-- **`.github/workflows/pages.yml`:** la «receta» que GitHub ejecuta en cada push a `main`. Descarga el repo, copia solo los archivos de la web en `_site/` y los publica.
-- **`.gitignore`:** lo que Git no debe subir (herramientas locales, copias, informes).
+- **`.github/workflows/pages.yml`:** la «receta» que GitHub ejecuta en cada push a `main`. Descarga el repo, copia solo los archivos de la web (`index.html gracias.html css js img robots.txt sitemap.xml llms.txt`) en `_site/` y los publica.
+- **`.gitignore`:** lo que Git no debe subir: herramientas locales, copias de diseño, el JPEG original de la foto y archivos de Windows.
 - **`README.md`, `notas.txt`, `docs/prompts.md`:** cómo está hecha la web, mi ficha de contenidos y las órdenes que le di a la IA.
 
-## 6. La historia en Git (para «cuéntame tus commits»)
-1. **Versión inicial:** primer commit, luego el chat.
-2. **Reposicionamiento:** marketing, administración e informática.
-3. **Arreglos para móvil y caché:** scroll lateral y versiones `?v=` para que el navegador no use archivos viejos.
-4. **Accesibilidad de animaciones:** respetar la preferencia de movimiento reducido del sistema y el botón para activar o desactivar las animaciones.
-5. **Contacto real con FormSubmit.**
-6. **Limpieza y carpetas.**
-7. **Modo oscuro:** en su propia rama y fusionado con `merge`.
-8. **SVG propios.**
-9. **Documentación:** README, notas y prompts.
-10. **Cambio de URL a `mi-web`.**
-11. **Arreglo de contraste detectado con Lighthouse.**
+---
 
+## 8. La historia en Git (para «cuéntame tus commits»)
+
+| Fecha | Qué pasó | Commits clave |
+|---|---|---|
+| 03/10 | **Versión inicial** de la web | Primer commit |
+| 13/10 | Primer **asistente** del CV | chat AI |
+| 24-25/10 | **Reposiciono** el portfolio a marketing, administración e informática; esqueleto de carga, % en la barra | Publica el portfolio reposicionado… |
+| 30/10 | **Arreglos para móvil y caché**: scroll lateral, menú partido, versiones `?v=` | Corrige el scroll lateral… |
+| 30/10 | **Animaciones accesibles**: botón para activarlas/desactivarlas, efectos del cursor | Añade el botón «Activar animaciones»… |
+| 30/10 | **Contacto real** con FormSubmit en vez de `mailto:` · etiqueta **v2.0** | Envía el formulario… con FormSubmit |
+| 31/10 | **Comparo la web con la rúbrica** y empiezo a corregir: limpieza del repo y carpetas | Saca del repositorio… / Ordena la web… |
+| 31/10 | **Modo oscuro** en su rama `modo-oscuro` y fusión | Añade modo oscuro… |
+| 31/10 | **SVG propios** (favicon e ilustración) | Añade dos SVG propios… |
+| 31/10 | **Documentación**: notas, README, prompts y esta guía | Añade README técnico… |
+| 31/10 | **Repo renombrado a `mi-web`** y URLs cambiadas · etiqueta **v3.0** | Cambia las URLs del sitio… |
+| 31/10 | **Lighthouse**: arreglo de contraste y consola limpia | Mantiene oscuro el texto del cintillo… |
+| 31/10 | **Respuesta automática** y `gracias.html`, en la rama `respuesta-automatica` | Responde automáticamente… |
+| 31/10 | **Mi foto** optimizada, en la rama `foto-propia` | Añade mi foto en «Sobre mí»… |
+
+---
+
+## 9. Preguntas que me pueden hacer
+
+**¿Qué pasa cuando alguien rellena el formulario?**
+Ver el recorrido del dato en el apartado 5: valido con JS, envío a FormSubmit, me llega
+el mensaje, al visitante le llega una respuesta automática y vuelve a `gracias.html`.
+
+**¿Cómo funciona el modo oscuro?**
+Un botón cambia `data-theme` en `<html>` y lo guarda en `localStorage`. El CSS tiene
+un bloque que redefine los colores cuando `data-theme="dark"`. Al volver, un script en
+el `<head>` lo aplica antes de pintar.
+
+**¿Por qué el chat no usa ChatGPT o la API del centro?**
+Porque una web estática es pública y la clave quedaría a la vista. Mi chat busca
+palabras clave en temas que escribí yo, así que tampoco inventa nada.
+
+**¿Por qué la foto es WebP y no JPEG?**
+Porque pesa 8 veces menos con la misma calidad, y la página carga más rápido.
+
+**¿Qué hiciste tú y qué la IA?**
+La IA escribió mucho código, pero yo decidí qué pedir, qué datos poner, probé cada
+cambio en el navegador y elegí entre opciones (por ejemplo, envío normal en vez de AJAX
+para tener respuesta automática). Las órdenes están en `docs/prompts.md`.
+
+**¿Qué mejorarías?**
+Contar los proyectos con problema → solución → resultado y cifras reales, y
+simplificar los efectos del ratón.
+
+---
+
+## 10. Pendiente
+- [ ] Comprobar que la **respuesta automática** llega: enviarme un mensaje poniendo otra dirección mía como remitente.
+- [ ] Reescribir las 2 tarjetas de **«Lo que he hecho»** con problema → solución → resultado y una cifra real.
+- [ ] Decidir si me quedo con los **efectos del ratón** (sección 14 de `script.js`) o los quito.
