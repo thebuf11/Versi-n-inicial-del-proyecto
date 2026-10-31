@@ -7,9 +7,10 @@ Frase:         Estoy estudiando programación y construyo cosas en serio para
                demostrarlo. Código por curiosidad, no por obligación.
 
 Sobre mí (2-4 líneas):
-  Estudio 1º de DAM. Mi camino va por tres frentes que se complementan:
-  marketing digital, administración y soporte informático. Me motiva ver
-  una idea convertirse en algo que otra persona pueda usar.
+  Persona proactiva y curiosa. Mi base es Sistemas Microinformáticos y Redes,
+  complementada con marketing digital, logística y gestión administrativa.
+  Me trasladé a España para estudiar DAM; a largo plazo quiero especializarme
+  en ciberseguridad. (Texto completo en la sección «Sobre mí» de la web.)
 
 Cosas que he hecho:
   1. Primero de DAM: tres prácticas con HTML, CSS y JavaScript, incluida esta web.

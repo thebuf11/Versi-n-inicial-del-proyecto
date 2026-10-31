@@ -21,6 +21,7 @@ de commits.
 | 13 | «Quita la imagen de los tres círculos con el «yo»; los efectos se quedan y los proyectos, de momento, igual.» | No me convencía la ilustración; la cambiaré por otra | Mantengo los efectos del ratón y me los estudio para la defensa | Quita la ilustración de los tres frentes… |
 | 14 | «Hazme SVG propios para «Sobre mí»» y luego «pon la 1 en la web y súbela». | Medios: segundo SVG propio en lugar de la ilustración quitada | Elegí la línea de tiempo entre tres propuestas; añadimos versión vertical para que se lea en el móvil | Añade mi recorrido en una línea de tiempo SVG… |
 | 15 | «Vamos con las tarjetas de proyectos.» | Contenido: proyectos como problema → solución → resultado | Quito la «web para un negocio local» porque no era real; pongo CUIDAMA, esta web y DAM solo con datos de mi CV | Cuenta los proyectos como problema → solución → resultado… |
+| 16 | «En el apartado Sobre mí quiero este texto: …» | Que «Sobre mí» lo cuente yo con mis palabras | El texto es mío; la IA solo lo maqueta en 4 párrafos y resalta en negrita SMR, marketing digital, logística, gestión administrativa, DAM y ciberseguridad | Pone mi texto en «Sobre mí»… |
 
 ## Lo que aprendí dirigiendo a la IA
 
