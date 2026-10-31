@@ -20,7 +20,7 @@ mi-web/
 ├── css/style.css     estilo: variables de color (claro y oscuro), secciones numeradas y comentadas
 ├── js/script.js      interacción: modo oscuro, formulario, animaciones, contadores…
 ├── js/chat.js        asistente del CV (responde preguntas sobre mí)
-├── img/              favicon.svg, tres-frentes.svg (ilustración propia), og-image.png
+├── img/              ivan.webp (mi foto), favicon.svg (mi logo), og-image.png
 ├── docs/prompts.md   órdenes clave que le di a la IA y por qué
 ├── notas.txt         ficha de contenidos de la sesión 1
 ├── robots.txt, sitemap.xml, llms.txt   para buscadores y asistentes de IA

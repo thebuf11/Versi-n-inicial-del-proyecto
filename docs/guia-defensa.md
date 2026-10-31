@@ -16,7 +16,7 @@ cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 | Correo de contacto | isasan@eeartesanos.com |
 | Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
 | Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
-| Historial | 35 commits en `main` (31 de trabajo + 4 fusiones de ramas) |
+| Historial | 36 commits en `main` (32 de trabajo + 4 fusiones de ramas) |
 | Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
 | Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
 
@@ -33,7 +33,6 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | `js/script.js` | 595 líneas | Las interacciones |
 | `js/chat.js` | 522 líneas | El asistente del CV |
 | `img/ivan.webp` | 10 KB (480×480) | Mi foto, optimizada desde un JPEG de 80 KB |
-| `img/tres-frentes.svg` | 1 KB | Ilustración propia |
 | `img/favicon.svg` | 0,4 KB | Mi logo «Iv.» |
 | `img/og-image.png` | 23 KB | Imagen al compartir el enlace |
 
@@ -48,19 +47,19 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
 | Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
 | Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
-| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 35 commits |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 36 commits |
 
 ### Los 7 criterios
 
 | Criterio (puntos) | Qué tengo | Nivel al que apunto |
 |---|---|---|
-| **Contacto** (15) | Formulario validado que envía, respuesta automática al visitante, página de gracias. Sé explicar el recorrido del dato (apartado 5) | Excelente si la autorrespuesta llega |
+| **Contacto** (15) | Formulario validado que envía, respuesta automática al visitante (probada: llega), página de gracias. Sé explicar el recorrido del dato (apartado 5) | Excelente |
 | **Contenido** (15) | Sobre mí, proyectos, habilidades (cintillo y «Lo que aporto»), experiencia (cifras), me gusta, FAQ, contacto | Competente. Falta poner los proyectos como problema → solución → resultado |
 | **Diseño** (15) | Paleta deliberada (papel cálido, tinta y un naranja), tipografía Geist, variables CSS, responsive, modo oscuro, favicon propio, microinteracciones, 2 páginas con el mismo estilo | Competente |
-| **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), 2 SVG propios en archivo + iconos SVG, animaciones CSS/JS | Competente |
+| **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), logo SVG propio (`favicon.svg`), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS. Falta la imagen nueva para «Sobre mí» | Competente cuando esté la imagen nueva |
 | **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
 | **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
-| **Proceso** (15) | 35 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+| **Proceso** (15) | 36 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
 
 ---
 
@@ -81,7 +80,7 @@ mi-web/
 ├── css/style.css       estilos (claro y oscuro)
 ├── js/script.js        interacciones
 ├── js/chat.js          asistente del CV
-├── img/                ivan.webp, tres-frentes.svg, favicon.svg, og-image.png
+├── img/                ivan.webp, favicon.svg, og-image.png
 ├── docs/               guia-defensa.md (esta guía) y prompts.md
 ├── README.md           cómo está hecha y decisiones de arquitectura
 ├── notas.txt           ficha de contenidos de la sesión 1
@@ -114,7 +113,7 @@ Recorrido de arriba abajo:
 5. **`<main>`, con las secciones de la web.** Cada una es un `<section id="...">`, y ese `id` es el destino de los enlaces del menú.
    - `#inicio`: el héroe, con el nombre, la frase y dos botones.
    - El cintillo de habilidades que se desplaza, con su botón «Pausar».
-   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, la **ilustración SVG** `img/tres-frentes.svg`, las cifras y la formación.
+   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, las cifras y la formación.
    - `#proyectos`: «Lo que he hecho».
    - `#me-gusta`: aficiones con iconos.
    - `#faq`: preguntas frecuentes.
@@ -181,12 +180,41 @@ para que mis variables no choquen con las de otros scripts. Las secciones están
 | 10 | Contadores | Cuando las cifras (+30K, 380 h) entran en pantalla, cuentan desde 0 con `requestAnimationFrame`. El lector de pantalla lee directamente la cifra final. |
 | 12 | Copiar correo | Usa `navigator.clipboard`. Si no se puede (sin HTTPS), crea un cuadro de texto oculto, lo selecciona y lo copia. |
 | 13 | Onda al pulsar | Crea un círculo `span.ripple` donde pulsas, el CSS lo agranda y se borra al acabar. |
-| 14 | Efectos del ratón | Resplandor que sigue al cursor, partículas en un `<canvas>` y botones «magnéticos». Solo con ratón, no en el móvil. **Es lo más difícil de explicar. Si no lo dominas, conviene quitarlo.** |
+| 14 | **Efectos del ratón** | Resplandor que sigue al cursor, partículas en un `<canvas>` y botones «magnéticos». Solo con ratón, no en el móvil. Explicado abajo. |
 | 9 | Esqueleto de carga | Cuando la página termina de cargar, quita las cajas grises (como máximo a los 3 s). |
 | 11 | Sombra de la barra | Si he bajado más de 8 px, añade la clase `scrolled` y el menú gana sombra. |
 | 15 | **Modo oscuro** | El botón lee el tema actual de `<html data-theme>`, lo cambia, lo guarda en `localStorage` y actualiza `aria-pressed` y el título. Al volver otro día, el script del `<head>` lo lee y lo aplica. |
 
 Los números no van en orden en el archivo porque fui añadiendo secciones con el tiempo.
+
+### Los efectos del ratón (sección 14), paso a paso
+Todo está dentro de la función `initPointerFx`. Solo se pone en marcha si hay ratón:
+primero pregunta al navegador `(pointer: fine)`. Si dice que no (hay portátiles con
+pantalla táctil que lo dicen aunque tengan ratón), espera al primer movimiento de un
+ratón de verdad (`pointerType === "mouse"`). En el móvil no se activa.
+
+1. **Resplandor que persigue al cursor.**
+   - Crea un `<div class="cursor-glow">`, un círculo naranja difuminado.
+   - En cada movimiento del ratón (`pointermove`) guarda dónde está el cursor: el **destino** (`gtx`, `gty`).
+   - En cada fotograma (`requestAnimationFrame`, unas 60 veces por segundo) el círculo avanza un **14 % de lo que le falta** para llegar: `gx += (gtx - gx) * 0.14`. Por eso no va pegado, sino que «persigue» al cursor con suavidad.
+   - Cuando ya está a menos de medio píxel, deja de calcular para no gastar.
+   - Al pasar por encima de un enlace o botón se pone la clase `is-hot` y el círculo crece.
+2. **Estela y explosión de partículas.**
+   - Crea un `<canvas>` del tamaño de la ventana, encima de todo y transparente a los clics.
+   - Al moverte más de 18 px, lanza unas pocas partículas; al hacer clic, una «explosión» de más (función `spawn`).
+   - Cada partícula tiene posición, velocidad, color (los 4 naranjas de la marca), tamaño y tiempo de vida.
+   - En cada fotograma, la función `frame` borra el canvas, mueve cada partícula, le suma un poco de gravedad (`vy +=`), la hace más transparente y pequeña según envejece, y la borra de la lista cuando se acaba su vida.
+   - Si no quedan partículas, se para el bucle.
+3. **Botones magnéticos.**
+   - Cuando el ratón está sobre un botón, calcula lo lejos que está del centro del botón y mueve el botón un poco hacia el cursor (18 % en horizontal, 28 % en vertical) con la propiedad CSS `translate`.
+   - Usa el mismo truco de «avanzar una parte de lo que falta» (20 % por fotograma) para que el movimiento sea suave.
+   - Al salir el ratón (`pointerout`), el destino vuelve a 0 y el botón regresa a su sitio.
+4. **Foco de luz en los botones.** Guarda la posición del ratón dentro del botón en las variables CSS `--mx` y `--my`, y el CSS pinta un brillo justo ahí.
+
+**Cómo decirlo:** «Todos los efectos usan la misma idea: guardo dónde quiero que
+esté algo y, en cada fotograma, lo acerco un trozo del camino. Uso `requestAnimationFrame`
+porque va sincronizado con la pantalla y el navegador lo pausa si la pestaña no se ve.
+Solo funcionan con ratón y respetan a quien desactiva las animaciones».
 
 ### El recorrido del dato del formulario (te lo preguntarán seguro)
 1. El visitante pulsa «Enviar». JS **frena el envío un momento** (`event.preventDefault()`) para revisar los datos.
@@ -242,7 +270,6 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 - **`img/`:**
   - `ivan.webp`: mi foto (ver apartado 3).
   - `favicon.svg`: el icono de la pestaña, un logo hecho en SVG, es decir, en código: figuras y texto, no píxeles.
-  - `tres-frentes.svg`: mis tres áreas como tres círculos que se cruzan, con «yo» en el centro.
   - `og-image.png`: la imagen al compartir el enlace.
 - **`robots.txt` / `sitemap.xml`:** le dicen a Google qué puede leer y dónde está la página.
 - **`llms.txt`:** un resumen para asistentes de IA tipo ChatGPT.
@@ -270,6 +297,7 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 | 31/10 | **Lighthouse**: arreglo de contraste y consola limpia | Mantiene oscuro el texto del cintillo… |
 | 31/10 | **Respuesta automática** y `gracias.html`, en la rama `respuesta-automatica` | Responde automáticamente… |
 | 31/10 | **Mi foto** optimizada, en la rama `foto-propia` | Añade mi foto en «Sobre mí»… |
+| 31/10 | **Quito la ilustración** de los tres círculos: la cambiaré por otra imagen | Quita la ilustración de los tres frentes… |
 
 ---
 
@@ -296,13 +324,19 @@ La IA escribió mucho código, pero yo decidí qué pedir, qué datos poner, pro
 cambio en el navegador y elegí entre opciones (por ejemplo, envío normal en vez de AJAX
 para tener respuesta automática). Las órdenes están en `docs/prompts.md`.
 
+**¿Cómo funcionan los efectos del ratón?**
+Ver el apartado 5: guardo dónde quiero que esté cada cosa (el resplandor, el botón) y
+en cada fotograma la acerco un trozo del camino. Las partículas se dibujan en un
+`<canvas>`. Solo se activan con ratón.
+
 **¿Qué mejorarías?**
 Contar los proyectos con problema → solución → resultado y cifras reales, y
-simplificar los efectos del ratón.
+poner una imagen propia nueva en «Sobre mí».
 
 ---
 
 ## 10. Pendiente
-- [ ] Comprobar que la **respuesta automática** llega: enviarme un mensaje poniendo otra dirección mía como remitente.
-- [ ] Reescribir las 2 tarjetas de **«Lo que he hecho»** con problema → solución → resultado y una cifra real.
-- [ ] Decidir si me quedo con los **efectos del ratón** (sección 14 de `script.js`) o los quito.
+- [x] Comprobar que la **respuesta automática** llega. Probado el 31/10/2026: funciona.
+- [x] Decidir sobre los **efectos del ratón**: se quedan (explicados en el apartado 5).
+- [ ] Poner una **imagen nueva** en «Sobre mí» en lugar de la ilustración de los tres círculos que quité.
+- [ ] Reescribir las 2 tarjetas de **«Lo que he hecho»** con problema → solución → resultado y una cifra real. De momento se quedan como están.

@@ -17,6 +17,8 @@ de commits.
 | 9 | «Haz dos SVG propios: el logo como favicon y una ilustración de mis tres frentes.» | Medios: ≥2 SVG propios | La idea de los tres círculos que se cruzan | Añade dos SVG propios… |
 | 10 | «Cambia tú el nombre del repo a mi-web.» | La sesión 2 pide que el repo se llame mi-web | Avisar de que la dirección antigua de la web deja de funcionar | Cambia las URLs del sitio… |
 | 11 | «Añade la respuesta automática de FormSubmit.» | Contacto Excelente: canal con respuesta automática | Como FormSubmit no la manda con AJAX, paso a envío normal, conservo la carta y creo gracias.html | Responde automáticamente a quien escribe… |
+| 12 | «Pon mi foto (carpeta yo) en la web.» | Medios: foto propia optimizada | Recorte cuadrado, WebP de 10 KB, redonda con el anillo naranja | Añade mi foto en «Sobre mí»… |
+| 13 | «Quita la imagen de los tres círculos con el «yo»; los efectos se quedan y los proyectos, de momento, igual.» | No me convencía la ilustración; la cambiaré por otra | Mantengo los efectos del ratón y me los estudio para la defensa | Quita la ilustración de los tres frentes… |
 
 ## Lo que aprendí dirigiendo a la IA
 
