@@ -28,8 +28,15 @@
       id: "perfil", pri: 1, general: true,
       q: "¿Quién es Iván?",
       kw: ["perfil", "quien es", "quien eres", "sobre ivan", "sobre ti", "presentate", "presentacion", "resumen", "describe", "describeme", "cualidades", "fortalezas", "puntos fuertes", "personalidad", "iniciativa", "autodidacta", "responsabilidad", "acerca de"],
-      a: "Iván Saez Santa Rosalia es un profesional versátil con experiencia en marketing digital, administración e informática.\n\nDestaca por su iniciativa, aprendizaje autodidacta, responsabilidad y capacidad de trabajo en equipo. Con formación en ventas e informática, combina competencias técnicas y creativas para adaptarse a distintos entornos laborales.",
-      next: ["experiencia", "formacion", "contacto"]
+      a: "Iván Saez Santa Rosalia es una persona proactiva, curiosa y autodidacta, con una base técnica en Sistemas Microinformáticos y Redes (hardware, redes y software) y experiencia en marketing digital y gestión administrativa.\n\nSe trasladó a España para estudiar **Desarrollo de Aplicaciones Multiplataforma (DAM)** y seguir construyendo su futuro en el sector tecnológico. Se considera resolutivo y responsable, y cree que la actitud, la constancia y las ganas de mejorar valen tanto como los conocimientos técnicos.",
+      next: ["objetivo", "experiencia", "formacion"]
+    },
+    {
+      id: "objetivo", pri: 2,
+      q: "¿Qué busca y hacia dónde va?",
+      kw: ["objetivo", "objetivos", "meta", "metas", "futuro", "busca", "buscando", "aspiraciones", "largo plazo", "especializarse", "especializacion", "ciberseguridad", "seguridad informatica", "hacking", "espana", "trasladarse", "traslado", "mudarse", "por que dam"],
+      a: "Su objetivo es incorporarse a un equipo donde pueda **aportar valor desde el primer día**, seguir desarrollando sus habilidades y crecer junto a profesionales con experiencia.\n\nA largo plazo quiere **especializarse en ciberseguridad**. Por eso se trasladó a España a estudiar DAM: para ampliar sus conocimientos y construir una carrera sólida en tecnología.",
+      next: ["programacion", "disponibilidad", "contacto"]
     },
     {
       id: "experiencia", pri: 1, general: true,
