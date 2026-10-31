@@ -22,6 +22,14 @@
   --orange-soft: #ffe3cc;
   --orange-wash: #fff3e8;
 
+  /* Texto sobre fondos de tinta, de acento o naranja */
+  --on-ink: #fff;
+  --on-accent: #fff;
+  --on-orange: #14110f;
+  --nav-bg: rgba(246, 244, 239, 0.86);
+
+  color-scheme: light;
+
   --font: "Geist", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
 
@@ -41,6 +49,31 @@
   --z-assistant: 60;
   --z-overlay: 90;
   --z-progress: 100;
+}
+
+/* Modo oscuro: misma marca (papel → noche, tinta → crema), el naranja
+   se aclara para mantener el contraste sobre fondo oscuro */
+:root[data-theme="dark"] {
+  --bg: #15120f;
+  --surface: #1e1a16;
+  --surface-2: #2a241f;
+  --ink: #f4efe6;
+  --ink-soft: #d6cec2;
+  --ink-faint: #a89f93;
+  --line: #3a332c;
+
+  --accent: #fb923c;
+  --accent-strong: #fdba74;
+  --orange-soft: #4a2a14;
+  --orange-wash: #2a1d14;
+
+  --on-ink: #15120f;
+  --on-accent: #15120f;
+  --nav-bg: rgba(21, 18, 15, 0.86);
+
+  --shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
 }
 
 /* ------------------------------------------------------------
@@ -116,7 +149,7 @@ button { cursor: pointer; }
   z-index: calc(var(--z-progress) + 1);
   padding: 10px 16px;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   border-radius: var(--r-sm);
   text-decoration: none;
   transform: translateY(-200%);
@@ -147,7 +180,7 @@ button { cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: var(--z-nav);
-  background: rgba(246, 244, 239, 0.86);
+  background: var(--nav-bg);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
@@ -227,6 +260,18 @@ button { cursor: pointer; }
 .nav-github:hover { background: var(--surface-2); }
 .nav-github:active { transform: scale(0.96); }
 .nav-github svg { width: 22px; height: 22px; }
+
+/* Botón de modo oscuro: mismo aspecto que los iconos de la barra */
+.theme-toggle {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.theme-toggle .icon-sun,
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
 @media (min-width: 760px) {
   .nav { flex-wrap: nowrap; }
@@ -476,7 +521,7 @@ main { overflow-x: clip; }
   position: relative;
   overflow: hidden;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
 }
 .btn-solid::after {
   content: "";
@@ -526,7 +571,7 @@ main { overflow-x: clip; }
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.ticker-toggle:hover { color: #000; }
+.ticker-toggle:hover { color: var(--ink); }
 
 .ticker {
   overflow: hidden;
@@ -763,7 +808,7 @@ main { overflow-x: clip; }
   padding: clamp(16px, 3vw, 26px);
   text-align: left;
   text-decoration: none;
-  color: var(--ink);
+  color: var(--on-orange);
   background: linear-gradient(135deg, var(--orange), #ff9a4d);
   border-radius: 22px;
   box-shadow: 0 26px 44px -24px rgba(194, 65, 12, 0.75);
@@ -840,7 +885,7 @@ main { overflow-x: clip; }
 .mail-copy svg { width: 17px; height: 17px; color: var(--accent); }
 .mail-copy:hover { border-color: var(--accent); }
 .mail-copy:active { transform: scale(0.97); }
-.mail-copy.is-copied { background: var(--ink); color: #fff; border-color: var(--ink); }
+.mail-copy.is-copied { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .mail-copy.is-copied svg { color: var(--orange); }
 
 .contact-divider {
@@ -1076,7 +1121,7 @@ main { overflow-x: clip; }
   display: grid;
   place-items: center;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   border: 0;
   border-radius: var(--r-lg);
   box-shadow: 0 14px 28px -10px rgba(20, 17, 15, 0.5);
@@ -1096,7 +1141,7 @@ main { overflow-x: clip; }
   0%   { transform: scale(1); opacity: 0.9; }
   70%, 100% { transform: scale(1.55); opacity: 0; }
 }
-.chat-fab:hover { transform: translateY(-2px); background: #2a2420; }
+.chat-fab:hover { transform: translateY(-2px); background: var(--ink-soft); }
 .chat-fab:active { transform: scale(0.96); }
 .chat-fab-logo { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.04em; }
 .chat-fab-logo span { color: var(--orange); }
@@ -1149,7 +1194,7 @@ main { overflow-x: clip; }
   width: 40px;
   height: 40px;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   border-radius: var(--r-md);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -1224,7 +1269,7 @@ main { overflow-x: clip; }
 .msg-user {
   align-self: flex-end;
   background: var(--ink);
-  color: #fff;
+  color: var(--on-ink);
   border-radius: 14px 14px 4px 14px;
 }
 @keyframes msgIn {
@@ -1303,7 +1348,7 @@ main { overflow-x: clip; }
   height: 44px;
   padding: 0;
   background: var(--accent);
-  color: #fff;
+  color: var(--on-accent);
   border: 0;
   border-radius: var(--r-md);
   transition: background 0.2s ease, transform 0.2s var(--ease);
@@ -1516,7 +1561,7 @@ main { overflow-x: clip; }
 .skeleton.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
 .sk {
   border-radius: 12px;
-  background: linear-gradient(100deg, var(--line) 30%, #ece7dc 50%, var(--line) 70%);
+  background: linear-gradient(100deg, var(--line) 30%, var(--surface-2) 50%, var(--line) 70%);
   background-size: 200% 100%;
   animation: shimmer 1.3s linear infinite;
 }
