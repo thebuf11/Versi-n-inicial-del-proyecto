@@ -1,0 +1,30 @@
+FICHA DE MI WEB (sesión 1, paso 1)
+==================================
+
+Nombre:        Iván Sáez
+Ciudad:        Valencia
+Frase:         Estoy estudiando programación y construyo cosas en serio para
+               demostrarlo. Código por curiosidad, no por obligación.
+
+Sobre mí (2-4 líneas):
+  Estudio 1º de DAM. Mi camino va por tres frentes que se complementan:
+  marketing digital, administración y soporte informático. Me motiva ver
+  una idea convertirse en algo que otra persona pueda usar.
+
+Cosas que he hecho:
+  1. Primero de DAM: tres prácticas con HTML, CSS y JavaScript, incluida esta web.
+  2. Web para un negocio local: cinco secciones, formulario que llega al
+     correo y diseño adaptado al móvil.
+  3. Campañas de marketing digital (+30K visualizaciones al mes en Facebook e Instagram).
+  4. 380 h de prácticas de Sistemas Microinformáticos y Redes.
+
+Me gusta:
+  - Viajar
+  - Tecnología (Linux, montar y desmontar cosas)
+  - Blockchain
+  - Deportes (gimnasio, crossfit, calistenia)
+  - Videojuegos (roguelikes y estrategia)
+
+Contacto:
+  Correo:  isasan@eeartesanos.com
+  GitHub:  https://github.com/thebuf11
