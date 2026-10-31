@@ -16,9 +16,9 @@ cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 | Correo de contacto | isasan@eeartesanos.com |
 | Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
 | Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
-| Historial | 40 commits en `main` (34 de trabajo + 6 fusiones de ramas) |
+| Historial | 42 commits en `main` (35 de trabajo + 7 fusiones de ramas) |
 | Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
-| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo`, `proyectos-reales` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
+| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo`, `proyectos-reales`, `texto-sobre-mi` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
 
 **Antes se llamaba** `Versi-n-inicial-del-proyecto`. Lo renombré a `mi-web` porque
 la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
@@ -47,7 +47,7 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
 | Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
 | Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
-| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 40 commits |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 42 commits |
 
 ### Los 7 criterios
 
@@ -59,7 +59,7 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), **dos SVG propios en archivo**: el logo (`favicon.svg`) y la línea de tiempo «Mi recorrido» (`recorrido.svg`, con versión para móvil), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS | Competente |
 | **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
 | **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
-| **Proceso** (15) | 40 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+| **Proceso** (15) | 42 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
 
 ---
 
@@ -113,7 +113,7 @@ Recorrido de arriba abajo:
 5. **`<main>`, con las secciones de la web.** Cada una es un `<section id="...">`, y ese `id` es el destino de los enlaces del menú.
    - `#inicio`: el héroe, con el nombre, la frase y dos botones.
    - El cintillo de habilidades que se desplaza, con su botón «Pausar».
-   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, la **línea de tiempo** «Mi recorrido» (`img/recorrido.svg`), las cifras y la formación.
+   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto (escrito por mí: quién soy, mi base en SMR, por qué vine a España a estudiar DAM y mi objetivo de especializarme en ciberseguridad), la **línea de tiempo** «Mi recorrido» (`img/recorrido.svg`), las cifras y la formación.
    - `#proyectos`: «Lo que he hecho», tres tarjetas contadas como **problema → solución → resultado**:
      1. **Campañas en redes sociales** (CUIDAMA, 2022-2024): Facebook e Instagram Ads y contenido propio → más de 30K visualizaciones al mes.
      2. **Esta web personal**: HTML, CSS y JS sin frameworks, contacto real, modo oscuro → 100 en accesibilidad en Lighthouse.
@@ -319,6 +319,7 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 | 31/10 | **Quito la ilustración** de los tres círculos: la cambiaré por otra imagen | Quita la ilustración de los tres frentes… |
 | 31/10 | **Línea de tiempo «Mi recorrido»** (SVG propio, con versión para móvil), en la rama `linea-tiempo` | Añade mi recorrido en una línea de tiempo SVG… |
 | 31/10 | **Proyectos reales** como problema → solución → resultado; quito la «web para un negocio local», que no era real | Cuenta los proyectos como problema → solución → resultado… |
+| 31/10 | **Texto nuevo de «Sobre mí»**, escrito por mí | Pone mi texto en «Sobre mí»… |
 
 ---
 
