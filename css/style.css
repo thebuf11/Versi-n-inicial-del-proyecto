@@ -1610,3 +1610,16 @@ main { overflow-x: clip; }
   border: 4px solid var(--surface);
   box-shadow: 0 0 0 3px var(--orange), var(--shadow);
 }
+
+/* Línea de tiempo de «Sobre mí» (img/recorrido.svg): ocupa el ancho del panel */
+.about-timeline {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin: 1.5rem auto;
+}
+
+@media (max-width: 560px) {
+  .about-timeline { max-width: 360px; }
+}

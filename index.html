@@ -142,7 +142,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
   </noscript>
-  <link rel="stylesheet" href="css/style.css?v=20261031f">
+  <link rel="stylesheet" href="css/style.css?v=20261031g">
 </head>
 <body>
 
@@ -281,6 +281,14 @@
           organizar procesos y crear contenido a la vez. Me gustan los retos que se
           aprenden haciendo.
         </p>
+
+        <!-- SVG propio: mi recorrido en una línea de tiempo (lleva su propio fondo claro).
+             En pantallas estrechas se usa la versión vertical para que el texto se lea -->
+        <picture>
+          <source media="(max-width: 560px)" srcset="img/recorrido-movil.svg" width="320" height="460">
+          <img class="about-timeline" src="img/recorrido.svg" width="640" height="260" decoding="async"
+             alt="Mi recorrido: ESO en Salesianos, Grado Medio en Sistemas Microinformáticos y Redes con prácticas en 2018, Grado Superior en Ventas, marketing y administración en empresas de 2022 a 2024 y, hoy, primero de DAM">
+        </picture>
 
         <ul class="stats">
           <li class="stat">
@@ -593,7 +601,7 @@
     </button>
   </div>
 
-  <script src="js/script.js?v=20261031f"></script>
-  <script src="js/chat.js?v=20261031f"></script>
+  <script src="js/script.js?v=20261031g"></script>
+  <script src="js/chat.js?v=20261031g"></script>
 </body>
 </html>

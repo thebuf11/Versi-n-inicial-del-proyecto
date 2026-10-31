@@ -16,9 +16,9 @@ cumple de la rúbrica. Datos actualizados a **31 de octubre de 2026**.
 | Correo de contacto | isasan@eeartesanos.com |
 | Tecnologías | HTML, CSS y JavaScript puros, sin frameworks. Fuente Geist. FormSubmit para el formulario |
 | Publicación | GitHub Pages, automática con `.github/workflows/pages.yml` en cada push a `main` |
-| Historial | 36 commits en `main` (32 de trabajo + 4 fusiones de ramas) |
+| Historial | 38 commits en `main` (33 de trabajo + 5 fusiones de ramas) |
 | Versiones | Etiquetas `v2.0` (30/10/2026) y `v3.0` (31/10/2026) |
-| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
+| Ramas | `modo-oscuro`, `reestructura-carpetas`, `respuesta-automatica`, `foto-propia`, `linea-tiempo` (fusionadas en `main`), más `posicionamiento-marketing-admin-informatica`, `rama-del-agente-AI` y `copia-2026-10-30` de antes |
 
 **Antes se llamaba** `Versi-n-inicial-del-proyecto`. Lo renombré a `mi-web` porque
 la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
@@ -47,7 +47,7 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | Carga en GitHub Pages sin errores en consola (F12) | ✅ | Comprobado en la web publicada: consola vacía |
 | Contacto que funciona de verdad | ✅ | El formulario me llega a isasan@eeartesanos.com (probado) |
 | Se ve bien en el móvil | ✅ | Probado con DevTools en modo dispositivo (390 px) |
-| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 36 commits |
+| Mínimo 10 commits con mensajes que cuentan el proceso | ✅ | 38 commits |
 
 ### Los 7 criterios
 
@@ -56,10 +56,10 @@ la sesión 2 pide ese nombre. La dirección antigua de la web ya no funciona.
 | **Contacto** (15) | Formulario validado que envía, respuesta automática al visitante (probada: llega), página de gracias. Sé explicar el recorrido del dato (apartado 5) | Excelente |
 | **Contenido** (15) | Sobre mí, proyectos, habilidades (cintillo y «Lo que aporto»), experiencia (cifras), me gusta, FAQ, contacto | Competente. Falta poner los proyectos como problema → solución → resultado |
 | **Diseño** (15) | Paleta deliberada (papel cálido, tinta y un naranja), tipografía Geist, variables CSS, responsive, modo oscuro, favicon propio, microinteracciones, 2 páginas con el mismo estilo | Competente |
-| **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), logo SVG propio (`favicon.svg`), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS. Falta la imagen nueva para «Sobre mí» | Competente cuando esté la imagen nueva |
+| **Medios** (10) | Foto propia optimizada (WebP 10 KB, alt, carga diferida), **dos SVG propios en archivo**: el logo (`favicon.svg`) y la línea de tiempo «Mi recorrido» (`recorrido.svg`, con versión para móvil), sobre SVG en `gracias.html`, iconos SVG, animaciones CSS/JS | Competente |
 | **Interactividad** (15) | Modo oscuro con memoria, formulario validado, asistente del CV, copiar correo, contadores, pausar cintillo | Competente (hay más de 2 funciones reales) |
 | **Arquitectura** (15) | HTML semántico, carpetas `css/` `js/` `img/`, variables CSS, JS por secciones, title/meta/OG en cada página, foco visible, alt. Lighthouse 100 en accesibilidad. README con 2 decisiones de arquitectura | Competente, con partes de Excelente |
-| **Proceso** (15) | 36 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
+| **Proceso** (15) | 38 commits atómicos, ramas para lo grande, etiquetas v2.0→v3.0, órdenes a la IA en `docs/prompts.md` | Competente, con partes de Excelente |
 
 ---
 
@@ -102,7 +102,7 @@ Recorrido de arriba abajo:
      - Mira si desactivé las animaciones (`localStorage.motion`).
      - Mira qué tema elegí (`localStorage.theme`). Si no elegí ninguno, usa el del sistema y pone `data-theme="dark"` o `"light"` en la etiqueta `<html>`.
      - Se hace tan pronto para que no haya un destello blanco al cargar en modo oscuro.
-   - **Fuente Geist** de Google Fonts y **`css/style.css`**. El `?v=20261031e` del final obliga al navegador a descargar la versión nueva y no usar una vieja guardada.
+   - **Fuente Geist** de Google Fonts y **`css/style.css`**. El `?v=20261031g` del final obliga al navegador a descargar la versión nueva y no usar una vieja guardada.
 2. **Barra de progreso y esqueleto de carga:** la línea naranja de arriba, y unas cajas grises que se ven mientras carga la página.
 3. **«Saltar al contenido»:** un enlace invisible para quien navega con teclado o lector de pantalla.
 4. **`<nav>`:**
@@ -113,7 +113,7 @@ Recorrido de arriba abajo:
 5. **`<main>`, con las secciones de la web.** Cada una es un `<section id="...">`, y ese `id` es el destino de los enlaces del menú.
    - `#inicio`: el héroe, con el nombre, la frase y dos botones.
    - El cintillo de habilidades que se desplaza, con su botón «Pausar».
-   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, las cifras y la formación.
+   - `#sobre-mi`: **mi foto** (`img/ivan.webp`), el texto, la **línea de tiempo** «Mi recorrido» (`img/recorrido.svg`), las cifras y la formación.
    - `#proyectos`: «Lo que he hecho».
    - `#me-gusta`: aficiones con iconos.
    - `#faq`: preguntas frecuentes.
@@ -138,6 +138,19 @@ estructura».
 - **`alt`:** lo que lee un lector de pantalla si no puedes verla.
 - El CSS (`.about-photo`) la recorta en círculo (`border-radius: 50%`, `object-fit: cover`) con un anillo naranja de la marca.
 
+### La línea de tiempo «Mi recorrido»
+```html
+<picture>
+  <source media="(max-width: 560px)" srcset="img/recorrido-movil.svg" …>
+  <img class="about-timeline" src="img/recorrido.svg" width="640" height="260" alt="Mi recorrido: ESO…">
+</picture>
+```
+- Es un **SVG propio**: círculos, una línea y textos escritos en código, sin píxeles. Por eso pesa muy poco y se ve nítido a cualquier tamaño.
+- Cinco hitos: ESO → Grado Medio SMR con prácticas (2018) → Grado Superior en Ventas → empresas de marketing y administración (2022-2024) → **hoy, primero de DAM**, en naranja.
+- **Dos versiones:** `recorrido.svg` es horizontal (640×260) y `recorrido-movil.svg` es vertical (320×460). `<picture>` con `<source media="(max-width: 560px)">` le dice al navegador: «si la pantalla es estrecha, usa la vertical». Así, en el móvil el texto no queda diminuto.
+- Lleva su **propia tarjeta clara de fondo**, así que se lee igual en modo claro y en modo oscuro.
+- El **`alt`** cuenta el recorrido completo para quien usa lector de pantalla.
+
 ### gracias.html
 Segunda página con el mismo `<head>` (tema, favicon, fuentes, CSS), una barra de
 navegación reducida, un SVG de un sobre con un check y botones para volver. Lleva
@@ -147,7 +160,7 @@ navegación reducida, un SVG de un sobre con un check y botones para volver. Lle
 
 ## 4. css/style.css: el aspecto
 Está dividido en **17 bloques numerados y comentados**, en el mismo orden que la página,
-y al final unos bloques añadidos después (ilustración, gracias.html y foto):
+y al final unos bloques añadidos después (gracias.html, foto y línea de tiempo):
 1 · Variables · 2 · Base · 3 · Navegación · 4 · Estructura · 5 · Héroe · 6 · Botones ·
 7 · Cintillo · 8 · Sobre mí · 9 · Proyectos · 10 · Me gusta · 11 · Contacto · 12 · Pie ·
 13 · Aparición · 14 · Animación de envío · 15 · Asistente · 16 · Pantallas pequeñas ·
@@ -269,6 +282,7 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 ## 7. Archivos de apoyo
 - **`img/`:**
   - `ivan.webp`: mi foto (ver apartado 3).
+  - `recorrido.svg` y `recorrido-movil.svg`: mi línea de tiempo en horizontal y en vertical (ver apartado 3).
   - `favicon.svg`: el icono de la pestaña, un logo hecho en SVG, es decir, en código: figuras y texto, no píxeles.
   - `og-image.png`: la imagen al compartir el enlace.
 - **`robots.txt` / `sitemap.xml`:** le dicen a Google qué puede leer y dónde está la página.
@@ -298,6 +312,7 @@ el JS, cualquiera la ve con F12 y la puede gastar.
 | 31/10 | **Respuesta automática** y `gracias.html`, en la rama `respuesta-automatica` | Responde automáticamente… |
 | 31/10 | **Mi foto** optimizada, en la rama `foto-propia` | Añade mi foto en «Sobre mí»… |
 | 31/10 | **Quito la ilustración** de los tres círculos: la cambiaré por otra imagen | Quita la ilustración de los tres frentes… |
+| 31/10 | **Línea de tiempo «Mi recorrido»** (SVG propio, con versión para móvil), en la rama `linea-tiempo` | Añade mi recorrido en una línea de tiempo SVG… |
 
 ---
 
@@ -330,13 +345,12 @@ en cada fotograma la acerco un trozo del camino. Las partículas se dibujan en u
 `<canvas>`. Solo se activan con ratón.
 
 **¿Qué mejorarías?**
-Contar los proyectos con problema → solución → resultado y cifras reales, y
-poner una imagen propia nueva en «Sobre mí».
+Contar los proyectos con problema → solución → resultado y cifras reales.
 
 ---
 
 ## 10. Pendiente
 - [x] Comprobar que la **respuesta automática** llega. Probado el 31/10/2026: funciona.
 - [x] Decidir sobre los **efectos del ratón**: se quedan (explicados en el apartado 5).
-- [ ] Poner una **imagen nueva** en «Sobre mí» en lugar de la ilustración de los tres círculos que quité.
+- [x] Poner una **imagen nueva** en «Sobre mí»: la línea de tiempo «Mi recorrido» (31/10/2026).
 - [ ] Reescribir las 2 tarjetas de **«Lo que he hecho»** con problema → solución → resultado y una cifra real. De momento se quedan como están.

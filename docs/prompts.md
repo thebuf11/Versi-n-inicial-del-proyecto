@@ -19,6 +19,7 @@ de commits.
 | 11 | «Añade la respuesta automática de FormSubmit.» | Contacto Excelente: canal con respuesta automática | Como FormSubmit no la manda con AJAX, paso a envío normal, conservo la carta y creo gracias.html | Responde automáticamente a quien escribe… |
 | 12 | «Pon mi foto (carpeta yo) en la web.» | Medios: foto propia optimizada | Recorte cuadrado, WebP de 10 KB, redonda con el anillo naranja | Añade mi foto en «Sobre mí»… |
 | 13 | «Quita la imagen de los tres círculos con el «yo»; los efectos se quedan y los proyectos, de momento, igual.» | No me convencía la ilustración; la cambiaré por otra | Mantengo los efectos del ratón y me los estudio para la defensa | Quita la ilustración de los tres frentes… |
+| 14 | «Hazme SVG propios para «Sobre mí»» y luego «pon la 1 en la web y súbela». | Medios: segundo SVG propio en lugar de la ilustración quitada | Elegí la línea de tiempo entre tres propuestas; añadimos versión vertical para que se lea en el móvil | Añade mi recorrido en una línea de tiempo SVG… |
 
 ## Lo que aprendí dirigiendo a la IA
 

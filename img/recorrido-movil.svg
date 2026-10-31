@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 460" role="img" aria-labelledby="t1">
+  <title id="t1">Mi recorrido: de la ESO a primero de DAM</title>
+  <!-- Versión vertical de recorrido.svg para pantallas estrechas: mismos hitos y colores -->
+  <rect x="2" y="2" width="316" height="456" rx="24" fill="#fffdf9" stroke="#d9d3c7" stroke-width="2"/>
+  <text x="28" y="50" font-family="Geist, Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#14110f">Mi recorrido<tspan fill="#ff7a1a">.</tspan></text>
+
+  <!-- Línea base gris y tramo recorrido en naranja -->
+  <line x1="56" y1="100" x2="56" y2="408" stroke="#d9d3c7" stroke-width="6" stroke-linecap="round"/>
+  <line x1="56" y1="100" x2="56" y2="408" stroke="#ff7a1a" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/>
+
+  <!-- Hitos: círculo con número -->
+  <g font-family="Geist, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" text-anchor="middle">
+    <circle cx="56" cy="100" r="16" fill="#fffdf9" stroke="#14110f" stroke-width="3"/>
+    <text x="56" y="105" fill="#14110f">1</text>
+    <circle cx="56" cy="177" r="16" fill="#fffdf9" stroke="#14110f" stroke-width="3"/>
+    <text x="56" y="182" fill="#14110f">2</text>
+    <circle cx="56" cy="254" r="16" fill="#fffdf9" stroke="#14110f" stroke-width="3"/>
+    <text x="56" y="259" fill="#14110f">3</text>
+    <circle cx="56" cy="331" r="16" fill="#fffdf9" stroke="#14110f" stroke-width="3"/>
+    <text x="56" y="336" fill="#14110f">4</text>
+    <!-- El último hito, «hoy», destaca en naranja con un halo -->
+    <circle cx="56" cy="408" r="26" fill="#ffe3cc"/>
+    <circle cx="56" cy="408" r="18" fill="#ff7a1a"/>
+    <text x="56" y="413" fill="#14110f">5</text>
+  </g>
+
+  <!-- Etiquetas a la derecha de cada hito, con el año cuando lo sé -->
+  <g font-family="Geist, Arial, Helvetica, sans-serif">
+    <text x="96" y="97" font-size="17" font-weight="700" fill="#14110f">ESO</text>
+    <text x="96" y="117" font-size="14" fill="#665f57">Salesianos</text>
+    <text x="96" y="174" font-size="17" font-weight="700" fill="#14110f">Grado Medio</text>
+    <text x="96" y="194" font-size="14" fill="#665f57">SMR · prácticas · 2018</text>
+    <text x="96" y="251" font-size="17" font-weight="700" fill="#14110f">Grado Superior</text>
+    <text x="96" y="271" font-size="14" fill="#665f57">Ventas</text>
+    <text x="96" y="328" font-size="17" font-weight="700" fill="#14110f">Empresas</text>
+    <text x="96" y="348" font-size="14" fill="#665f57">Marketing y admin. · 2022-2024</text>
+    <text x="96" y="405" font-size="17" font-weight="700" fill="#c2410c">Hoy</text>
+    <text x="96" y="425" font-size="14" fill="#665f57">Primero de DAM</text>
+  </g>
+</svg>
