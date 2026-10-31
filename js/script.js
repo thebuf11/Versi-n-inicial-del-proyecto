@@ -593,4 +593,25 @@
   };
   window.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
+
+  /* ----------------------------------------------------------
+     15 · Modo oscuro: el <head> ya puso data-theme; aquí el botón
+         lo cambia y lo guarda para la próxima visita
+     ---------------------------------------------------------- */
+  var themeBtn = document.getElementById("theme-toggle");
+  if (themeBtn) {
+    var root = document.documentElement;
+    var syncThemeBtn = function () {
+      var dark = root.getAttribute("data-theme") === "dark";
+      themeBtn.setAttribute("aria-pressed", dark ? "true" : "false");
+      themeBtn.title = dark ? "Cambiar a modo claro" : "Cambiar a modo oscuro";
+    };
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncThemeBtn();
+    });
+    syncThemeBtn();
+  }
 })();

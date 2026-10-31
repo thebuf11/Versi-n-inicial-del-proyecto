@@ -8,7 +8,7 @@
   <meta name="author" content="Iván Sáez">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#ff7a1a">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <!-- URL base del sitio. Si cambias de dominio, actualízala también en
        sitemap.xml, robots.txt y llms.txt. -->
   <link rel="canonical" href="https://thebuf11.github.io/Versi-n-inicial-del-proyecto/">
@@ -126,6 +126,12 @@
     var motionOff = false;
     try { motionOff = localStorage.getItem("motion") === "off"; } catch (e) {}
     if (!motionOff) document.documentElement.classList.add("motion-on");
+    /* El tema se aplica antes de pintar para que no haya un destello
+       claro: primero lo que eligió el visitante, si no, lo del sistema */
+    var theme = null;
+    try { theme = localStorage.getItem("theme"); } catch (e) {}
+    if (!theme) theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,7 +142,7 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
   </noscript>
-  <link rel="stylesheet" href="css/style.css?v=20261031a">
+  <link rel="stylesheet" href="css/style.css?v=20261031b">
 </head>
 <body>
 
@@ -169,6 +175,13 @@
       </ul>
       <div class="nav-tools">
       <span class="nav-pct" id="progress-pill" aria-hidden="true">0%</span>
+      <button class="nav-github theme-toggle" id="theme-toggle" type="button"
+              aria-label="Modo oscuro" aria-pressed="false" title="Cambiar a modo oscuro">
+        <!-- Luna: se ve en modo claro -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <!-- Sol: se ve en modo oscuro -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
       <a class="nav-github" href="https://github.com/thebuf11?tab=repositories"
          target="_blank" rel="noopener noreferrer"
          title="Mis proyectos en GitHub"
@@ -571,7 +584,7 @@
     </button>
   </div>
 
-  <script src="js/script.js?v=20261031a"></script>
-  <script src="js/chat.js?v=20261031a"></script>
+  <script src="js/script.js?v=20261031b"></script>
+  <script src="js/chat.js?v=20261031b"></script>
 </body>
 </html>
