@@ -8,7 +8,7 @@ Frase:         Estoy estudiando programación y construyo cosas en serio para
 
 Sobre mí (2-4 líneas):
   Persona proactiva y curiosa. Mi base es Sistemas Microinformáticos y Redes,
-  complementada con marketing digital, logística y gestión administrativa.
+  complementada con marketing digital y gestión administrativa.
   Me trasladé a España para estudiar DAM; a largo plazo quiero especializarme
   en ciberseguridad. (Texto completo en la sección «Sobre mí» de la web.)
 
