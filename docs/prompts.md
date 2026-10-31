@@ -22,6 +22,7 @@ de commits.
 | 14 | «Hazme SVG propios para «Sobre mí»» y luego «pon la 1 en la web y súbela». | Medios: segundo SVG propio en lugar de la ilustración quitada | Elegí la línea de tiempo entre tres propuestas; añadimos versión vertical para que se lea en el móvil | Añade mi recorrido en una línea de tiempo SVG… |
 | 15 | «Vamos con las tarjetas de proyectos.» | Contenido: proyectos como problema → solución → resultado | Quito la «web para un negocio local» porque no era real; pongo CUIDAMA, esta web y DAM solo con datos de mi CV | Cuenta los proyectos como problema → solución → resultado… |
 | 16 | «En el apartado Sobre mí quiero este texto: …» | Que «Sobre mí» lo cuente yo con mis palabras | El texto es mío; la IA solo lo maqueta en 4 párrafos y resalta en negrita SMR, marketing digital, logística, gestión administrativa, DAM y ciberseguridad | Pone mi texto en «Sobre mí»… |
+| 17 | «Añade la información sobre mí, pero no pongas lo de logística.» | Que el chat, las FAQ y las fichas para buscadores digan lo mismo que «Sobre mí» | Tema nuevo en el chat («¿Qué busca y hacia dónde va?»), pregunta nueva en las FAQ; la logística solo queda en mi texto de «Sobre mí» | Lleva mi perfil al asistente y a las preguntas frecuentes… |
 
 ## Lo que aprendí dirigiendo a la IA
 
