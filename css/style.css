@@ -567,11 +567,11 @@ main { overflow-x: clip; }
   border: 0;
   font-family: var(--mono);
   font-size: 0.75rem;
-  color: var(--ink);
+  color: var(--on-orange);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.ticker-toggle:hover { color: var(--ink); }
+.ticker-toggle:hover { color: var(--on-orange); }
 
 .ticker {
   overflow: hidden;
@@ -602,13 +602,13 @@ main { overflow-x: clip; }
   font-family: var(--mono);
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--on-orange);
 }
 .ticker-row li::after {
   content: "";
   width: 6px;
   height: 6px;
-  background: var(--ink);
+  background: var(--on-orange);
   border-radius: 50%;
 }
 
